@@ -35,10 +35,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Fecha.h" />
-		<Unit filename="include/File.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Fecha.cpp" />
-		<Unit filename="src/File.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

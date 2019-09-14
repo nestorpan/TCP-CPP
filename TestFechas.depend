@@ -1,13 +1,11 @@
 # depslib dependency file v1.0
-1568477030 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\testfechas\main.cpp
+1567273868 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos2\testfechas\src\fecha.cpp
 	<iostream>
-	<fstream>
 	"Fecha.h"
 
-1568477482 d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\testfechas\include\fecha.h
-	<iostream>
+1567273288 d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos2\testfechas\include\fecha.h
 
-1568478186 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\testfechas\src\fecha.cpp
+1567273749 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos2\testfechas\main.cpp
 	<iostream>
 	"Fecha.h"
 
