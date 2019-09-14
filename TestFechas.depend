@@ -9,3 +9,22 @@
 	<iostream>
 	"Fecha.h"
 
+1568491876 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\tcp-cpp\src\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1568491893 d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\tcp-cpp\include\fecha.h
+	<iostream>
+
+1568493133 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\tcp-cpp\main.cpp
+	<iostream>
+	<fstream>
+	"Fecha.h"
+
+1568494333 source:d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\tcp-cpp\src\file.cpp
+	"File.h"
+
+1568494342 d:\dropbox\unlam\programacion\taller de c++\2019-2\proyectos\tcp-cpp\include\file.h
+	<iostream>
+	<fstream>
+

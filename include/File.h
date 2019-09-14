@@ -7,14 +7,17 @@
 using namespace std;
 
 
-class FileOut
+class File
 {
 private:
 	filebuf fb;
-	ostream os;
+	ostream& out;
+	istream& in;
 	
 public:
-	FileOut(char* path);
+	File(const char* path);
+	
+	
 };
 
 #endif // FILE_H

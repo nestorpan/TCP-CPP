@@ -1,6 +1,10 @@
 #ifndef FECHA_H
 #define FECHA_H
 
+#include <iostream>
+
+using namespace std;
+
 #define ANIO_BASE 1601
 
 
@@ -11,6 +15,7 @@ class Fecha
 		Fecha(int d, int m, int a);
 		
 		void getDMA(int& d, int& m, int& a) const;
+		void setDMA(int d, int m, int a);
 		Fecha operator +(int cantDias) const;
 		
 	private:
@@ -22,5 +27,9 @@ class Fecha
 		int diaRel;
 		
 };
+
+
+ostream& operator <<(ostream& sal, const Fecha& f);
+istream& operator >>(istream& ent, Fecha& f);
 
 #endif // FECHA_H

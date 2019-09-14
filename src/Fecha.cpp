@@ -20,8 +20,7 @@ Fecha::Fecha()
 
 Fecha::Fecha(int d, int m, int a)
 {
-	int difAnios = a - ANIO_BASE;
-	diaRel = difAnios * 365 + difAnios / 4 - difAnios / 100 + difAnios / 400 + diaDelAnio(d, m, a);
+	setDMA(d, m, a);
 }
 
 
@@ -49,6 +48,13 @@ void Fecha::getDMA(int& d, int& m, int& a) const
 }
 
 
+void Fecha::setDMA(int d, int m, int a)
+{
+	int difAnios = a - ANIO_BASE;
+	diaRel = difAnios * 365 + difAnios / 4 - difAnios / 100 + difAnios / 400 + diaDelAnio(d, m, a);
+}
+
+
 Fecha Fecha::operator +(int cantDias) const
 {
 	Fecha suma(*this);
@@ -68,4 +74,29 @@ int Fecha::diaDelAnio(int d, int m, int a)
 bool Fecha::esBisiesto(int a) const
 {
 	return (a % 4 == 0 && a % 100 != 0) || a % 400 == 0;
+}
+
+
+ostream& operator <<(ostream& sal, const Fecha& f)
+{
+	int d, m, a;
+	
+	f.getDMA(d, m, a);
+    
+    sal << d << '/' << m << '/' << a;
+	
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Fecha& f)
+{
+	int d, m, a;
+	char c;
+	
+	ent >> d >> c >> m >> c >> a;
+	
+	f.setDMA(d, m, a);
+	
+	return ent;
 }
