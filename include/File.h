@@ -1,3 +1,4 @@
+/*
 #ifndef FILE_H
 #define FILE_H
 
@@ -18,3 +19,4 @@ public:
 };
 
 #endif // FILE_H
+*/

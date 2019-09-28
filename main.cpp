@@ -1,12 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include "Fecha.h"
+#include "Cadena.h"
 
 using namespace std;
 
 
 int main()
 {
+/**	
     Fecha fDef;
     Fecha fIngr;
     
@@ -42,8 +44,22 @@ int main()
 	ostream archivo(&fb);
 	archivo << "La fecha suma es " << fSuma << endl;
 	fb.close();
+ */   
     
+    Cadena hola("Hola");
+    Cadena hola2(hola);
     
+    Cadena que("que");
+    Cadena tal("tal");
     
+    Cadena nombre;
+/**    
+    cout << "Ingrese su nombre: ";
+    cin >> nombre;
+    
+    Cadena saludo = hola + ' ' + nombre + "! " + que + ' ' + tal + '?';
+    
+    cout << saludo << endl;
+*/    
     return 0;
 }

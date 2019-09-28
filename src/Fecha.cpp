@@ -40,7 +40,7 @@ void Fecha::getDMA(int& d, int& m, int& a) const
 	
 	int cantDiasAniosCompl = difAnios * 365 + difAnios / 4 - difAnios / 100 + difAnios / 400;
 	
-	while(cantDiasAniosCompl > diaRel)
+	while(cantDiasAniosCompl >= diaRel)
 	{
 		difAnios--;
 		cantDiasAniosCompl = difAnios * 365 + difAnios / 4 - difAnios / 100 + difAnios / 400;
