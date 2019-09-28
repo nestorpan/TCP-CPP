@@ -1,6 +1,6 @@
 #include "File.h"
 
-
+/**
 File::File(const char* path)
 {
 	fb.open(path, ios::in | ios::out);
@@ -11,4 +11,4 @@ File::File(const char* path)
 	istream i(&fb);
 	in = i;
 }
-
+*/
