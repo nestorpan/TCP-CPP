@@ -27,16 +27,3 @@ public:
 
 
 #endif // CADENA_H
-
-
-
-
-
-
-
-
-
-
-
-
-
