@@ -47,15 +47,15 @@ int main()
 	Cadena holaCopy(hola);
 	Cadena que("que");
 	Cadena tal("tal");
-	Cadena nombre;
+	Cadena nombre("Pepe");
 /**	
 	cout << "Ingrese su nombre: ";
 	cin >> nombre;
-	
+*/	
 	Cadena saludo = hola + ' ' + nombre + "! " + que + ' ' + tal + '?';
 	
 	cout << saludo << endl;
-*/
+
 	
     return 0;
 }

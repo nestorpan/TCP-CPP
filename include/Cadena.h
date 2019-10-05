@@ -10,13 +10,18 @@ class Cadena
 {
 private:
 	char* cad;
+	Cadena(char* cad);
 	
 public:
 	Cadena();
 	Cadena(const char* cad);
+	Cadena(char c);
 	Cadena(const Cadena& other);
 	~Cadena();
 	Cadena& operator =(const Cadena& other);
+	Cadena operator +(const Cadena& other) const;
+	Cadena& operator +=(const Cadena& other);
+	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
 };
 
 
