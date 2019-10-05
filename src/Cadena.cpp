@@ -2,6 +2,12 @@
 #include "Cadena.h"
 
 
+Cadena::Cadena(char* cad)
+{
+	this->cad = cad; 
+}
+
+
 Cadena::Cadena()
 {
 	cad = new char[1];
@@ -16,6 +22,15 @@ Cadena::Cadena(const char* cad)
 }
 
 
+Cadena::Cadena(char c)
+{
+	cad = new char[2];
+	
+	cad[0] = c;
+	cad[1] = '\0';
+}
+
+
 Cadena::Cadena(const Cadena& other)
 {
 	this->cad = new char[strlen(other.cad) + 1];
@@ -25,7 +40,7 @@ Cadena::Cadena(const Cadena& other)
 
 Cadena::~Cadena()
 {
-	cout << "Ejecutando destructor ..." << endl;
+///	cout << "Ejecutando destructor ..." << endl;
 	delete [] cad;
 }
 
@@ -47,4 +62,25 @@ Cadena& Cadena::operator =(const Cadena& other)
 	strcpy(cad, other.cad);
 	
 	return *this;
+}
+
+
+Cadena Cadena::operator +(const Cadena& cad2) const
+{
+	char* aux = new char[strlen(this->cad) + strlen(cad2.cad) + 1];
+	
+	strcpy(aux, this->cad);
+	strcat(aux, cad2.cad);
+/**	
+	Cadena concat(aux);
+	return concat;
+*/
+	return Cadena(aux);
+}
+
+
+ostream& operator <<(ostream& sal, const Cadena& cad)
+{
+	sal << cad.cad;
+	return sal;
 }
