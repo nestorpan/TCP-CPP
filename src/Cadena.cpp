@@ -81,3 +81,24 @@ ostream& operator <<(ostream& sal, const Cadena& cadena)
 	
 	return sal;
 }
+
+
+istream& operator >>(istream& ent, Cadena& cadena)
+{
+	char aux[500];
+	
+	ent.getline(aux, 500);
+	
+	int viejaLong = strlen(cadena.cad);
+	int nuevalLong = strlen(aux);
+	
+	if(viejaLong != nuevalLong)
+	{
+		delete [] cadena.cad;
+		cadena.cad = new char[nuevalLong + 1];
+	}
+	
+	strcpy(cadena.cad, aux);
+	
+	return ent;
+}

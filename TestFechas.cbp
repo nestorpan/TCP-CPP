@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="TestFechas" />
+		<Option title="TCP-CPP" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -35,12 +35,18 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Cadena.h" />
+		<Unit filename="include/Exception.h" />
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/File.h" />
+		<Unit filename="include/Persona.h" />
+		<Unit filename="include/PersonaException.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Cadena.cpp" />
+		<Unit filename="src/Exception.cpp" />
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/File.cpp" />
+		<Unit filename="src/Persona.cpp" />
+		<Unit filename="src/PersonaException.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

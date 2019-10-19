@@ -42,20 +42,55 @@ int main()
 	
 	fb.close();
 */
-	
+/**	
 	Cadena hola("Hola");
 	Cadena holaCopy(hola);
 	Cadena que("que");
 	Cadena tal("tal");
 	Cadena nombre("Pepe");
+*/
 /**	
 	cout << "Ingrese su nombre: ";
 	cin >> nombre;
-*/	
+*/
+/**	
 	Cadena saludo = hola + ' ' + nombre + "! " + que + ' ' + tal + '?';
 	
 	cout << saludo << endl;
+*/
+/**	
+	Cadena linea;
 
+	filebuf fbIn;
+	fbIn.open("in.txt", ios::in);
+	istream in(&fbIn);
+	
+	while(!in.eof())
+	{
+		in >> linea;
+		cout << linea << endl;
+	}
+	
+	fbIn.close();
+*/
+	
+	PersonaBuilder builder;
+	builder.setDni(11222333);
+	builder.setNombres("Pepe Alberto");
+	
+	Persona pepe;
+	
+	try
+	{
+		pepe = builder.build();
+	}
+	catch(PersonaException& ex)
+	{
+		cout << "Error construyendo a la persona\n";
+		return 1;
+	}
+	
+	cout << pepe << endl;
 	
     return 0;
 }
