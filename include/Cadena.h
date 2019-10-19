@@ -23,6 +23,7 @@ public:
 	Cadena operator +(const Cadena& cad2) const;
 	
 	friend ostream& operator <<(ostream& sal, const Cadena& cad);
+	friend istream& operator >>(istream& ent, Cadena& cad);
 };
 
 

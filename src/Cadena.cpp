@@ -4,7 +4,7 @@
 
 Cadena::Cadena(char* cad)
 {
-	this->cad = cad; 
+	this->cad = cad;
 }
 
 
@@ -83,4 +83,27 @@ ostream& operator <<(ostream& sal, const Cadena& cad)
 {
 	sal << cad.cad;
 	return sal;
+}
+
+
+istream& operator >>(istream& ent, Cadena& cad)
+{
+	char* aux = new char[500];
+	
+	ent.getline(aux, 500);
+	
+	int viejaLong = strlen(cad.cad);
+	int nuevaLong = strlen(aux);
+	
+	if(viejaLong != nuevaLong)
+	{
+		delete [] cad.cad;
+		cad.cad = new char[nuevaLong + 1];
+	}
+	
+	strcpy(cad.cad, aux);
+	
+	delete [] aux;
+	
+	return ent;
 }

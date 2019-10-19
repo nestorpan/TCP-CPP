@@ -2,6 +2,8 @@
 #include <fstream>
 #include "Fecha.h"
 #include "Cadena.h"
+#include "Persona.h"
+
 
 using namespace std;
 
@@ -45,7 +47,7 @@ int main()
 	archivo << "La fecha suma es " << fSuma << endl;
 	fb.close();
  */   
-    
+ /**   
     Cadena hola("Hola");
     Cadena hola2(hola);
     
@@ -56,10 +58,38 @@ int main()
  /**   
     cout << "Ingrese su nombre: ";
     cin >> nombre;
- */   
+ */
+ /**  
     Cadena saludo = hola + ' ' + nombre + "! " + que + ' ' + tal + '?';
     
     cout << saludo << endl;
-    
+*/  
+/**	
+	Cadena linea;
+	
+	filebuf fbIn;
+	fbIn.open("test.txt", ios::in);
+	istream archivoIn(&fbIn);
+	
+	archivoIn >> linea;
+	cout << linea << endl;
+	
+	archivoIn >> linea;
+	cout << linea << endl;
+	
+	fbIn.close();
+*/	
+	
+	PersonaBuilder builder;
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Pepe Alberto");
+	
+	Persona pepe = builder.build();
+	
+	cout << pepe.getApellido();
+	
+///	cout << pepe << endl;
+	
     return 0;
 }
