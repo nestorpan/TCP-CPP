@@ -62,21 +62,21 @@ int main()
     
     cout << saludo << endl;
 */  
-/**	
+	
 	Cadena linea;
 	
 	filebuf fbIn;
 	fbIn.open("test.txt", ios::in);
 	istream archivoIn(&fbIn);
 	
-	archivoIn >> linea;
-	cout << linea << endl;
-	
-	archivoIn >> linea;
-	cout << linea << endl;
+	while(!archivoIn.eof())
+	{
+		archivoIn >> linea;
+		cout << linea << endl;
+	}
 	
 	fbIn.close();
-*/	
+	
 /**	
 	PersonaBuilder builder;
 	builder.setDni(11222333);
@@ -99,7 +99,7 @@ int main()
 	
 	Alumno juan = builder.build();
 */	
-	
+/**	
 	filebuf fbIn;
 	fbIn.open("Personas.txt", ios::in);
 	istream personasIn(&fbIn);
@@ -111,7 +111,7 @@ int main()
 		personasIn >> pers;
 		cout << pers << endl;
 	}
-	
+*/
 	
     return 0;
 }

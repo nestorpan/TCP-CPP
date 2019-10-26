@@ -13,7 +13,6 @@ int Fecha::mda[2][13] =
 
 Fecha::Fecha()
 {
-	cout << "Constructor ejecutando." << endl;
 	diaRel = 1;
 }
 

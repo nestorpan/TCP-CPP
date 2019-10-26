@@ -135,7 +135,6 @@ istream& operator >>(istream& ent, Persona& p)
 	
 	ent.getline(campoStr, 201);
 	p.setNacionalidad((const char*)campoStr);
-	ent.ignore(1);
 	
 	return ent;
 }
