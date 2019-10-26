@@ -1,6 +1,8 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
+#include "Cadena.h"
+
 
 class Exception
 {

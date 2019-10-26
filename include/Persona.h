@@ -32,8 +32,11 @@ public:
 	void setSexo(char sexo);
 	const Cadena& getDomicilio() const;
 	void setDomicilio(const Cadena& domicilio);
-	const Cadena& getNacionalidad();
+	const Cadena& getNacionalidad() const;
 	void setNacionalidad(const Cadena& nacionalidad);
+	
+	friend ostream& operator <<(ostream& sal, const Persona& p);
+	friend istream& operator >>(istream& ent, Persona& p);
 };
 
 
@@ -41,7 +44,7 @@ public:
 
 class PersonaBuilder
 {
-private:
+protected:
 	int dni;
 	Cadena apellido;
 	Cadena nombres;
@@ -56,8 +59,8 @@ public:
 	void setDni(int dni);
 	void setApellido(const Cadena& apellido);
 	void setNombres(const Cadena& nombres);
-	void setFechaNac(const Fecha& fechaNac);
 	void setSexo(char sexo);
+	void setFechaNac(const Fecha& fechaNac);
 	void setDomicilio(const Cadena& domicilio);
 	void setNacionalidad(const Cadena& nacionalidad);
 	Persona build();

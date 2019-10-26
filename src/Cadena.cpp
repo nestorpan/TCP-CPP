@@ -39,7 +39,6 @@ Cadena::Cadena(const Cadena& other)
 
 Cadena::~Cadena()
 {
-	cout << "Ejecutando destructor ..." << endl;
 	delete [] cad;
 }
 

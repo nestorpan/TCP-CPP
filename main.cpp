@@ -2,6 +2,10 @@
 #include <fstream>
 #include "Fecha.h"
 #include "Cadena.h"
+#include "Persona.h"
+#include "PersonaException.h"
+#include "Alumno.h"
+
 
 using namespace std;
 
@@ -73,7 +77,7 @@ int main()
 	
 	fbIn.close();
 */
-	
+/**	
 	PersonaBuilder builder;
 	builder.setDni(11222333);
 	builder.setNombres("Pepe Alberto");
@@ -90,7 +94,46 @@ int main()
 		return 1;
 	}
 	
-	cout << pepe << endl;
+///	cout << pepe << endl;
+	
+*/
+/**	
+	AlumnoBuilder builder;
+	
+	builder.setDni(-4);
+	builder.setMatricula(12345);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Ignacio");
+	builder.setFechaIngr(Fecha(26, 10, 2019));
+	
+	Alumno alu;
+	
+	try
+	{
+		alu = builder.build();
+	}
+	catch(Exception& ex)
+	{
+		cout << Cadena("Error creando el alumno: ") + ex.getMensaje() << endl;
+	}
+*/
+
+	
+	filebuf fbIn;
+	fbIn.open("Personas.txt", ios::in);
+	istream in(&fbIn);
+	
+	Persona persona;
+	
+	while(in.peek() != EOF)
+	{
+		in >> persona;
+		cout << persona << endl;
+	}
+	
+	fbIn.close();
+
+	
 	
     return 0;
 }
