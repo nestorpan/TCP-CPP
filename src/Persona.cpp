@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "PersonaException.h"
 #include "Persona.h"
 
@@ -8,8 +9,8 @@ Persona::Persona()
 }
 
 
-Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombres, const Fecha& fechaNac, char sexo, const Cadena& domicilio, const Cadena& nacionalidad)
-:dni(dni), apellido(apellido), nombres(nombres), fechaNac(fechaNac), sexo(sexo), domicilio(domicilio), nacionalidad(nacionalidad)
+Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombres, char sexo, const Fecha& fechaNac, const Cadena& domicilio, const Cadena& nacionalidad)
+:dni(dni), apellido(apellido), nombres(nombres), sexo(sexo), fechaNac(fechaNac), domicilio(domicilio), nacionalidad(nacionalidad)
 {
 	if(dni < 0)
 		throw PersonaException("DNI invalido");
@@ -101,6 +102,45 @@ void Persona::setNacionalidad(const Cadena& nacionalidad)
 }
 
 
+ostream& operator <<(ostream& sal, const Persona& p)
+{
+	sal << p.dni << '|' << p.apellido << '|' << p.nombres << '|' << p.sexo << '|' << p.fechaNac << '|' << p.domicilio << '|' << p.nacionalidad;
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Persona& p)
+{
+	char campoStr[201];
+	
+	ent >> p.dni;
+	ent.ignore(1);
+	
+	ent.getline(campoStr, 201, '|');
+	p.setApellido((const char*)campoStr);
+	
+	ent.getline(campoStr, 201, '|');
+	p.setNombres((const char*)campoStr);
+	
+	ent >> p.sexo;
+	ent.ignore(1);
+	
+	Fecha fNac;
+	ent >> fNac;
+	p.setFechaNac(fNac);
+	ent.ignore(1);
+	
+	ent.getline(campoStr, 201, '|');
+	p.setDomicilio((const char*)campoStr);
+	
+	ent.getline(campoStr, 201);
+	p.setNacionalidad((const char*)campoStr);
+	ent.ignore(1);
+	
+	return ent;
+}
+
+
 /******** Builder **********/
 
 
@@ -153,7 +193,7 @@ void PersonaBuilder::setNacionalidad(const Cadena& nacionalidad)
 }
 
 
-Persona PersonaBuilder::build()
+Persona PersonaBuilder::build() const
 {
-	return Persona(dni, apellido, nombres, fechaNac, sexo, domicilio, nacionalidad);
+	return Persona(dni, apellido, nombres, sexo, fechaNac, domicilio, nacionalidad);
 }

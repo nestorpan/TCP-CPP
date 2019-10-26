@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "Fecha.h"
-#include "Cadena.h"
-#include "Persona.h"
+#include "Alumno.h"
 
 
 using namespace std;
@@ -55,7 +53,7 @@ int main()
     Cadena tal("tal");
     
     Cadena nombre("Pepe");
- /**   
+    
     cout << "Ingrese su nombre: ";
     cin >> nombre;
  */
@@ -79,7 +77,7 @@ int main()
 	
 	fbIn.close();
 */	
-	
+/**	
 	PersonaBuilder builder;
 	builder.setDni(11222333);
 	builder.setApellido("Perez");
@@ -90,6 +88,30 @@ int main()
 	cout << pepe.getApellido();
 	
 ///	cout << pepe << endl;
+*/
+/**	
+	AlumnoBuilder builder;
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Pedro");
+	builder.setPromedio(7);
+	builder.setCarrera("ING. INFORMATICA");
+	
+	Alumno juan = builder.build();
+*/	
+	
+	filebuf fbIn;
+	fbIn.open("Personas.txt", ios::in);
+	istream personasIn(&fbIn);
+	
+	Persona pers;
+	
+	while(!personasIn.eof())
+	{
+		personasIn >> pers;
+		cout << pers << endl;
+	}
+	
 	
     return 0;
 }
