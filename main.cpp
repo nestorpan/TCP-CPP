@@ -86,7 +86,7 @@ int main()
 	}
 	catch(PersonaException& ex)
 	{
-		cout << "Error construyendo a la persona\n";
+		cout << Cadena("Error construyendo a la persona: ") + ex.getMensaje() << endl;
 		return 1;
 	}
 	
