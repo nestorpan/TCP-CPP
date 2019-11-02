@@ -73,6 +73,39 @@ void Alumno::setCantMatAprob(int cantMatAprob)
 }
 
 
+ostream& operator <<(ostream& sal, const Alumno& a)
+{
+	sal << (Persona&)a << '|' << a.cantMatAprob << '|' << a.promedio << '|' << a.matricula << '|' << a.carrera << '|' << a.fechaIngr;
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Alumno& a)
+{
+	char campoStr[201];
+	
+	ent >> (Persona&)a;
+	
+	ent >> a.cantMatAprob;
+	ent.ignore(1);
+	
+	ent >> a.promedio;
+	ent.ignore(1);
+	
+	ent >> a.matricula;
+	ent.ignore(1);
+	
+	ent.getline(campoStr, 201, '|');
+	a.carrera = (const char*)campoStr;
+	
+	ent >> a.fechaIngr;
+	ent.ignore(1);
+	
+	return ent;
+}
+
+
+
 /****** Builder *******/
 
 AlumnoBuilder::AlumnoBuilder()

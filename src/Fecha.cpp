@@ -65,6 +65,21 @@ Fecha Fecha::operator +(int cantDias) const
 }
 
 
+Fecha& Fecha::operator ++() ///Pre
+{
+	diaRel++;
+	return *this;
+}
+
+
+Fecha Fecha::operator ++(int) ///Pos
+{
+	Fecha antigua(*this);
+	diaRel++;
+	return antigua;
+}
+
+
 int Fecha::diaDelAnio(int d, int m, int a)
 {
 	return mda[esBisiesto(a)? 1 : 0][m - 1] + d;

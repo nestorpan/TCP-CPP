@@ -1,6 +1,7 @@
 #ifndef ALUMNO_H
 #define ALUMNO_H
 
+#include <iostream>
 #include "Persona.h"
 
 
@@ -26,7 +27,10 @@ public:
 	void setPromedio(double promedio); 
 	void setMatricula(int matricula); 
 	void setFechaIngr(const Fecha& fechaIngr); 
-	void setCantMatAprob(int cantMatAprob); 
+	void setCantMatAprob(int cantMatAprob);
+	
+	friend ostream& operator <<(ostream& sal, const Alumno& a);
+	friend istream& operator >>(istream& ent, Alumno& a);
 };
 
 
@@ -50,7 +54,7 @@ public:
 	void setFechaIngr(const Fecha& fechaIngr); 
 	void setCantMatAprob(int cantMatAprob);
 	
-	Alumno build() const; 
+	Alumno build() const;
 };
 
 

@@ -46,6 +46,17 @@ int main()
 	
 	fb.close();
 */
+	
+	
+	Fecha hoy(2, 11, 2019);
+	Fecha maniana = hoy++;
+	Fecha pasado = ++hoy;
+	
+	cout << "hoy: " << hoy << endl;
+	cout << "maniana: " << maniana << endl;
+	cout << "pasado: " << pasado << endl;
+	
+	
 /**	
 	Cadena hola("Hola");
 	Cadena holaCopy(hola);
@@ -118,7 +129,7 @@ int main()
 	}
 */
 
-	
+/**	
 	filebuf fbIn;
 	fbIn.open("Personas.txt", ios::in);
 	istream in(&fbIn);
@@ -132,8 +143,45 @@ int main()
 	}
 	
 	fbIn.close();
-
+*/
+/**	
+	AlumnoBuilder builder;
 	
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Ignacio");
+	builder.setMatricula(12345);
+	builder.setFechaIngr(Fecha(26, 10, 2019));
+	
+	Alumno alu;
+	
+	try
+	{
+		alu = builder.build();
+	}
+	catch(Exception& ex)
+	{
+		cout << Cadena("Error creando el alumno: ") + ex.getMensaje() << endl;
+	}
+	
+	cout << alu << endl;
+*/	
+	
+/**	
+	filebuf fbIn;
+	fbIn.open("Alumnos.txt", ios::in);
+	istream in(&fbIn);
+	
+	Alumno alumno;
+	
+	while(in.peek() != EOF)
+	{
+		in >> alumno;
+		cout << alumno << endl;
+	}
+	
+	fbIn.close();
+*/
 	
     return 0;
 }

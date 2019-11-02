@@ -137,7 +137,7 @@ istream& operator >>(istream& ent, Persona& p)
 	ent.getline(campoStr, 201, '|');
 	p.setDomicilio((const char*)campoStr);
 
-	ent.getline(campoStr, 201);
+	ent.getline(campoStr, 201, '|');
 	p.setNacionalidad((const char*)campoStr);
 	
 	return ent;

@@ -1,0 +1,2 @@
+11222333|Perez|Juan Pedro|1/5/1992|M|Cangallo 345, CABA|Argentina|12|7.0|12345|ING INF|23/8/2009
+44555666|Rodriguez|Luis Javier|23/8/1999|M|Riobamba 678, CABA|Argentina|24|8.5|54321|ING ELE|1/4/2012

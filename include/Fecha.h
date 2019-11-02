@@ -17,6 +17,8 @@ class Fecha
 		void getDMA(int& d, int& m, int& a) const;
 		void setDMA(int d, int m, int a);
 		Fecha operator +(int cantDias) const;
+		Fecha& operator ++(); ///Pre
+		Fecha operator ++(int); ///Pos
 		
 	private:
 		int diaDelAnio(int d, int m, int a);
