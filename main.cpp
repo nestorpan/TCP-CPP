@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-/**	
+/**
     Fecha fDef;
     Fecha fIngr;
     
@@ -37,14 +37,26 @@ int main()
   ///  cout << "La fecha suma es " << d << '/' << m << '/' << a << endl;
     
     cout << "La fecha suma es " << fSuma << endl;
-    
-    
+ */ 
+ 
+ 
+ /**   
     filebuf fb;
 	fb.open ("test.txt", ios::out);
 	ostream archivo(&fb);
 	archivo << "La fecha suma es " << fSuma << endl;
 	fb.close();
- */   
+ */
+ 
+ 
+	Fecha hoy(2, 11, 2019);
+	Fecha maniana = hoy++;
+	Fecha pasado = ++hoy;
+	
+	cout << "hoy: " << hoy << endl;
+	cout << "maniana: " << maniana << endl;
+	cout << "pasado: " << pasado << endl;
+  
  /**   
     Cadena hola("Hola");
     Cadena hola2(hola);
@@ -62,7 +74,7 @@ int main()
     
     cout << saludo << endl;
 */  
-	
+/**	
 	Cadena linea;
 	
 	filebuf fbIn;
@@ -76,7 +88,7 @@ int main()
 	}
 	
 	fbIn.close();
-	
+*/	
 /**	
 	PersonaBuilder builder;
 	builder.setDni(11222333);
@@ -106,12 +118,41 @@ int main()
 	
 	Persona pers;
 	
-	while(!personasIn.eof())
+	while(personasIn.peek() != EOF)
 	{
 		personasIn >> pers;
 		cout << pers << endl;
 	}
 */
+
+/**
+	AlumnoBuilder builder;
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Pedro");
+	builder.setPromedio(7);
+	builder.setCarrera("ING. INFORMATICA");
+	
+	Alumno juan = builder.build();
+	
+	cout << juan << endl;
+*/	
+
+
+/**
+	filebuf fbIn;
+	fbIn.open("Alumnos.txt", ios::in);
+	istream alumnosIn(&fbIn);
+	
+	AlumnoBuilder aluBuilder;
+	Alumno alu = aluBuilder.build();
+	
+	while(alumnosIn.peek() != EOF)
+	{
+		alumnosIn >> alu;
+		cout << alu << endl;
+	}
+*/	
 	
     return 0;
 }

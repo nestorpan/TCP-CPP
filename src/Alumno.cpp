@@ -111,3 +111,36 @@ Alumno AlumnoBuilder::build() const
 {
 	return Alumno(dni, apellido, nombres, sexo, fechaNac, domicilio, nacionalidad, carrera, promedio, matricula, fechaIngr, cantMatAprob);
 }
+
+
+ostream& operator <<(ostream& sal, const Alumno& a)
+{
+	sal << (Persona&)a << '|' << a.carrera << '|' << a.promedio << '|' << a.matricula << '|' << a.fechaIngr << '|' << a.cantMatAprob;
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Alumno& a)
+{
+	char campoStr[201];
+	
+	ent >> (Persona&)a;
+	
+	ent.getline(campoStr, 201, '|');
+	a.carrera = (const char*)campoStr;
+	
+	ent >> a.promedio;
+	ent.ignore(1);
+	
+	ent >> a.matricula;
+	ent.ignore(1);
+	
+	ent >> a.fechaIngr;
+	ent.ignore(1);
+	
+	ent >> a.cantMatAprob;
+	ent.ignore(1);
+	
+	return ent;
+}
+

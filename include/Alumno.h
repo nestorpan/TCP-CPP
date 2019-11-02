@@ -14,6 +14,7 @@ private:
 	int cantMatAprob;
 	
 public:
+	Alumno();
 	Alumno(int dni, const Cadena& apellido, const Cadena& nombres, char sexo, const Fecha& fechaNac, const Cadena& domicilio, const Cadena& nacionalidad, const Cadena& carrera, double promedio, int matricula, const Fecha& fechaIngr, int cantMatAprob);
 	
 	const Cadena& getCarrera() const;
@@ -26,6 +27,9 @@ public:
 	void setMatricula(int matricula);
 	void setFechaIngr(const Fecha& fechaIngr);
 	void setCantMatAprob(int cantMatAprob);
+	
+	friend ostream& operator <<(ostream& sal, const Alumno& a);	
+	friend istream& operator >>(istream& ent, Alumno& a);
 };
 
 

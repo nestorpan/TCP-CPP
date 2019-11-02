@@ -33,6 +33,21 @@ Fecha Fecha::operator +(int dias) const
 }
 
 
+Fecha& Fecha::operator ++() ///Pre
+{
+	diaRel++;
+	return *this;
+}
+
+
+Fecha Fecha::operator ++(int) ///Pos
+{
+	Fecha fechaAnt(*this);
+	diaRel++;
+	return fechaAnt;
+}
+
+
 void Fecha::getDMA(int& d, int& m, int& a) const
 {
 	int difAnios = diaRel / 365;

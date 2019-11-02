@@ -13,6 +13,9 @@ class Fecha
 		Fecha(int d, int m, int a);
 		
 		Fecha operator +(int dias) const;
+		Fecha& operator ++(); ///Pre
+		Fecha operator ++(int); ///Pos
+		
 		void getDMA(int& d, int& m, int& a) const;
 		void setDMA(int d, int m, int a);
 		
