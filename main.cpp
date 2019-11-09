@@ -5,9 +5,15 @@
 #include "Persona.h"
 #include "PersonaException.h"
 #include "Alumno.h"
-
+#include "Figura.h"
+#include "Cuadrado.h"
+#include "Circulo.h"
+#include "Pentagono.h"
 
 using namespace std;
+
+void printFigura(const Figura& figura);
+void printFiguras(Figura* vecFig[], int ce);
 
 
 int main()
@@ -47,7 +53,7 @@ int main()
 	fb.close();
 */
 	
-	
+/**	
 	Fecha hoy(2, 11, 2019);
 	Fecha maniana = hoy++;
 	Fecha pasado = ++hoy;
@@ -55,7 +61,7 @@ int main()
 	cout << "hoy: " << hoy << endl;
 	cout << "maniana: " << maniana << endl;
 	cout << "pasado: " << pasado << endl;
-	
+*/	
 	
 /**	
 	Cadena hola("Hola");
@@ -183,5 +189,48 @@ int main()
 	fbIn.close();
 */
 	
+	Cuadrado cuadrado(10);
+/**	
+	cout << "El perimetro del Cuadrado es: " << cuadrado.perimetro() << endl;
+	cout << "El area del Cuadrado es: " << cuadrado.area() << endl;
+*/	
+	Circulo circulo(10);
+/**	
+	cout << "El perimetro del Circulo es: " << circulo.perimetro() << endl;
+	cout << "El area del circulo es: " << circulo.area() << endl;
+*/	
+	
+	printFigura(cuadrado);
+	
+	printFigura(circulo);
+	
+	Pentagono pentagono(10);
+	
+	printFigura(pentagono);
+	
+	Figura* vecFig[3];
+	
+	vecFig[0] = &cuadrado;
+	vecFig[1] = &circulo;
+	vecFig[2] = &pentagono;
+	
+	cout << "Vector de Figuras:" << endl;
+	printFiguras(vecFig, 3);
+	
     return 0;
+}
+
+
+void printFigura(const Figura& figura)
+{
+	cout << "El perimetro del " << figura.nombre() << " es: " << figura.perimetro() << endl;
+	cout << "El area del " << figura.nombre() << " es: " << figura.area() << endl;
+	cout << "El apotema del " << figura.nombre() << " es: " << figura.apotema() << endl;
+}
+
+
+void printFiguras(Figura* vecFig[], int ce)
+{
+	for(int i = 0; i < ce; i++)
+		printFigura(*vecFig[i]);
 }
