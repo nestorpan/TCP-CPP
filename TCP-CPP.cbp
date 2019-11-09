@@ -36,17 +36,25 @@
 		</Compiler>
 		<Unit filename="include/Alumno.h" />
 		<Unit filename="include/Cadena.h" />
+		<Unit filename="include/Circulo.h" />
+		<Unit filename="include/Cuadrado.h" />
 		<Unit filename="include/Exception.h" />
 		<Unit filename="include/Fecha.h" />
+		<Unit filename="include/Figura.h" />
 		<Unit filename="include/File.h" />
+		<Unit filename="include/Pentagono.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/PersonaException.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Alumno.cpp" />
 		<Unit filename="src/Cadena.cpp" />
+		<Unit filename="src/Circulo.cpp" />
+		<Unit filename="src/Cuadrado.cpp" />
 		<Unit filename="src/Exception.cpp" />
 		<Unit filename="src/Fecha.cpp" />
+		<Unit filename="src/Figura.cpp" />
 		<Unit filename="src/File.cpp" />
+		<Unit filename="src/Pentagono.cpp" />
 		<Unit filename="src/Persona.cpp" />
 		<Unit filename="src/PersonaException.cpp" />
 		<Extensions>
