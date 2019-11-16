@@ -1,2 +1,5 @@
 11222333|Perez|Juan Pedro|M|1/5/1992|Cangallo 345, CABA|Argentina|ING INF|7.00|1234|1/7/2009|16
 44555666|Rodriguez|Luis Javier|M|23/8/1999|Riobamba 678, CABA|Argentina|ING ELEC|8.00|4321|12/9/2010|14
+85828472|Bermudez|Javier Joaquin|M|12/10/1984|Callao 126, CABA|Argentina|ING IND|9.00|3457|11/12/2011|17
+47747272|Antaniez|Ariel Gabriel|M|3/7/1986|Corrientes 614, Bs As|Argentina|ABO|6.00|2222|14/7/2006|23
+12478297|Bermudez|Brian Walter|M|12/10/1984|Callao 126, CABA|Argentina|ING IND|9.00|3457|11/12/2011|17

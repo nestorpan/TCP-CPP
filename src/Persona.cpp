@@ -17,6 +17,23 @@ Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombres, char se
 }
 
 
+bool Persona::operator <(const Persona& otro) const
+{
+	return this->dni < otro.dni;
+}
+
+
+bool Persona::esMenorQuePorApellidoYNombres(const Persona& p1, const Persona& p2)
+{
+	int cmp = Cadena::comparar(p1.apellido, p2.apellido);
+	
+	if(cmp == 0)
+		cmp = Cadena::comparar(p1.nombres, p2.nombres);
+	
+	return cmp < 0;
+}
+
+
 int Persona::getDni() const
 {
 	return dni;

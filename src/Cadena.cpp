@@ -86,6 +86,12 @@ ostream& operator <<(ostream& sal, const Cadena& cad)
 }
 
 
+int Cadena::comparar(const Cadena& c1, const Cadena& c2)
+{
+	return strcmp(c1.cad, c2.cad);
+}
+
+
 istream& operator >>(istream& ent, Cadena& cad)
 {
 	char* aux = new char[500];

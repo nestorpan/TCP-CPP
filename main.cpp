@@ -1,9 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <list>
 #include "Alumno.h"
 #include "Cuadrado.h"
 #include "Circulo.h"
 #include "Pentagono.h"
+#include "Intercambiar.h"
 
 using namespace std;
 
@@ -160,20 +163,21 @@ int main()
 	}
 */	
 	
-	Cuadrado cuad(10);
+///	Cuadrado cuad(10);
 /**	
 	cout << "Perimetro del cuadrado: " << cuad.perimetro() << endl;
 	cout << "Area del cuadrado: " << cuad.area() << endl;
 */	
-	
+/**	
 	printFigura(cuad);
 	
 	Circulo circ(10);
+*/	
 /**	
 	cout << "Perimetro del circulo: " << circ.perimetro() << endl;
 	cout << "Area del circulo: " << circ.area() << endl;
 */
-	
+/**	
 	printFigura(circ);
 	
 	Pentagono penta(10);
@@ -188,6 +192,74 @@ int main()
 	
 	cout << "Vector de Figuras\n"; 
 	printFiguras(vecFig, 3);
+*/	
+/**    
+    int a = 5, b = 8;
+    
+    intercambiar<int>(a, b);
+    
+    cout << "a: " << a << ", b: " << b << endl;
+
+    
+    Cadena hola("Hola");
+    Cadena chau("Chau");
+    
+    intercambiar<Cadena>(hola, chau);
+    
+    cout << "hola: " << hola << ", chau: " << chau << endl;
+    
+    
+	AlumnoBuilder builder;
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Pedro");
+	builder.setPromedio(7);
+	builder.setCarrera("ING. INFORMATICA");
+	
+	Alumno juan = builder.build();
+    
+	builder.setDni(44555666);
+	builder.setApellido("Gomez");
+	builder.setNombres("Roberto Jeronimo");
+	builder.setPromedio(6);
+	builder.setCarrera("ING. ELECTRONICA");
+	
+	Alumno roberto = builder.build();
+	
+	intercambiar(juan, roberto);
+	
+	cout << "juan: " << juan << ", roberto: " << roberto << endl;
+*/
+	
+	
+	filebuf fbIn;
+	fbIn.open("Alumnos.txt", ios::in);
+	istream alumnosIn(&fbIn);
+	
+	AlumnoBuilder aluBuilder;
+	Alumno alu = aluBuilder.build();
+	
+	vector<Alumno> vecAlus;
+	list<Alumno> listAlus;
+	
+	while(alumnosIn.peek() != EOF)
+	{
+		alumnosIn >> alu;
+	///	vecAlus.push_back(alu);
+		listAlus.push_back(alu);
+	}
+
+/**	
+	for(unsigned i = 0; i < vecAlus.size(); i++)
+		cout << vecAlus[i] << endl;
+*/	
+	
+	listAlus.sort(/**Persona::esMenorQuePorApellidoYNombres*/);
+	
+///	for(vector<Alumno>::iterator it = vecAlus.begin(); it != vecAlus.end(); it++)
+	for(list<Alumno>::iterator it = listAlus.begin(); it != listAlus.end(); it++)
+		cout << it->getDni() << ", " << it->getApellido() << ", " << it->getNombres() << endl;
+	
 	
     return 0;
 }
@@ -205,3 +277,5 @@ void printFiguras(Figura* vecFig[], int ce)
 	for(int i = 0; i < ce; i++)
 		printFigura(*vecFig[i]);
 }
+
+

@@ -1,6 +1,11 @@
 #include "Alumno.h"
 
 
+Alumno::Alumno()
+{
+}
+
+
 Alumno::Alumno(int dni, const Cadena& apellido, const Cadena& nombres, char sexo, const Fecha& fechaNac, const Cadena& domicilio, const Cadena& nacionalidad, const Cadena& carrera, double promedio, int matricula, const Fecha& fechaIngr, int cantMatAprob)
 : Persona(dni, apellido, nombres, sexo, fechaNac, domicilio, nacionalidad),
   carrera(carrera),	promedio(promedio), matricula(matricula), fechaIngr(fechaIngr), cantMatAprob(cantMatAprob)
