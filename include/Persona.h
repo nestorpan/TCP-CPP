@@ -20,6 +20,8 @@ public:
 	Persona();
 	Persona(int dni, const Cadena& apellido, const Cadena& nombres, const Fecha& fechaNac, char sexo, const Cadena& domicilio, const Cadena& nacionalidad);
 	
+	bool operator <(const Persona& otra) const;
+	
 	int getDni() const;
 	void setDni(int dni);
 	const Cadena& getApellido() const;
@@ -34,6 +36,8 @@ public:
 	void setDomicilio(const Cadena& domicilio);
 	const Cadena& getNacionalidad() const;
 	void setNacionalidad(const Cadena& nacionalidad);
+	
+	static bool esMenorQuePorApellidoYNombres(const Persona& p1, const Persona& p2);
 	
 	friend ostream& operator <<(ostream& sal, const Persona& p);
 	friend istream& operator >>(istream& ent, Persona& p);

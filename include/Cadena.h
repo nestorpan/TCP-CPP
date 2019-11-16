@@ -21,6 +21,9 @@ public:
 	Cadena& operator =(const Cadena& other);
 	Cadena operator +(const Cadena& other) const;
 	Cadena& operator +=(const Cadena& other);
+	
+	static int comparar(const Cadena& c1, const Cadena& c2);
+	
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
 	friend istream& operator >>(istream& ent, Cadena& cadena);
 };

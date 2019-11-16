@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <list>
 #include "Fecha.h"
 #include "Cadena.h"
 #include "Persona.h"
@@ -9,6 +11,7 @@
 #include "Cuadrado.h"
 #include "Circulo.h"
 #include "Pentagono.h"
+#include "Intercambiar.h"
 
 using namespace std;
 
@@ -189,17 +192,17 @@ int main()
 	fbIn.close();
 */
 	
-	Cuadrado cuadrado(10);
+///	Cuadrado cuadrado(10);
 /**	
 	cout << "El perimetro del Cuadrado es: " << cuadrado.perimetro() << endl;
 	cout << "El area del Cuadrado es: " << cuadrado.area() << endl;
 */	
-	Circulo circulo(10);
+///	Circulo circulo(10);
 /**	
 	cout << "El perimetro del Circulo es: " << circulo.perimetro() << endl;
 	cout << "El area del circulo es: " << circulo.area() << endl;
 */	
-	
+/**	
 	printFigura(cuadrado);
 	
 	printFigura(circulo);
@@ -216,6 +219,103 @@ int main()
 	
 	cout << "Vector de Figuras:" << endl;
 	printFiguras(vecFig, 3);
+*/
+/**	
+	int a = 5, b = 8;
+	
+	intercambiar(a, b);
+	
+	cout << "a: " << a << ", b: " << b << endl;
+*/
+/**	
+	Cadena hola("Hola");
+	Cadena chau("Chau");
+	
+	intercambiar(hola, chau);
+	
+	cout << "hola: " << hola << ", chau: " << chau << endl;
+*/
+
+/**
+	AlumnoBuilder builder;
+	
+	builder.setDni(11222333);
+	builder.setApellido("Perez");
+	builder.setNombres("Juan Ignacio");
+	builder.setMatricula(12345);
+	builder.setFechaIngr(Fecha(26, 10, 2019));
+	
+	Alumno juan;
+	
+	try
+	{
+		juan = builder.build();
+	}
+	catch(Exception& ex)
+	{
+		cout << Cadena("Error creando el alumno: ") + ex.getMensaje() << endl;
+		return 1;
+	}
+	
+	builder.setDni(22333444);
+	builder.setApellido("Gutierrez");
+	builder.setNombres("Pedro Dario");
+	builder.setMatricula(54321);
+	builder.setFechaIngr(Fecha(12, 1, 2008));
+	
+	Alumno pedro;
+	
+	try
+	{
+		pedro = builder.build();
+	}
+	catch(Exception& ex)
+	{
+		cout << Cadena("Error creando el alumno: ") + ex.getMensaje() << endl;
+		return 1;
+	}
+	
+	intercambiar(pedro, juan);
+	
+	cout << "juan: " << juan << endl;
+	cout << "pedro: " << pedro << endl;
+*/	
+	
+	filebuf fbIn;
+	fbIn.open("Alumnos.txt", ios::in);
+	istream in(&fbIn);
+	
+	vector<Alumno> vecAlumnos;
+	list<Alumno> listaAlumnos;
+	
+	Alumno alumno;
+	
+	while(in.peek() != EOF)
+	{
+		in >> alumno;
+	///	vecAlumnos.push_back(alumno);
+		listaAlumnos.push_back(alumno);
+	}
+	
+	fbIn.close();
+/**	
+	for(unsigned i = 0; i < vecAlumnos.size(); i++)
+		cout << vecAlumnos[i] << endl;
+*/	
+/**	
+	vector<Alumno>::iterator ult = vecAlumnos.end() - 1;
+	vector<Alumno>::iterator ini = vecAlumnos.begin();
+	
+	for(vector<Alumno>::iterator it = ult; it >= ini; it--)
+		cout << *it << endl;
+*/
+	
+	listaAlumnos.sort(Persona::esMenorQuePorApellidoYNombres);
+	
+	for(list<Alumno>::iterator it = listaAlumnos.begin(); it != listaAlumnos.end(); it++)
+		cout << *it << endl;
+	
+	
 	
     return 0;
 }
@@ -234,3 +334,5 @@ void printFiguras(Figura* vecFig[], int ce)
 	for(int i = 0; i < ce; i++)
 		printFigura(*vecFig[i]);
 }
+
+

@@ -74,6 +74,12 @@ Cadena Cadena::operator +(const Cadena& other) const
 }
 
 
+int Cadena::comparar(const Cadena& c1, const Cadena& c2)
+{
+	return strcmp(c1.cad, c2.cad);
+}
+
+
 ostream& operator <<(ostream& sal, const Cadena& cadena)
 {
 	sal << cadena.cad;

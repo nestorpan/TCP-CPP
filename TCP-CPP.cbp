@@ -42,6 +42,7 @@
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Figura.h" />
 		<Unit filename="include/File.h" />
+		<Unit filename="include/Intercambiar.h" />
 		<Unit filename="include/Pentagono.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/PersonaException.h" />

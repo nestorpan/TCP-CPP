@@ -10,24 +10,25 @@ using namespace std;
 
 class Fecha
 {
-	public:
-		Fecha();
-		Fecha(int d, int m, int a);
-		
-		void getDMA(int& d, int& m, int& a) const;
-		void setDMA(int d, int m, int a);
-		Fecha operator +(int cantDias) const;
-		Fecha& operator ++(); ///Pre
-		Fecha operator ++(int); ///Pos
-		
-	private:
-		int diaDelAnio(int d, int m, int a);
-		bool esBisiesto(int a) const;
-		
-		static const int mda[2][13];
-		
-		int diaRel;
-		
+public:
+	Fecha();
+	Fecha(int d, int m, int a);
+	
+	void getDMA(int& d, int& m, int& a) const;
+	void setDMA(int d, int m, int a);
+	Fecha operator +(int cantDias) const;
+	Fecha& operator ++(); ///Pre
+	Fecha operator ++(int); ///Pos
+	
+private:
+	int diaDelAnio(int d, int m, int a);
+	bool esBisiesto(int a) const;
+	
+	static const int mda[2][13];
+	
+	int diaRel;
+	
+///	friend Fecha operator +(int dias, const Fecha& f);
 };
 
 
