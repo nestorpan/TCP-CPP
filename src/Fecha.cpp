@@ -11,6 +11,7 @@ int Fecha::mda[2][13] =
 	{0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366}
 };
 
+
 Fecha::Fecha()
 {
 	diaRel = 1;
@@ -22,6 +23,12 @@ Fecha::Fecha(int d, int m, int a)
 	setDMA(d, m, a);
 }
 
+///private
+Fecha::Fecha(int diaRel)
+{
+	this->diaRel = diaRel;
+}
+
 
 Fecha Fecha::operator +(int dias) const
 {
@@ -30,6 +37,12 @@ Fecha Fecha::operator +(int dias) const
 	suma.diaRel += dias;
 	
 	return suma;
+}
+
+
+Fecha operator +(int dias, const Fecha& f)
+{
+	return Fecha(dias + f.diaRel);
 }
 
 

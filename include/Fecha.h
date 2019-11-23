@@ -23,11 +23,15 @@ class Fecha
 		static int vcdm[12];
 		static int mda[2][13];
 		
+		Fecha(int diaRel);
+		
 		int diaRel;
 		bool esFechaValida(int d, int m, int a) const;
 		int cantDiasMes(int m, int a) const;
 		bool esBisiesto(int a) const;
 		int diaDelAnio(int d, int m, int a) const;
+		
+		friend Fecha operator +(int dias, const Fecha& f);
 };
 
 

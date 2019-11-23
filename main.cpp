@@ -17,36 +17,44 @@ void printFiguras(Figura* vecFig[], int ce);
 
 int main()
 {
-/**
+
     Fecha fDef;
     Fecha fIngr;
     
   ///  cout << "Ingrese una fecha(d/m/a): ";
     
   ///  cin >> fIngr;
-	
+/**	
     filebuf fbIn;
 	fbIn.open("test.txt", ios::in);
 	istream archivoIn(&fbIn);
 	archivoIn >> fIngr;
 	fbIn.close();
+*/	
 	
-    
+	fIngr.setDMA(23, 11, 2019);
+	
     int d, m, a;
     
     fIngr.getDMA(d, m, a);
     
-    cout << "La fecha es " << d << '/' << m << '/' << a << endl;
+///    cout << "La fecha es " << d << '/' << m << '/' << a << endl;
     
     
     Fecha fSuma = fIngr + 90;
 	
-	fSuma.getDMA(d, m, a);
+	cout << "La fecha suma es " << fSuma << endl;
+	
+	fSuma = 90 + fIngr;
+	
+	cout << "La fecha suma es " << fSuma << endl;
+	
+///	fSuma.getDMA(d, m, a);
 	
   ///  cout << "La fecha suma es " << d << '/' << m << '/' << a << endl;
     
-    cout << "La fecha suma es " << fSuma << endl;
- */ 
+ ///   cout << "La fecha suma es " << fSuma << endl;
+  
  
  
  /**   
@@ -231,7 +239,7 @@ int main()
 	cout << "juan: " << juan << ", roberto: " << roberto << endl;
 */
 	
-	
+/**	
 	filebuf fbIn;
 	fbIn.open("Alumnos.txt", ios::in);
 	istream alumnosIn(&fbIn);
@@ -248,18 +256,19 @@ int main()
 	///	vecAlus.push_back(alu);
 		listAlus.push_back(alu);
 	}
-
+*/
 /**	
 	for(unsigned i = 0; i < vecAlus.size(); i++)
 		cout << vecAlus[i] << endl;
 */	
 	
-	listAlus.sort(/**Persona::esMenorQuePorApellidoYNombres*/);
+///	listAlus.sort(/**Persona::esMenorQuePorApellidoYNombres*/);
 	
 ///	for(vector<Alumno>::iterator it = vecAlus.begin(); it != vecAlus.end(); it++)
+/**
 	for(list<Alumno>::iterator it = listAlus.begin(); it != listAlus.end(); it++)
 		cout << it->getDni() << ", " << it->getApellido() << ", " << it->getNombres() << endl;
-	
+*/	
 	
     return 0;
 }
