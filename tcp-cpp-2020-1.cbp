@@ -35,8 +35,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Fecha.h" />
+		<Unit filename="include/FechaException.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Fecha.cpp" />
+		<Unit filename="src/FechaException.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

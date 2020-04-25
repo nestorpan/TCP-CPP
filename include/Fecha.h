@@ -14,14 +14,25 @@ class Fecha
 		static int diaDelAnio(int dia, int mes, int anio);
 		static bool esBisiesto(int anio);
 		
+		Fecha(int diaRel);
+		
 	public:
-	///	Fecha();
-		Fecha(int dia = 1, int mes = 1, int anio = 1601); ///Constructor
+		Fecha();
 		
-		int diferencia(const Fecha f) const;
+		///Constructor 
+		Fecha(int dia, int mes, int anio); 
 		
-		Fecha sumarDias(int dias) const; ///Elegir una versión
+		void getDma(int& d, int& m, int& a);
+		
+		int diferencia(const Fecha f) const; /// operador -
+		
+		Fecha sumarDias(int dias) const;
+		
+		///Sumar dias no const
 		void sumarDias(int dias);
+		
+		Fecha& operator +=(int dias);
+		Fecha operator +(int dias) const;
 		
 		Fecha restarDias(int dias) const;
 		
