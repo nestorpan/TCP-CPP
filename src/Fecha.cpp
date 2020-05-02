@@ -16,7 +16,16 @@ const int Fecha::matAcumDias[2][12] =
 
 Fecha::Fecha(int diaRel)
 {
+	if(diaRel <= 0)
+		throw FechaException("La fecha es inferior a la minima admitida (1/1/1601)");
+	
 	this->diaRel = diaRel;
+}
+
+
+Fecha::Fecha()
+{
+	this->diaRel = 1;
 }
 
 
@@ -25,7 +34,7 @@ Fecha::Fecha(int dia, int mes, int anio)
 	///TODO: pasar dma a diaRel.
 	
 	if(!esFechaValida(dia, mes, anio))
-	{	///TODO: Lanzar una excepción
+	{
 		throw FechaException("La fecha es invalida");
 	}
 	
@@ -35,7 +44,7 @@ Fecha::Fecha(int dia, int mes, int anio)
 
 bool Fecha::esFechaValida(int dia, int mes, int anio)
 {
-	return false;
+	return true;
 }
 
 
@@ -47,7 +56,7 @@ int Fecha::dmaADiaRel(int dia, int mes, int anio)
 }
 
 
-void Fecha::getDma(int& dia, int& mes, int& anio)
+void Fecha::getDma(int& dia, int& mes, int& anio) const
 {
 	int cantAnios = this->diaRel / 365;
 	
@@ -127,3 +136,35 @@ int Fecha::diferencia(Fecha f)
 	return this->diaRel - f.diaRel;
 }
 */
+
+
+Fecha operator +(int dias, const Fecha& f)
+{
+	Fecha suma(f.diaRel + dias);
+	return suma;
+}
+
+
+ostream& operator <<(ostream& sal, const Fecha& f)
+{
+	int d, m, a;
+	f.getDma(d, m, a);
+	sal << d << '/' << m << '/' << a;
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Fecha& f)
+{
+	int d, m, a;
+	char c;
+	
+	ent >> d >> c >> m >> c >> a;
+	
+	if(!Fecha::esFechaValida(d, m, a))
+		throw FechaException("La fecha ingresada es inválida");
+	
+	f.diaRel = Fecha::dmaADiaRel(d, m, a);
+	
+	return ent;
+}
