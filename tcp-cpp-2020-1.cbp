@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="Fechas.txt" />
+				<Option parameters="Fechas.txt FechasSal.txt" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -35,9 +35,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Cadena.h" />
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/FechaException.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Cadena.cpp" />
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/FechaException.cpp" />
 		<Extensions>

@@ -2,13 +2,18 @@
 #include <fstream>
 #include "Fecha.h"
 #include "FechaException.h"
+#include "Cadena.h"
 
 using namespace std;
 
 
+#define ARG_ARCH_ENT 1
+#define ARG_ARCH_SAL 2
+
+
 int main(int argc, char* argv[])
 {
-	if(argc != 2)
+	if(argc != 3)
 	{
 		cout << "Cantidad de parámetros incorrecta" << endl;
 		return 1;
@@ -75,9 +80,10 @@ int main(int argc, char* argv[])
 	
 	fConst.sumarDias(30);
 */	
-	
-	try
-	{
+
+///	try
+///	{
+
 	/**	
 		Fecha fHoy(2, 5, 2020);
 		
@@ -94,40 +100,52 @@ int main(int argc, char* argv[])
 	
 		cout << "fHoy: " << fHoy << endl;
 	*/
-		
+/**		
 		filebuf fb;
-		if(fb.open(argv[1], ios::in) == NULL)
+		if(fb.open(argv[ARG_ARCH_ENT], ios::in) == NULL)
 		{
 			cout << "No se pudo abrir el archivo" << endl;
 			return 3;
 		}
 		
-		char enter;
+		filebuf fbSal;
+		if(fbSal.open(argv[ARG_ARCH_SAL], ios::out) == NULL)
+		{
+			cout << "No se pudo abrir el archivo" << endl;
+			return 3;
+		}
+		
 		Fecha fLect;
 		
 		istream fechasA(&fb);
+		ostream fechasSalA(&fbSal);
 		
-		cout << "Leyendo archivo " << argv[1] << ": " << endl;
+		cout << "Leyendo archivo " << argv[ARG_ARCH_ENT] << ": " << endl;
 		
 		char peek;
 		while((peek = fechasA.peek()) != EOF)
 		{
-			cout << "peek: " << peek << endl;
+			cout << "Peek: " << peek << endl;
 			fechasA >> fLect;
-			fechasA >> enter;
-			cout << fLect << endl;
+			fechasA.ignore(1); ///Saca un carácter (enter) del buffer.
+			fechasSalA << fLect << endl;
 		}
 		
 		fb.close();
+		fbSal.close();
 	}
 	catch(FechaException& ex)
 	{
 		cout << ex.getMensaje() << endl;
 		return 2;
 	}
+*/	
 	
+	Cadena hola("Hola"), que("que"), tal("tal");
 	
+	Cadena concat = hola + ", " + que;/// + ' ' + tal + '?';
 	
+	cout << concat << endl;
 	
     return 0;
 }
