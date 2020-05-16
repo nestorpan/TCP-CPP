@@ -1,5 +1,5 @@
 #include <string.h>
-#include "Cadena.h"
+#include <Cadena.h>
 
 
 Cadena::Cadena(char* cad)
@@ -77,4 +77,25 @@ ostream& operator <<(ostream& sal, const Cadena& cad)
 {
 	sal << cad.cad;
 	return sal;
+}
+
+
+istream& operator >>(istream& ent, Cadena& cad)
+{
+	char buffer[TAM_BUF];
+	
+	ent.getline(buffer, TAM_BUF, '\n');
+	
+	int nuevaLong = strlen(buffer);
+	int viejaLong = strlen(cad.cad);
+	
+	if(viejaLong != nuevaLong)
+	{
+		delete [] cad.cad;
+		cad.cad = new char[nuevaLong + 1];
+	}
+	
+	strcpy(cad.cad, buffer);
+	
+	return ent;
 }

@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Fecha.h"
 #include "FechaException.h"
-#include "Cadena.h"
+#include <Cadena.h>
 
 using namespace std;
 
@@ -140,12 +140,16 @@ int main(int argc, char* argv[])
 		return 2;
 	}
 */	
-	
+
 	Cadena hola("Hola"), que("que"), tal("tal");
 	
 	Cadena concat = hola + ", " + que;/// + ' ' + tal + '?';
 	
 	cout << concat << endl;
+
+	
+	
+	
 	
     return 0;
 }
