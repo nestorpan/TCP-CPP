@@ -1,4 +1,7 @@
 #include <string.h>
+
+#include <vector>
+
 #include <Cadena.h>
 
 
@@ -60,17 +63,45 @@ Cadena Cadena::operator +(const Cadena& cad2) const
 	strcpy(concatAux, this->cad);
 	strcat(concatAux, cad2.cad);
 	
-	Cadena concat(concatAux);
+//	Cadena concat(concatAux);
 	
-	return concat;
+	return Cadena(concatAux);//concat;
 }
 
 /**
 Cadena& operator +=(const Cadena& cad2);
 Cadena subcadena(int inicio, int fin) const;
-void split(char separador, vector& vSubcads) const;
 int getCantCaracteres() const;
 */
+
+
+void Cadena::split(char separador, vector<Cadena>& vSubcads) const
+{
+	char* copia = new char[strlen(this->cad) + 1];
+	strcpy(copia, this->cad);
+	char* act = copia;
+	
+	char* dirSep;
+	
+	while((dirSep = strchr(act, separador)))
+	{
+		*dirSep = '\0';
+		vSubcads.push_back(Cadena((const char*)act));
+		act = dirSep + 1;
+	}
+	
+	vSubcads.push_back(Cadena((const char*)act));
+	
+	delete [] copia;
+}
+
+
+char& Cadena::operator [](int subindice)
+{
+	///TODO: Validar limites.
+	
+	return this->cad[subindice];
+}
 
 
 ostream& operator <<(ostream& sal, const Cadena& cad)

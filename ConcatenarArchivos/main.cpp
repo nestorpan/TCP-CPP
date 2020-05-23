@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 	{
 		cout << "Error abriendo archivo " << argv[ARG_TXT_ENT_1] << endl;
 		return ERROR_ARCH;
-	}	
+	}
 	
     istream archEnt1(&fbEnt1);
     

@@ -41,15 +41,14 @@ class Fecha
 		bool operator <(const Fecha& f2) const;
 		
 		Fecha restarDias(int dias) const;
-		
 		int diaDelAnio() const;
-		
 		int diaDeLaSemana() const;
+		
+		static Fecha hoy();
 		
 		friend Fecha operator +(int dias, const Fecha& f);
 		friend istream& operator >>(istream& ent, Fecha& f);
 };
-
 
 
 ostream& operator <<(ostream& sal, const Fecha& f);

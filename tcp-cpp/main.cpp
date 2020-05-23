@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "Fecha.h"
-#include "FechaException.h"
+///#include "Fecha.h"
+///#include "FechaException.h"
 #include <Cadena.h>
 
 using namespace std;
@@ -13,12 +13,13 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+/**	
 	if(argc != 3)
 	{
 		cout << "Cantidad de parámetros incorrecta" << endl;
 		return 1;
 	}
-	
+*/	
 /**    
     float a;
     
@@ -140,16 +141,24 @@ int main(int argc, char* argv[])
 		return 2;
 	}
 */	
-
+/**
 	Cadena hola("Hola"), que("que"), tal("tal");
 	
 	Cadena concat = hola + ", " + que;/// + ' ' + tal + '?';
 	
 	cout << concat << endl;
-
+*/
 	
 	
+	Cadena cad("233423434|Perez|Juan|12/3/2009|M");
 	
+	vector<Cadena> vCampos;
+	cad.split('|', vCampos);
+	
+	for(vector<Cadena>::iterator i = vCampos.begin(); i != vCampos.end(); i++)
+	{
+		cout << *i << endl;
+	}
 	
     return 0;
 }

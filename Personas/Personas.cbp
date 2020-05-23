@@ -2,25 +2,22 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="tcp-cpp-2020-1" />
+		<Option title="Personas" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/tcp-cpp-2020-1" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Personas" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="Fechas.txt FechasSal.txt" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
-				<Linker>
-					<Add library="../Cadena/bin/Debug/libCadena.a" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/tcp-cpp-2020-1" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Personas" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -36,9 +33,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../Cadena/include" />
 		</Compiler>
+		<Unit filename="include/Persona.h" />
+		<Unit filename="include/PersonaException.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Persona.cpp" />
+		<Unit filename="src/PersonaException.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
