@@ -26,6 +26,8 @@ class Fecha
 		///Constructor 
 		Fecha(int dia, int mes, int anio); 
 		
+		Fecha(const char* fechaStr);
+		
 		void getDma(int& d, int& m, int& a) const;
 		
 		int diferencia(const Fecha f) const; /// operador -
@@ -39,6 +41,7 @@ class Fecha
 		Fecha operator +(int dias) const;
 		int operator -(const Fecha& f2) const;
 		bool operator <(const Fecha& f2) const;
+		bool operator >(const Fecha& f2) const;
 		
 		Fecha restarDias(int dias) const;
 		int diaDelAnio() const;

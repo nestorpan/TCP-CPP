@@ -1,16 +1,21 @@
 #ifndef PERSONAEXCEPTION_H
 #define PERSONAEXCEPTION_H
 
+#include <Cadena.h>
+
+
+using namespace std;
+
 
 class PersonaException
 {
 	private:
-		string mensaje;
+		Cadena mensaje;
 		
 	public:
-		PersonaException(const string& mensaje);
+		PersonaException(const Cadena& mensaje);
 		
-		const string& getMensaje() const;
+		const Cadena& getMensaje() const;
 };
 
 

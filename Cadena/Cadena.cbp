@@ -36,12 +36,10 @@
 		</Build>
 		<Compiler>
 			<Add directory="include" />
+			<Add directory="../Fecha/include" />
 		</Compiler>
 		<Unit filename="include/Cadena.h" />
 		<Unit filename="src/Cadena.cpp" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

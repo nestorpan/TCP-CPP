@@ -1,7 +1,8 @@
 #ifndef FECHAEXCEPTION_H
 #define FECHAEXCEPTION_H
 
-#include <string>
+#include <Cadena.h>
+
 
 using namespace std;
 
@@ -9,12 +10,12 @@ using namespace std;
 class FechaException
 {
 	private:
-		string mensaje;
+		Cadena mensaje;
 		
 	public:
-		FechaException(const string& mensaje);
+		FechaException(const Cadena& mensaje);
 		
-		const string& getMensaje() const;
+		const Cadena& getMensaje() const;
 };
 
 

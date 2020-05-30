@@ -1,13 +1,13 @@
 #include "PersonaException.h"
 
 
-PersonaException::PersonaException(const string& mensaje)
+PersonaException::PersonaException(const Cadena& mensaje)
 {
 	this->mensaje = mensaje;
 }
 
 
-const string& PersonaException::getMensaje() const
+const Cadena& PersonaException::getMensaje() const
 {
 	return this->mensaje;
 }

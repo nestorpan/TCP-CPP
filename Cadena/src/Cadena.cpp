@@ -1,8 +1,8 @@
 #include <string.h>
-
 #include <vector>
 
 #include <Cadena.h>
+#include <Fecha.h>
 
 
 Cadena::Cadena(char* cad)
@@ -33,9 +33,49 @@ Cadena::Cadena(const Cadena& otra)
 }
 
 
+Cadena::Cadena(const Fecha& f)
+{
+	int d, m, a;
+	
+	f.getDma(d, m, a);
+	
+	int longCad = (d >= 10? 2 : 1) + (m >= 10? 2 : 1) + 4 + 2;
+	
+	this->cad = new char[longCad + 1];
+	
+	sprintf(this->cad, "%d/%d/%d", d, m, a);
+}
+
+
+Cadena::Cadena(int num)
+{
+	this->cad = new char[cantDigitos(num) + 1];
+	sprintf(this->cad, "%d", num);
+}
+
+
 Cadena::~Cadena()
 {
 	delete [] this->cad;
+}
+
+
+int Cadena::cantDigitos(int num)
+{
+	int contDig = 0;
+	
+	if(num < 0)
+	{
+		contDig++;
+		num = -num;
+	}
+	
+	while(num /= 10 > 0)
+		contDig++;
+	
+	contDig++;
+	
+	return contDig;
 }
 
 

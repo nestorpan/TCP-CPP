@@ -36,6 +36,7 @@
 		</Build>
 		<Compiler>
 			<Add directory="include" />
+			<Add directory="../Cadena/include" />
 		</Compiler>
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/FechaException.h" />

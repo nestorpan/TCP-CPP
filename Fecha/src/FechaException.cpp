@@ -1,13 +1,13 @@
 #include <FechaException.h>
 
 
-FechaException::FechaException(const string& mensaje)
+FechaException::FechaException(const Cadena& mensaje)
 {
 	this->mensaje = mensaje;
 }
 
 
-const string& FechaException::getMensaje() const
+const Cadena& FechaException::getMensaje() const
 {
 	return this->mensaje;
 }

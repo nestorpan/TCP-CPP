@@ -4,6 +4,9 @@
 #include <vector>
 #include <iostream>
 
+#include <Fecha.h>
+
+
 #define TAM_BUF 501
 
 
@@ -17,9 +20,12 @@ private:
 	
 	Cadena(char* cad);
 	
+	int cantDigitos(int num);
+	
 public:
 	Cadena(const char* cad = NULL);
 	Cadena(int num);
+	Cadena(const Fecha& f);
 	
 	///Sólo si utilizo memoria dinámica
 	Cadena(const Cadena& otra); ///Constructor de copia

@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+#include <Cadena.h>
+#include <Fecha.h>
+
+
 using namespace std;
 
 
@@ -19,12 +23,12 @@ class Persona
 		Persona(int dni = 0, const Cadena& apellido = "", const Cadena& nombres = "", const Fecha& fechaNac = Fecha(1, 1, 1601), char sexo = ' ');
 		
 		int getDni() const;
-		void setDni(dni);
+		void setDni(int dni);
 		
-		const Cadena& getApellido();
+		const Cadena& getApellido() const;
 		void setApellido(const Cadena& apellido);
 		
-		const Cadena& getNombre();
+		const Cadena& getNombres() const;
 		void setNombres(const Cadena& nombres);
 		
 		const Fecha& getFechaNac() const;

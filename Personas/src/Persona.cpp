@@ -1,4 +1,9 @@
+#include <FechaException.h>
 #include "Persona.h"
+#include "PersonaException.h"
+
+
+#define TAM_BUF 501
 
 
 Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombres, const Fecha& fechaNac, char sexo)
@@ -15,7 +20,7 @@ Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombres, const F
   *
   * (documentation goes here)
   */
-void Persona::setDni(dni)
+void Persona::setDni(int dni)
 {
 	if(dni < 0)
 		throw PersonaException(Cadena("DNI ") + dni + " es invalido");
@@ -28,7 +33,7 @@ void Persona::setDni(dni)
   *
   * (documentation goes here)
   */
-int Persona::getDni()
+int Persona::getDni() const
 {
 	return this->dni;
 }
@@ -48,7 +53,7 @@ void Persona::setApellido(const Cadena& apellido)
   *
   * (documentation goes here)
   */
-const Cadena& Persona::getApellido()
+const Cadena& Persona::getApellido() const
 {
 	return this->apellido;
 }
@@ -68,7 +73,7 @@ void Persona::setNombres(const Cadena& nombres)
   *
   * (documentation goes here)
   */
-const Cadena& Persona::getNombres()
+const Cadena& Persona::getNombres() const
 {
 	return this->nombres;
 }
@@ -80,9 +85,10 @@ const Cadena& Persona::getNombres()
   */
 void Persona::setFechaNac(const Fecha& fechaNac)
 {
+/**
 	if(fechaNac > Fecha::hoy())
 		throw FechaException(Cadena("La fecha ") + fechaNac + " es mayor a hoy");
-	
+*/	
 	this->fechaNac = fechaNac;
 }
 
@@ -91,7 +97,7 @@ void Persona::setFechaNac(const Fecha& fechaNac)
   *
   * (documentation goes here)
   */
-const Fecha& Persona::getFechaNac()
+const Fecha& Persona::getFechaNac() const
 {
 	return this->fechaNac;
 }
@@ -111,7 +117,7 @@ void Persona::setSexo(char sexo)
   *
   * (documentation goes here)
   */
-char Persona::getSexo()
+char Persona::getSexo() const
 {
 	return this->sexo;
 }
@@ -126,18 +132,31 @@ ostream& operator <<(ostream& sal, const Persona& p)
 
 istream& operator >>(istream& ent, Persona& p)
 {
-	Cadena linea;
-	ent >> linea;
+	char buffer[TAM_BUF];
 	
-	vector<Cadena> campos;
+	ent.getline(buffer, TAM_BUF, '|');
+	p.setDni(atoi(buffer));
 	
-	linea.split('|', campos);
+	ent.getline(buffer, TAM_BUF, '|');
+	p.setApellido((const char*)buffer);
 	
-	p.setDni(campos[0].aEntero());
-	p.setApellido(campos[1]);
-	p.setNombres(campos[2]);
-	p.fechaNac(campos[3].aFecha());
-	p.setSexo(campos[4][0]);
+	ent.getline(buffer, TAM_BUF, '|');
+	p.setNombres((const char*)buffer);
+	
+	ent.getline(buffer, TAM_BUF, '|');
+	p.setFechaNac(buffer);
+	
+	int posStream = ent.tellg();
+	
+	ent.getline(buffer, TAM_BUF, '|');
+	
+	if(ent.fail())
+	{
+		ent.seekg(posStream, ent.beg);
+		ent.getline(buffer, TAM_BUF, '\n');
+	}
+	
+	p.setSexo(buffer[0]);
 	
 	return ent;
 }

@@ -31,7 +31,20 @@ Fecha::Fecha()
 
 Fecha::Fecha(int dia, int mes, int anio)
 {
-	///TODO: pasar dma a diaRel.
+	if(!esFechaValida(dia, mes, anio))
+	{
+		throw FechaException("La fecha es invalida");
+	}
+	
+	this->diaRel = dmaADiaRel(dia, mes, anio);
+}
+
+
+Fecha::Fecha(const char* fechaStr)
+{
+	int dia, mes, anio;
+	
+	sscanf(fechaStr, "%d/%d/%d", &dia, &mes, &anio);
 	
 	if(!esFechaValida(dia, mes, anio))
 	{
@@ -142,6 +155,12 @@ Fecha operator +(int dias, const Fecha& f)
 {
 	Fecha suma(f.diaRel + dias);
 	return suma;
+}
+
+
+bool Fecha::operator >(const Fecha& f2) const
+{
+	return this->diaRel > f2.diaRel;
 }
 
 
