@@ -30,7 +30,8 @@ class Fecha
 		
 		void getDma(int& d, int& m, int& a) const;
 		
-		int diferencia(const Fecha f) const; /// operador -
+		int diferencia(const Fecha& f) const; /// operador -
+		int diferenciaEnAnios(const Fecha& f);
 		
 		Fecha sumarDias(int dias) const;
 		

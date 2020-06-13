@@ -151,6 +151,32 @@ int Fecha::diferencia(Fecha f)
 */
 
 
+int Fecha::diferenciaEnAnios(const Fecha& f)
+{
+	int di, mi, ai, df, mf, af;
+	
+	this->getDma(di, mi, ai);
+	f.getDma(df, mf, af);
+	
+	int dif = af - ai;
+	
+	if(mf * 100 + df < mi * 100 + di)
+		dif--;
+	
+	return dif;
+}
+
+
+Fecha Fecha::hoy()
+{
+	time_t segundos = time(NULL);
+	
+	struct tm* timeinfo = localtime(&segundos);
+	
+	return Fecha(timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
+}
+
+
 Fecha operator +(int dias, const Fecha& f)
 {
 	Fecha suma(f.diaRel + dias);

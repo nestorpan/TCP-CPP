@@ -7,6 +7,9 @@
 #include <Fecha.h>
 
 
+class PersonaBuilder;
+
+
 using namespace std;
 
 
@@ -19,9 +22,10 @@ class Persona
 		Fecha fechaNac;
 		char sexo;
 		
-	public:
+	protected:
 		Persona(int dni = 0, const Cadena& apellido = "", const Cadena& nombres = "", const Fecha& fechaNac = Fecha(1, 1, 1601), char sexo = ' ');
 		
+	public:
 		int getDni() const;
 		void setDni(int dni);
 		
@@ -36,6 +40,10 @@ class Persona
 		
 		char getSexo() const;
 		void setSexo(char sexo);
+		
+		int getEdad(const Fecha& f);
+		
+		friend class PersonaBuilder;
 };
 
 

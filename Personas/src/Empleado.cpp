@@ -5,6 +5,7 @@ Empleado::Empleado(int dni, const Cadena& apellido, const Cadena& nombres, const
 : Persona(dni, apellido, nombres, fechaNac, sexo), fechaIngr(fechaIngr), fechaBaja(fechaBaja), sueldo(sueldo)
 {
 	///TODO: Validaciones.
+	cout << "Construyendo empleado con DNI: " << dni << endl;
 }
 
 

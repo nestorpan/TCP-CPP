@@ -123,6 +123,12 @@ char Persona::getSexo() const
 }
 
 
+int Persona::getEdad(const Fecha& f)
+{
+	return this->fechaNac.diferenciaEnAnios(f);
+}
+
+
 ostream& operator <<(ostream& sal, const Persona& p)
 {
 	sal << p.getDni() << '|' << p.getApellido() << '|' << p.getNombres() << '|' << p.getFechaNac()  << '|' << p.getSexo();
