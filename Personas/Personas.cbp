@@ -45,6 +45,7 @@
 		<Unit filename="EmpleadosAct.txt" />
 		<Unit filename="include/Empleado.h" />
 		<Unit filename="include/EmpleadoBuilder.h" />
+		<Unit filename="include/Intercambiar.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/PersonaBuilder.h" />
 		<Unit filename="include/PersonaException.h" />

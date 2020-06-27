@@ -4,6 +4,8 @@
 
 #include "Empleado.h"
 #include "EmpleadoBuilder.h"
+#include "Intercambiar.h"
+
 
 #define ARG_TXT_ENT 1
 #define ARG_TXT_SAL 2
@@ -35,7 +37,8 @@ int main(int argc, char* argv[])
 	fbEnt.close();
 	fbSal.close();
 */    
- /**   
+ 
+ 
     EmpleadoBuilder builder;
     
     builder.setDni(22333444);
@@ -47,11 +50,28 @@ int main(int argc, char* argv[])
     
     Empleado emp = builder.build();
     
-    cout << emp << endl;
+///    cout << emp.getApellido() << ", " << emp.getNombres() << " tiene " << emp.getEdad(Fecha::hoy()) << " anios." << endl;
+	
+    builder.setDni(40666777);
+    builder.setSexo('F');
+    builder.setFechaNac(Fecha(1, 8, 2004));
+    builder.setApellido("Gonzalez");
+    builder.setNombres("Juana Josefa");
+    builder.setSueldo(65998.43);
     
-    cout << emp.getApellido() << ", " << emp.getNombres() << " tiene " << emp.getEdad(Fecha::hoy()) << " anios." << endl;
-*/
-    
+    Empleado emp2 = builder.build();
+		
+	cout << "Emp1: " << emp << endl;
+	cout << "Emp2: " << emp2 << endl;
+	
+	intercambiar<Empleado>(emp, emp2);
+	
+	cout << "Invertidos:" << endl;
+	cout << "Emp1: " << emp << endl;
+	cout << "Emp2: " << emp2 << endl;
+	
+	
+/**	
     Empleado emp;
     vector<Empleado> vEmp;
     
@@ -79,7 +99,7 @@ int main(int argc, char* argv[])
 	
     fbEnt.close();
 	fbSal.close();
-    
-    
+*/	
+	
     return 0;
 }
