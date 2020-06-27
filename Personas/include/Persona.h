@@ -43,6 +43,8 @@ class Persona
 		
 		int getEdad(const Fecha& f);
 		
+		bool operator <(const Persona& otraP) const;
+		
 		friend class PersonaBuilder;
 };
 

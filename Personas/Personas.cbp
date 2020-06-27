@@ -41,6 +41,8 @@
 			<Add directory="../Cadena/include" />
 			<Add directory="../Fecha/include" />
 		</Compiler>
+		<Unit filename="Empleados.txt" />
+		<Unit filename="EmpleadosAct.txt" />
 		<Unit filename="include/Empleado.h" />
 		<Unit filename="include/EmpleadoBuilder.h" />
 		<Unit filename="include/Persona.h" />

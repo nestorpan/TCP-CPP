@@ -129,6 +129,12 @@ int Persona::getEdad(const Fecha& f)
 }
 
 
+bool Persona::operator <(const Persona& otraP) const
+{
+	return this->dni < otraP.dni;
+}
+
+
 ostream& operator <<(ostream& sal, const Persona& p)
 {
 	sal << p.getDni() << '|' << p.getApellido() << '|' << p.getNombres() << '|' << p.getFechaNac()  << '|' << p.getSexo();
