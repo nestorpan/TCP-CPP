@@ -10,7 +10,7 @@ class Pentagono : public Figura
 		double lado;
 		
 	public:
-		Pentagono(double lado);
+		Pentagono(double lado = 1.0);
 		
 		double perimetro() const;
 		double area() const;

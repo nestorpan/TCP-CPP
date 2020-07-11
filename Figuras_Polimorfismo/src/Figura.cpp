@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Figura.h"
 
 
@@ -7,6 +8,12 @@ Figura::Figura(string nombre)
 
 }
 
+/*
+Figura::~Figura()
+{
+	cout << "Destruyendo Figura " << this->nombre << endl;
+}
+*/
 
 const string& Figura::getNombre() const
 {

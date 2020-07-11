@@ -13,6 +13,7 @@ class Figura
 		
 	public:
 		Figura(string nombre);
+		virtual ~Figura() = default;
 		
 		virtual double perimetro() const = 0; ///( = 0 ) -> Método virtual puro (No tiene código en esta clase).
 		virtual double area() const = 0;

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Circulo.h"
 
 
@@ -5,6 +6,12 @@ Circulo::Circulo(double radio)
 : Figura("Circulo"), radio(radio)
 {
 	//ctor
+}
+
+
+Circulo::~Circulo()
+{
+	cout << "Destruyendo el Circulo" << endl;
 }
 
 

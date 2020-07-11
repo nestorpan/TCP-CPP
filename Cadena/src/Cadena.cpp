@@ -108,6 +108,13 @@ Cadena Cadena::operator +(const Cadena& cad2) const
 	return Cadena(concatAux);//concat;
 }
 
+
+bool Cadena::operator ==(const Cadena& otra)
+{
+	return strcmp(this->cad, otra.cad) == 0;
+}
+
+
 /**
 Cadena& operator +=(const Cadena& cad2);
 Cadena subcadena(int inicio, int fin) const;
@@ -141,6 +148,12 @@ char& Cadena::operator [](int subindice)
 	///TODO: Validar limites.
 	
 	return this->cad[subindice];
+}
+
+
+double Cadena::toDouble()
+{
+	return atof(this->cad);
 }
 
 

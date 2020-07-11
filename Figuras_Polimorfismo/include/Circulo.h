@@ -13,7 +13,8 @@ class Circulo : public Figura
 		double radio;
 		
 	public:
-		Circulo(double radio);
+		Circulo(double radio = 1.0);
+		~Circulo();
 		
 		double perimetro() const;
 		double area() const;

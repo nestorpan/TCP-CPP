@@ -10,8 +10,8 @@ class Cuadrado : public Figura
 		double lado;
 	
 	public:
-		Cuadrado(double lado);
-	
+		Cuadrado(double lado = 1.0);
+		
 		double perimetro() const;
 		double area() const;
 };

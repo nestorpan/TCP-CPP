@@ -1,0 +1,8 @@
+Rectangulo|20|40
+Circulo|10
+Cuadrado|30
+Rectangulo|10|20
+Pentagono|50
+Circulo|60
+Pentagono|30
+Cuadrado|20
