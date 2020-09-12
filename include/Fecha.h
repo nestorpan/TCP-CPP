@@ -8,6 +8,11 @@ class Fecha
 private:
 	int diaRel;
 	
+	static int diaDelAnio(int dia, int mes, int anio);
+	static bool esBisiesto(int anio);
+	static bool esFechaValida(int dia, int mes, int anio);
+	static int cantDiasMes(int mes, int anio);
+	
 public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
@@ -19,7 +24,7 @@ public:
 	int difEnDias(const Fecha* f2) const;
 	int difEnAnios(const Fecha* f2) const;
 	int diaSemana() const;
-	void getDMA(int* d, int* m, int* a) const;
+	void getDMA(int& d, int& m, int& a) const;
 };
 
 

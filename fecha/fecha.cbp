@@ -16,6 +16,7 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -39,7 +40,9 @@
 			<Add directory="../include" />
 		</Compiler>
 		<Unit filename="../include/Fecha.h" />
+		<Unit filename="../include/FechaException.h" />
 		<Unit filename="src/Fecha.cpp" />
+		<Unit filename="src/FechaException.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
