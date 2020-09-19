@@ -8,10 +8,14 @@ class Fecha
 private:
 	int diaRel;
 	
+	static const int acumDias[2][13];
+	
 	static int diaDelAnio(int dia, int mes, int anio);
+	static void diaYMes(int diaDelAnio, int anio, int& dia, int& mes);
 	static bool esBisiesto(int anio);
 	static bool esFechaValida(int dia, int mes, int anio);
 	static int cantDiasMes(int mes, int anio);
+	static int diasAniosCompletos(int aniosCompletos);
 	
 public:
 	Fecha();
