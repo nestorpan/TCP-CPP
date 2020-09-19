@@ -3,6 +3,11 @@
 
 #define ANIO_BASE 1601
 
+const int Fecha::acumDias[2][13] =
+{
+	{0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334},
+	{0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335}
+};
 
 Fecha::Fecha()
 {
@@ -70,14 +75,53 @@ int Fecha::cantDiasMes(int mes, int anio)
 
 int Fecha::diaDelAnio(int dia, int mes, int anio)
 {
-    static const int matAcumDias[2][12] =
-    {/// E  F   M   A    M    J    J    A    S    O    N    D
-        {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334}, ///Año no bisiesto
-        {0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335} ///Año bisiesto
-    };
-    ///Dia del año: 160 --> 160 - 151 = 9 => dia: 9, mes: 6
-    ///Dia del año: 151 --> 151 - 120 = 31 => dia: 31, mes: 5
+	return acumDias[esBisiesto(anio)? 1 : 0][mes] + dia;
+}
 
+void Fecha::getDMA(int& d, int& m, int& a) const
+{
+	int aniosComplCalc = this->diaRel / 365;
+	int diasAniosComplCalc;
 
-	return matAcumDias[esBisiesto(anio)? 1 : 0][mes-1] + dia;
+	while((diasAniosComplCalc = diasAniosCompletos(aniosComplCalc)) >= this->diaRel)
+		aniosComplCalc--;
+
+	a = ANIO_BASE + aniosComplCalc;
+
+	int diaDelAnio = this->diaRel - diasAniosComplCalc;
+
+	diaYMes(diaDelAnio, a, d, m);
+
+}
+
+int Fecha::diasAniosCompletos(int aniosCompletos)
+{
+	return aniosCompletos * 365 + aniosCompletos / 4 - aniosCompletos / 100 + aniosCompletos / 400;
+}
+
+void Fecha::diaYMes(int diaDelAnio, int anio, int& dia, int& mes)
+{
+	mes = 1;
+	int filaAcum = esBisiesto(anio)? 1 : 0;
+
+	while(mes <= 12 && diaDelAnio > acumDias[filaAcum][mes])
+		mes++;
+
+	mes--;
+	dia = diaDelAnio - acumDias[filaAcum][mes];
+}
+
+bool Fecha::esMenor(const Fecha& f) const {
+
+    return this->diaRel < f.diaRel;
+}
+
+bool Fecha::esMayor(const Fecha& f) const {
+
+    return this->diaRel > f.diaRel;
+}
+
+bool Fecha::esIgual(const Fecha& f) const {
+
+    return this->diaRel == f.diaRel;
 }
