@@ -20,7 +20,12 @@ Fecha::Fecha()
 */
 Fecha::Fecha(int dia, int mes, int anio)
 {
-    if (!esFechaValida(dia, mes, anio)) {
+    this->setDMA(dia, mes, anio);
+}
+
+void Fecha::setDMA(int dia, int mes, int anio)
+{
+	if (!esFechaValida(dia, mes, anio)) {
         throw FechaException("La fecha no es valida");
     }
 
@@ -35,7 +40,6 @@ Fecha::Fecha(int dia, int mes, int anio)
     int diaDelAnioRel = diaDelAnio(dia, mes, anio);
 	this->diaRel = diasAniosCompletos + diaDelAnioRel;
 }
-
 
 void Fecha::sumarDias(int dias)
 {
@@ -125,3 +129,65 @@ bool Fecha::esIgual(const Fecha& f) const {
 
     return this->diaRel == f.diaRel;
 }
+
+Fecha Fecha::operator +(int dias) const
+{
+	Fecha fSuma(*this);
+
+	fSuma.diaRel += dias;
+
+	return fSuma;
+}
+
+Fecha& Fecha::operator +=(int dias)
+{
+	this->diaRel += dias;
+
+	return *this;
+}
+
+int Fecha::operator -(const Fecha& f2) const
+{
+	return this->diaRel - f2.diaRel;
+}
+
+bool Fecha::operator <(const Fecha& f2) const
+{
+	return this->diaRel < f2.diaRel;
+}
+
+
+bool Fecha::operator >=(const Fecha& f2) const
+{
+	return this->diaRel >= f2.diaRel;
+}
+
+ostream& operator <<(ostream& sal, const Fecha& f)
+{
+	int d, m, a;
+	f.getDMA(d, m, a);
+
+	return sal << d << '/' << m << '/' << a;
+}
+
+Fecha operator +(int dias, const Fecha& f)
+{
+	Fecha fSuma(f);
+
+	fSuma.diaRel += dias;
+
+	return fSuma;
+}
+
+istream& operator >>(istream& ent, Fecha& f)
+{
+	int d, m, a;
+	char c;
+
+	ent >> d >> c >> m >> c >> a;
+
+	f.setDMA(d, m, a);
+
+	return ent;
+}
+
