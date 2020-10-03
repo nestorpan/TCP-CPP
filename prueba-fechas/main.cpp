@@ -6,6 +6,8 @@
 using namespace std;
 
 #define ARG_TXT_SAL 1
+#define ARG_TXT_ENT 2
+
 #define ERR_INGR_FECHA 1
 
 
@@ -40,11 +42,16 @@ int main(int argc, char* argv[])
 	
 	
 	Fecha fIngr;
-	cout << "Ingrese una fecha (d/m/a):" << endl;
+
+///	cout << "Ingrese una fecha (d/m/a):" << endl;
+	
+	filebuf fbEnt;
+    fbEnt.open(argv[ARG_TXT_ENT], ios::in);
+    istream entrada(&fbEnt);
 	
 	try
 	{
-		cin >> fIngr;
+		entrada >> fIngr;
 	}
 	catch(FechaException& ex)
 	{

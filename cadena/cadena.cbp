@@ -2,30 +2,32 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="prueba-fechas" />
+		<Option title="cadena" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/prueba-fechas" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/cadena" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
-				<Option parameters="salida_programa.txt fecha_entrada.txt" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
-				<Linker>
-					<Add library="../fecha/bin/Debug/libfecha.a" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/prueba-fechas" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/cadena" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-O2" />
 					<Add directory="include" />
 				</Compiler>
@@ -35,11 +37,10 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
 			<Add directory="../include" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../include/Cadena.h" />
+		<Unit filename="src/Cadena.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
