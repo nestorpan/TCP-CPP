@@ -1,23 +1,37 @@
 #include <iostream>
 #include <Cadena.h>
+#include <vector>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    Cadena cad1("Hola"); // "Hola, que "
-    Cadena cad2("que");
-    Cadena cad3("tal!!!");
+	Cadena cad1("Hola");
+	Cadena cad2("que");
+	Cadena cad3("tal");
 
-///    const char* cad = "prueba";
-///    Cadena prueba(cad);
+	char qs = 168;
+	Cadena frase = qs + cad1 + ", " + cad2 + ' ' + cad3 + "!?" + ". Son las " + -14 + ':' + 10;
 
-    Cadena frase = cad1 + ',' + ' ' + cad2 + ' ' + cad3;
-///    Cadena frase = cad1 + cad2 + cad3;
+	cout << frase << endl;
 
-    cout << frase << endl;
+	vector<Cadena> palabras = frase.split(' ');
 
-    cout << "Cant call ==> " << cad1.getCantCall() << endl;
+	for(vector<Cadena>::iterator it = palabras.begin(); it < palabras.end(); it++) {
+        cout << *it << endl;
+	}
+
+    /// String
+
+	string cad11("Hola");
+	string cad12("que");
+	string cad13("tal");
+
+	string frase2 = qs + cad11 + ", " + cad12 + ' ' + cad13 + "!?" + ". Son las ";
+
+	cout << frase2 << endl;
+
 
     return 0;
 }
