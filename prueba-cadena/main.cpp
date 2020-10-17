@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 
+#include <fstream>
+
 using namespace std;
 
 int main()
@@ -14,14 +16,14 @@ int main()
 	char qs = 168;
 	Cadena frase = qs + cad1 + ", " + cad2 + ' ' + cad3 + "!?" + ". Son las " + -14 + ':' + 10;
 
-	cout << frase << endl;
+///	cout << frase << endl;
 
 	vector<Cadena> palabras = frase.split(' ');
-
+/*
 	for(vector<Cadena>::iterator it = palabras.begin(); it < palabras.end(); it++) {
         cout << *it << endl;
 	}
-
+*/
     /// String
 
 	string cad11("Hola");
@@ -30,8 +32,23 @@ int main()
 
 	string frase2 = qs + cad11 + ", " + cad12 + ' ' + cad13 + "!?" + ". Son las ";
 
-	cout << frase2 << endl;
+	/// cout << frase2 << endl;
 
+
+    filebuf fb;
+	fb.open("empleados.txt", ios::in);
+	istream emplIS(&fb);
+
+	int cantLineas = 0;
+	Cadena emplLinea;
+
+	while(!(emplIS >> emplLinea).eof())
+	{
+		cout << emplLinea << endl;
+		cantLineas++;
+	}
+
+	cout << Cadena("Habia ") + cantLineas + " lineas en el archivo." << endl;
 
     return 0;
 }
