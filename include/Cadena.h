@@ -26,7 +26,6 @@ public:
 	~Cadena(); /// Destructor
 	Cadena& operator =(const Cadena& otra); /// Op asignación
 	
-///	Cadena operator +(const Cadena& otra) const;
 	Cadena& operator +=(const Cadena& otra);
 	
 	char caracterEnPos(int pos) const;
@@ -38,7 +37,6 @@ public:
 	Cadena reemplazar(const Cadena& cadABuscar, const Cadena& cadReempl) const;
 	vector<Cadena> split(char separador) const;
 	
-//	friend Cadena operator +(const char* cad1, const Cadena& cad2);
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
 	friend istream& operator >>(istream& ent, Cadena& cadena);

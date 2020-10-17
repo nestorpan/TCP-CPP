@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 #include <Cadena.h>
 
@@ -21,16 +22,20 @@ int main()
 	for(vector<Cadena>::iterator i = palabras.begin(); i < palabras.end(); i++)
 		cout << *i << endl;
 	
+	filebuf fb;
+	fb.open("empleados.txt", ios::in);
+	istream emplIS(&fb);
 	
+	int cantLineas = 0;
+	Cadena emplLinea;
 	
-/**	
-	string cad1("Hola");
-	string cad2("que");
-	string cad3("tal");
+	while(!(emplIS >> emplLinea).eof())
+	{
+		cout << emplLinea << endl;
+		cantLineas++;
+	}
 	
-	string frase = "¿" + cad1 + ", " + cad2 + ' ' + cad3 + '?' + ". Son las " + 10 + ':' + 22;
+	cout << Cadena("Habia ") + cantLineas + " lineas en el archivo." << endl;
 	
-	cout << frase << endl;
-*/	
 	return 0;
 }

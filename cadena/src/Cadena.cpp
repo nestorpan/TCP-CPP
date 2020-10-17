@@ -166,3 +166,45 @@ ostream& operator <<(ostream& sal, const Cadena& cadena)
 	sal << cadena.cad;
 	return sal;
 }
+
+
+istream& operator >>(istream& ent, Cadena& cadena)
+{
+	size_t cantCar = 0;
+	char c;
+	int posIni = ent.tellg();
+	while((c = ent.get()) != EOF && c != '\n')
+		cantCar++;
+	
+	if(cantCar == 0)
+		return ent;
+	
+	ent.seekg(posIni);
+	
+	if(strlen(cadena.cad) != cantCar)
+	{
+		delete [] cadena.cad;
+		cadena.cad = new char[cantCar + 1];
+	}
+	
+	ent.getline(cadena.cad, cantCar + 1);
+	
+	return ent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
