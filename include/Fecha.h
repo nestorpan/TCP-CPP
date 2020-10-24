@@ -36,7 +36,10 @@ public:
 	void getDMA(int& d, int& m, int& a) const;
 	void setDMA(int d, int m, int a);
 	bool operator <(const Fecha& f2) const;
+	bool operator >(const Fecha& f2) const;
 	bool operator >=(const Fecha& f2) const;
+	
+	static Fecha hoy();
 	
 	friend Fecha operator +(int dias, const Fecha& f);
 	friend istream& operator >>(istream& ent, Fecha& f);

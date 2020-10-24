@@ -135,6 +135,12 @@ bool Fecha::operator <(const Fecha& f2) const
 }
 
 
+bool Fecha::operator >(const Fecha& f2) const
+{
+	return this->diaRel > f2.diaRel;
+}
+
+
 bool Fecha::operator >=(const Fecha& f2) const
 {
 	return this->diaRel >= f2.diaRel;
@@ -148,6 +154,20 @@ Fecha operator +(int dias, const Fecha& f)
 	fSuma.diaRel += dias;
 	
 	return fSuma;
+}
+
+
+Fecha Fecha::hoy()
+{
+	time_t segs = time(NULL);
+	
+	struct tm* timeMachine = localtime(&segs);
+	
+	int dia = timeMachine->tm_mday;
+	int mes = timeMachine->tm_mon + 1;
+	int anio = timeMachine->tm_year + 1900;
+	
+	return Fecha(dia, mes, anio);
 }
 
 

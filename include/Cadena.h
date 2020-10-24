@@ -36,6 +36,8 @@ public:
 	bool contiene(const Cadena& cadABuscar) const;
 	Cadena reemplazar(const Cadena& cadABuscar, const Cadena& cadReempl) const;
 	vector<Cadena> split(char separador) const;
+	istream& leer(istream& ent, char hastaCar);
+	bool letrasYEspacios() const;
 	
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
