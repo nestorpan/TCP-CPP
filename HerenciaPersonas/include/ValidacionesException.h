@@ -1,18 +1,17 @@
 #ifndef VALIDACIONESEXCEPTION_H
 #define VALIDACIONESEXCEPTION_H
 
+#include <Cadena.h>
 
 class ValidacionesException
 {
-    private:
-        string mensaje;
+private:
+	Cadena mensaje;
 
-    public:
-        ValidacionesException();
-        ValidacionesException(const string& msj);
+public:
+	ValidacionesException(const Cadena& msj);
 
-        const string& getMensaje() const;
-
+	const Cadena& getMensaje() const;
 };
 
 #endif // VALIDACIONESEXCEPTION_H

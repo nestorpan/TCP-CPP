@@ -42,6 +42,9 @@ class Cadena
 ///        Cadena reemplazar(const Cadena& cadABuscar, const Cadena& cadReempl) const;
         vector<Cadena> split(char separador) const; /// Hola, que tal? split(',') ==> vector = {"Hola", " que tal?"}
 
+        istream& leer(istream& ent, char hastaCar);
+        bool letrasYEspacios() const;
+
         friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 
         friend ostream& operator <<(ostream& sal, const Cadena& cadena);

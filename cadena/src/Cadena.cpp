@@ -85,7 +85,29 @@ Cadena& Cadena::operator =(const Cadena& otra)
 	return *this;
 }
 
+istream& Cadena::leer(istream& ent, char hastaCar)
+{
+	size_t cantCar = 0;
+	char c;
+	int posIni = (ent.tellg())-1;
+	while((c = ent.get()) != EOF && c != hastaCar)
+		cantCar++;
 
+	if(cantCar == 0)
+		return ent;
+
+	ent.seekg(posIni);
+
+	if(strlen(this->cad) != cantCar)
+	{
+		delete [] this->cad;
+		this->cad = new char[cantCar + 1];
+	}
+
+	ent.getline(this->cad, cantCar + 1, hastaCar);
+
+	return ent;
+}
 
 ostream& operator <<(ostream& sal, const Cadena& cadena)
 {
@@ -216,4 +238,9 @@ Cadena Cadena::subcadena(int ini, int fin) const
 Cadena Cadena::subcadena(int ini) const
 {
 	return subcadena(ini, strlen(this->cad));
+}
+
+bool Cadena::letrasYEspacios() const
+{
+	return true;
 }

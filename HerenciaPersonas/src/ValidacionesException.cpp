@@ -1,17 +1,12 @@
 #include "ValidacionesException.h"
 
-ValidacionesException::ValidacionesException()
-{
-    //ctor
-}
-
-ValidacionesException::ValidacionesException(const string& msj)
+ValidacionesException::ValidacionesException(const Cadena& msj)
 {
 	this->mensaje = msj;
 }
 
 
-const string& ValidacionesException::getMensaje() const
+const Cadena& ValidacionesException::getMensaje() const
 {
 	return this->mensaje;
 }

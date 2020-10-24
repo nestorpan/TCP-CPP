@@ -2,6 +2,7 @@
 #define FECHA_H
 
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ public:
     int operator -(const Fecha& f2) const;
 
 	bool operator <(const Fecha& f2) const;
+	bool operator >(const Fecha& f2) const;
 	bool operator >=(const Fecha& f2) const;
 
 
@@ -48,6 +50,8 @@ public:
     bool esMenor(const Fecha& f) const;
     bool esMayor(const Fecha& f) const;
     bool esIgual(const Fecha& f) const;
+
+    static Fecha hoy();
 
     friend Fecha operator +(int dias, const Fecha& f);
     friend istream& operator >>(istream& ent, Fecha& f);

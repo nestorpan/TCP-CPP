@@ -2,34 +2,26 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="HerenciaPersonas" />
+		<Option title="pruebaHerencia" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/HerenciaPersonas" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="" />
+				<Option output="bin/Debug/pruebaHerencia" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="2" />
+				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/HerenciaPersonas" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="" />
+				<Option output="bin/Release/pruebaHerencia" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="2" />
+				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,23 +29,18 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../HerenciaPersonas/include" />
 			<Add directory="../cadena/include" />
 			<Add directory="C:/Users/Gabriel/Downloads/TCP-CPP-2020-2-tarde/include" />
 		</Compiler>
 		<Linker>
+			<Add library="../HerenciaPersonas/bin/Debug/libHerenciaPersonas.a" />
 			<Add library="../cadena/bin/Debug/libcadena.a" />
 			<Add library="C:/Users/Gabriel/Downloads/TCP-CPP-2020-2-tarde/fecha/bin/Debug/libfecha.a" />
 		</Linker>
-		<Unit filename="include/Persona.h" />
-		<Unit filename="include/PersonaBuilder.h" />
-		<Unit filename="include/Validaciones.h" />
-		<Unit filename="include/ValidacionesException.h" />
-		<Unit filename="src/Persona.cpp" />
-		<Unit filename="src/PersonaBuilder.cpp" />
-		<Unit filename="src/Validaciones.cpp" />
-		<Unit filename="src/ValidacionesException.cpp" />
-		<Extensions>
-			<lib_finder disable_auto="1" />
-		</Extensions>
+		<Unit filename="main.cpp" />
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
