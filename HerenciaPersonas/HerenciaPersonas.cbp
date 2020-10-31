@@ -44,10 +44,14 @@
 			<Add library="../cadena/bin/Debug/libcadena.a" />
 			<Add library="C:/Users/Gabriel/Downloads/TCP-CPP-2020-2-tarde/fecha/bin/Debug/libfecha.a" />
 		</Linker>
+		<Unit filename="include/Empleado.h" />
+		<Unit filename="include/EmpleadoBuilder.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/PersonaBuilder.h" />
 		<Unit filename="include/Validaciones.h" />
 		<Unit filename="include/ValidacionesException.h" />
+		<Unit filename="src/Empleado.cpp" />
+		<Unit filename="src/EmpleadoBuilder.cpp" />
 		<Unit filename="src/Persona.cpp" />
 		<Unit filename="src/PersonaBuilder.cpp" />
 		<Unit filename="src/Validaciones.cpp" />

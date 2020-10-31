@@ -89,14 +89,16 @@ istream& Cadena::leer(istream& ent, char hastaCar)
 {
 	size_t cantCar = 0;
 	char c;
-	int posIni = (ent.tellg())-1;
+	int posIni = ent.tellg()-1;
 	while((c = ent.get()) != EOF && c != hastaCar)
 		cantCar++;
 
 	if(cantCar == 0)
 		return ent;
 
+	int tellg = ent.tellg();
 	ent.seekg(posIni);
+	tellg = ent.tellg();
 
 	if(strlen(this->cad) != cantCar)
 	{
@@ -105,6 +107,7 @@ istream& Cadena::leer(istream& ent, char hastaCar)
 	}
 
 	ent.getline(this->cad, cantCar + 1, hastaCar);
+	tellg = ent.tellg();
 
 	return ent;
 }

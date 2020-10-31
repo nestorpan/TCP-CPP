@@ -5,7 +5,7 @@
 
 class PersonaBuilder
 {
-    private:
+    protected:
         unsigned dni;
         Cadena apellido;
         Cadena nombre;
