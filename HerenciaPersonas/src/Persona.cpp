@@ -1,3 +1,4 @@
+#include <Defs.h>
 #include "Validaciones.h"
 #include "Persona.h"
 

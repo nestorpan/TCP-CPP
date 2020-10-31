@@ -39,6 +39,7 @@
 			<Add option="-fexceptions" />
 			<Add directory="../include" />
 		</Compiler>
+		<Unit filename="../include/Defs.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/PersonaBuilder.h" />
 		<Unit filename="include/Validaciones.h" />

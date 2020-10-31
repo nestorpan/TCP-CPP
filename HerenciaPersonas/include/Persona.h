@@ -18,6 +18,7 @@ private:
 	char sexo;
 	Fecha fNac;
 	
+protected:
 	Persona(unsigned dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac);
 	
 public:
