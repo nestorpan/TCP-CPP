@@ -1,5 +1,8 @@
 #include <iostream>
 
+#include <PilaImplEstatica.h>
+
+
 using namespace std;
 
 template <class T>
@@ -16,6 +19,18 @@ int main()
     
     intercambiar<float>(c, d);
     cout << "c: " << c << ", d: " << d << endl;
+    
+    PilaImplEstatica<float> pila;
+    
+    for(float a = 0.5; a < 10.5; a++)
+		pila.apilar(a);
+    
+    float dato;
+    while(!pila.vacia())
+    {
+		pila.desapilar(dato);
+		cout << dato << endl;
+    }
     
     return 0;
 }
