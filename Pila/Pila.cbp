@@ -39,10 +39,16 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Compiler>
+			<Add directory="../include" />
+		</Compiler>
+		<Unit filename="../Nodo.cpp" />
+		<Unit filename="../Nodo.h" />
 		<Unit filename="../include/Pila.h" />
+		<Unit filename="../include/PilaImplDinamica.cpp" />
 		<Unit filename="../include/PilaImplDinamica.h" />
+		<Unit filename="../include/PilaImplEstatica.cpp" />
 		<Unit filename="../include/PilaImplEstatica.h" />
-		<Unit filename="PilaImplEstatica.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
