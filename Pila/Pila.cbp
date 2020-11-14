@@ -2,31 +2,29 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Templates" />
+		<Option title="Pila" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Templates" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/libPila" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="../Pila/include" />
 					<Add directory="include" />
-					<Add directory="../Pila/src" />
 				</Compiler>
-				<Linker>
-					<Add library="C:/Users/Gabriel/Documents/GitHub/TCP-CPP/cadena/bin/Debug/libcadena.a" />
-					<Add library="../Pila/bin/Debug/libPila.a" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Templates" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/libPila" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
@@ -39,10 +37,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../cadena/include" />
 		</Compiler>
-		<Unit filename="PilaTemplateInstancias.cpp" />
-		<Unit filename="main.cpp" />
-		<Extensions />
+		<Unit filename="include/Nodo.h" />
+		<Unit filename="include/Pila.h" />
+		<Unit filename="include/PilaImplDinamica.h" />
+		<Unit filename="include/PilaImplEstatica.h" />
+		<Unit filename="src/Nodo.cpp" />
+		<Unit filename="src/PilaImplDinamica.cpp" />
+		<Unit filename="src/PilaImplEstatica.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
