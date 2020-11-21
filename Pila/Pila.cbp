@@ -42,7 +42,6 @@
 		<Unit filename="include/Pila.h" />
 		<Unit filename="include/PilaImplDinamica.h" />
 		<Unit filename="include/PilaImplEstatica.h" />
-		<Unit filename="src/Nodo.cpp" />
 		<Unit filename="src/PilaImplDinamica.cpp" />
 		<Unit filename="src/PilaImplEstatica.cpp" />
 		<Extensions>
