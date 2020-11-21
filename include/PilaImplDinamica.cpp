@@ -1,3 +1,5 @@
+#include <stddef.h>
+#include <Nodo.h>
 #include <PilaImplDinamica.h>
 
 
@@ -8,7 +10,7 @@ PilaImplDinamica<T>::PilaImplDinamica()
 
 
 template <class T>
-PilaImplDinamica::~PilaImplDinamica()
+PilaImplDinamica<T>::~PilaImplDinamica()
 {
 	this->vaciar();
 }
@@ -17,7 +19,7 @@ PilaImplDinamica::~PilaImplDinamica()
 template <class T>
 bool PilaImplDinamica<T>::apilar(const T& dato)
 {
-	Nodo* nue = new Nodo(dato);
+	Nodo<T>* nue = new Nodo<T>(dato);
 	
 	nue->sig = this->pila;
 	this->pila = nue;
@@ -27,12 +29,12 @@ bool PilaImplDinamica<T>::apilar(const T& dato)
 
 
 template <class T>
-bool PilaImplDinamica<T>::desapilar(T& dato)
+bool PilaImplDinamica<T>::desapilar(T& dato) //TODO: Retornar el dato.
 {
 	if(!this->pila)
-		return false;
+		return false; //TODO: Tirar exception.
 	
-	Nodo* nae = this->pila;
+	Nodo<T>* nae = this->pila;
 	this->pila = nae->sig;
 	dato = nae->dato;
 	delete nae;
@@ -69,7 +71,7 @@ bool PilaImplDinamica<T>::llena()
 template <class T>
 void PilaImplDinamica<T>::vaciar()
 {
-	Nodo* nae;
+	Nodo<T>* nae;
 	while(this->pila)
 	{
 		nae = this->pila;

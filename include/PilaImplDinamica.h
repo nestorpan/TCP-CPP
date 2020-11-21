@@ -1,14 +1,15 @@
 #ifndef PILAIMPLDINAMICA_H
 #define PILAIMPLDINAMICA_H
 
-#include <Nodo.h>
+#include "Nodo.h"
+#include <Pila.h>
 
 
 template <class T>
-class PilaImplDinamica : Pila<T>
+class PilaImplDinamica : public Pila<T>
 {
 private:
-	Nodo* pila;
+	Nodo<T>* pila;
 	
 public:
 	PilaImplDinamica();
