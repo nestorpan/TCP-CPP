@@ -1,5 +1,5 @@
 #include <PilaImplEstatica.h>
-
+#include <PilaException.h>
 
 template <class T>
 PilaImplEstatica<T>::PilaImplEstatica()
@@ -8,40 +8,36 @@ PilaImplEstatica<T>::PilaImplEstatica()
 
 
 template <class T>
-bool PilaImplEstatica<T>::apilar(const T& dato)
+void PilaImplEstatica<T>::apilar(const T& dato)
 {
 	if(this->tope + 1 == TAM_PILA)
-		return false;
+		throw PilaException("Pila llena");
 
 	this->tope++;
 	this->vecPila[this->tope] = dato;
-
-	return true;
 }
 
 
 template <class T>
-bool PilaImplEstatica<T>::desapilar(T& dato)
+T PilaImplEstatica<T>::desapilar()
 {
-	if(this->tope == -1)
-		return false;
+    if(this->tope == -1)
+		throw PilaException("Pila vacia");
 
-	dato = this->vecPila[this->tope];
+	T dato = this->vecPila[this->tope];
 	this->tope--;
 
-	return true;
+	return dato;
 }
 
 
 template <class T>
-bool PilaImplEstatica<T>::verTope(T& dato)
+const T& PilaImplEstatica<T>::verTope()
 {
 	if(this->tope == -1)
-		return false;
+		throw PilaException("Pila vacia");
 
-	dato = this->vecPila[this->tope];
-
-	return true;
+	return this->vecPila[this->tope];
 }
 
 

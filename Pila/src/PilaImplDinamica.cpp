@@ -1,7 +1,10 @@
 #include <stddef.h>
 #include <Nodo.h>
+#include <PilaException.h>
 #include <PilaImplDinamica.h>
+#include <new>
 
+using namespace std;
 
 template <class T>
 PilaImplDinamica<T>::PilaImplDinamica()
@@ -17,40 +20,46 @@ PilaImplDinamica<T>::~PilaImplDinamica()
 
 
 template <class T>
-bool PilaImplDinamica<T>::apilar(const T& dato)
+void PilaImplDinamica<T>::apilar(const T& dato)
 {
-	Nodo<T>* nue = new Nodo<T>(dato);
+    Nodo<T>* nue;
+
+	try
+	{
+		nue = new Nodo<T>(dato);
+	}
+	catch(bad_alloc& ex)
+	{
+		throw PilaException("Pila llena");
+	}
 
 	nue->sig = this->pila;
 	this->pila = nue;
 
-	return true;
 }
 
 
 template <class T>
-bool PilaImplDinamica<T>::desapilar(T& dato) //TODO: Retornar el dato.
+T PilaImplDinamica<T>::desapilar()
 {
-	if(!this->pila)
-		return false; //TODO: Tirar exception.
+    if(!this->pila)
+		throw PilaException("Pila vacía");
 
 	Nodo<T>* nae = this->pila;
 	this->pila = nae->sig;
-	dato = nae->dato;
+	T dato = nae->dato;
 	delete nae;
-	return true;
+	return dato;
 }
 
 
 template <class T>
-bool PilaImplDinamica<T>::verTope(T& dato)
+const T& PilaImplDinamica<T>::verTope()
 {
-	if(!this->pila)
-		return false;
+    if(!this->pila)
+		throw PilaException("Pila vacia");
 
-	dato = this->pila->dato;
-
-	return true;
+	return this->pila->dato;
 }
 
 

@@ -15,9 +15,9 @@ class PilaImplDinamica : public Pila<T>
         PilaImplDinamica();
         ~PilaImplDinamica();
 
-        bool apilar(const T& dato);
-        bool desapilar(T& dato);
-        bool verTope(T& dato);
+        void apilar(const T& dato);
+        T desapilar();
+        const T& verTope();
         bool vacia();
         bool llena();
         void vaciar();
