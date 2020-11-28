@@ -3,7 +3,7 @@
 #include <PilaImplDinamica.h>
 #include <PilaImplEstatica.h>
 
-#define CANT_ELEM 20000
+#define CANT_ELEM 100000
 #define CANT_A_MOSTRAR 100
 
 using namespace std;
@@ -53,7 +53,7 @@ int main()
     int cont = 0;
     while(!pila.vacia())
     {
-		pila.desapilar(dato);
+		dato = pila.desapilar();
 		
 		if(cont < CANT_A_MOSTRAR)
 		{
@@ -73,9 +73,10 @@ int main()
 	cout << endl << "Desapilo pila2:" << endl;
 	
 	cont = 0;
+	
     while(!pila2.vacia())
     {
-		pila2.desapilar(dato);
+		dato = pila2.desapilar();
 		
 		if(cont < CANT_A_MOSTRAR)
 		{
@@ -116,7 +117,7 @@ void ordenarConPilas(queue<T> datos, Pila<T>& pilaOrd)
 {
 	PilaImplDinamica<T> pilaAux;
 	
-    T frente, temp, tope;
+    T frente, temp;
     
     frente = datos.front();
     
@@ -133,25 +134,22 @@ void ordenarConPilas(queue<T> datos, Pila<T>& pilaOrd)
 		
 		datos.pop();
 		
-		pilaOrd.verTope(tope);
-		
-		if(frente < tope)
+		if(frente < pilaOrd.verTope())
 			pilaOrd.apilar(frente);
 		else
 		{
 			do
 			{
-				pilaOrd.desapilar(temp);
+				temp = pilaOrd.desapilar();
 				pilaAux.apilar(temp);
-				pilaOrd.verTope(tope);
 			}
-			while(!pilaOrd.vacia() && frente > tope);
+			while(!pilaOrd.vacia() && frente > pilaOrd.verTope());
 			
 			pilaOrd.apilar(frente);
 			
 			while(!pilaAux.vacia())
 			{
-				pilaAux.desapilar(temp);
+				temp = pilaAux.desapilar();
 				pilaOrd.apilar(temp);
 			}
 		}	

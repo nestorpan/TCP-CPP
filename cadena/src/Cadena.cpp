@@ -192,6 +192,12 @@ bool Cadena::letrasYEspacios() const
 }
 
 
+const char* Cadena::getPChar() const
+{
+	return this->cad;
+}
+
+
 ostream& operator <<(ostream& sal, const Cadena& cadena)
 {
 	sal << cadena.cad;

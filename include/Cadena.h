@@ -38,6 +38,7 @@ public:
 	vector<Cadena> split(char separador) const;
 	istream& leer(istream& ent, char hastaCar);
 	bool letrasYEspacios() const;
+	const char* getPChar() const;
 	
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
