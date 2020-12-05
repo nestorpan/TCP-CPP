@@ -10,7 +10,7 @@
 
 
 using namespace std;
-
+/*
 int main()
 {
     PersonaBuilder pBuilder;
@@ -63,11 +63,12 @@ int main()
     }
     
     fbEnt.close();
-    
+ */   
     
     /*************************************************************
     ***						Empleados						   ***
     *************************************************************/
+/*
     EmpleadoBuilder eBuilder;
     
     eBuilder.setNombre("Pepe");
@@ -124,3 +125,4 @@ int main()
 	
     return 0;
 }
+*/

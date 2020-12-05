@@ -9,7 +9,9 @@ class Empleado : public Persona
 private:
 	unsigned legajo;
 	Fecha fIngr;
-	float sueldo;
+	
+public:
+	Empleado();
 	
 	Empleado
 	(
@@ -19,17 +21,16 @@ private:
 		char sexo,
 		const Fecha& fNac,
 		unsigned legajo,
-		const Fecha& fIngr,
-		float sueldo
+		const Fecha& fIngr
 	);
-		
-public:
+	
+	virtual ~Empleado();
+	
 	unsigned getLegajo();
 	const Fecha& getFIngr();
-	float getSueldo();
 	void setLegajo(unsigned legajo);
 	void setFIngr(const Fecha& fIngr);
-	void setSueldo(float sueldo);
+	virtual float calcularSueldo() = 0;
 	
 	friend ostream& operator <<(ostream& sal, const Empleado& empleado);
 	friend istream& operator >>(istream& ent, Empleado& empleado);

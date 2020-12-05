@@ -1,6 +1,11 @@
 #include "Empleado.h"
 
 
+Empleado::Empleado()
+{
+}
+
+
 Empleado::Empleado
 (
 	unsigned dni,
@@ -9,16 +14,18 @@ Empleado::Empleado
 	char sexo,
 	const Fecha& fNac,
 	unsigned legajo,
-	const Fecha& fIngr,
-	float sueldo
+	const Fecha& fIngr
 )
 :	Persona(dni, apellido, nombre, sexo, fNac),
 	legajo(legajo),
-	fIngr(fIngr),
-	sueldo(sueldo)
+	fIngr(fIngr)
 {
 	///TODO: Agregar validaciones legajo, fIngr, sueldo.
 }
+
+
+Empleado::~Empleado()
+{}
 
 
 unsigned Empleado::getLegajo()
@@ -30,12 +37,6 @@ unsigned Empleado::getLegajo()
 const Fecha& Empleado::getFIngr()
 {
 	return this->fIngr;
-}
-
-
-float Empleado::getSueldo()
-{
-	return this->sueldo;
 }
 
 
@@ -52,15 +53,9 @@ void Empleado::setFIngr(const Fecha& fIngr)
 }
 
 
-void Empleado::setSueldo(float sueldo)
-{
-	this->sueldo = sueldo;
-}
-
-
 ostream& operator <<(ostream& sal, const Empleado& empleado)
 {
-	return sal << (Persona&)empleado << '|' << empleado.legajo << '|' << empleado.fIngr << '|' << empleado.sueldo;
+	return sal << (Persona&)empleado << '|' << empleado.legajo << '|' << empleado.fIngr;
 }
 
 
@@ -71,8 +66,6 @@ istream& operator >>(istream& ent, Empleado& empleado)
 	ent >> empleado.legajo;
 	ent.ignore(1);
 	ent >> empleado.fIngr;
-	ent.ignore(1);
-	ent >> empleado.sueldo;
 	
 	return ent;
 }

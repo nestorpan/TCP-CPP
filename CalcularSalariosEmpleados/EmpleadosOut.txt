@@ -1,0 +1,4 @@
+22444999|Perez|Pepe|60000
+11222333|Rodriguez|Roberto|160000
+33222111|Alvarez|Alberto|150000
+21212121|Casares|Carlos|55000

@@ -25,7 +25,6 @@ public:
 	Cadena(const Cadena& cadena); /// Constructor de copia
 	~Cadena(); /// Destructor
 	Cadena& operator =(const Cadena& otra); /// Op asignación
-	
 	Cadena& operator +=(const Cadena& otra);
 	
 	char caracterEnPos(int pos) const;
@@ -41,6 +40,7 @@ public:
 	const char* getPChar() const;
 	
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
+	friend bool operator ==(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
 	friend istream& operator >>(istream& ent, Cadena& cadena);
 };

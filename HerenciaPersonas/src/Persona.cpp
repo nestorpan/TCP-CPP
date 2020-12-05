@@ -3,6 +3,10 @@
 #include "Persona.h"
 
 
+Persona::Persona()
+{}
+
+
 Persona::Persona(unsigned dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac)
 :
 	dni(dni),

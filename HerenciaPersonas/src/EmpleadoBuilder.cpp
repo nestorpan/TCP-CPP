@@ -8,8 +8,9 @@ EmpleadoBuilder::EmpleadoBuilder()
 {	
 }
 
-
+/*
 Empleado EmpleadoBuilder::build()
 {
 	return Empleado(dni, apellido, nombre, sexo, fNac, legajo, fIngr, sueldo);
 }
+*/

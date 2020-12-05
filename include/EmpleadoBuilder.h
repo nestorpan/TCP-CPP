@@ -18,7 +18,7 @@ public:
 	void setLegajo(unsigned val) { legajo = val; }
 	void setFIngr(Fecha val) { fIngr = val; }
 	void setSueldo(float val) { sueldo = val; }
-	Empleado build();
+//	Empleado build();
 };
 
 #endif // EMPLEADOBUILDER_H

@@ -88,6 +88,12 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 }
 
 
+bool operator ==(const Cadena& cad1, const Cadena& cad2)
+{
+	return strcmp(cad1.cad, cad2.cad) == 0;
+}
+
+
 int Cadena::contarDigitos(int d)
 {
 	int contDig = 1;
