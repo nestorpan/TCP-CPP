@@ -1,54 +1,41 @@
 #include <iostream>
-#include <Cadena.h>
-#include <vector>
 #include <string>
-
 #include <fstream>
 
+#include <Cadena.h>
+
 using namespace std;
+
 
 int main()
 {
 	Cadena cad1("Hola");
 	Cadena cad2("que");
 	Cadena cad3("tal");
-
-	char qs = 168;
-	Cadena frase = qs + cad1 + ", " + cad2 + ' ' + cad3 + "!?" + ". Son las " + -14 + ':' + 10;
-
-///	cout << frase << endl;
-
+	
+	Cadena frase = "¿" + cad1 + ", " + cad2 + ' ' + cad3 + '?' + ". Son las " + 10 + ':' + 22;
+	
+	cout << frase << endl;
+	
 	vector<Cadena> palabras = frase.split(' ');
-/*
-	for(vector<Cadena>::iterator it = palabras.begin(); it < palabras.end(); it++) {
-        cout << *it << endl;
-	}
-*/
-    /// String
-
-	string cad11("Hola");
-	string cad12("que");
-	string cad13("tal");
-
-	string frase2 = qs + cad11 + ", " + cad12 + ' ' + cad13 + "!?" + ". Son las ";
-
-	/// cout << frase2 << endl;
-
-
-    filebuf fb;
+	
+	for(vector<Cadena>::iterator i = palabras.begin(); i < palabras.end(); i++)
+		cout << *i << endl;
+	
+	filebuf fb;
 	fb.open("empleados.txt", ios::in);
 	istream emplIS(&fb);
-
+	
 	int cantLineas = 0;
 	Cadena emplLinea;
-
+	
 	while(!(emplIS >> emplLinea).eof())
 	{
 		cout << emplLinea << endl;
 		cantLineas++;
 	}
-
+	
 	cout << Cadena("Habia ") + cantLineas + " lineas en el archivo." << endl;
-
-    return 0;
+	
+	return 0;
 }

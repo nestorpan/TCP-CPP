@@ -1,23 +1,17 @@
 #include <string.h>
+
 #include "Cadena.h"
 
-int Cadena::cantCall = 0;
 
 Cadena::Cadena()
 {
 	this->cad = new char[1];
 	this->cad[0] = '\0';
-
-	cantCall++;
-
-///    cout << "Llamando al contructor" << endl;
-
 }
+
 
 Cadena::Cadena(const char* cad)
 {
-	cantCall++;
-///    cout << "Llamando al contructor" << endl;
 	if(!cad)
 	{
 		this->cad = new char[1];
@@ -27,15 +21,14 @@ Cadena::Cadena(const char* cad)
 
 	this->cad = new char[strlen(cad) + 1];
 	strcpy(this->cad, cad);
-
 }
+
 
 Cadena::Cadena(char* cad)
 {
-	cantCall++;
-///    cout << "Llamando al contructor" << endl;
 	this->cad = cad;
 }
+
 
 Cadena::Cadena(char c)
 {
@@ -43,6 +36,7 @@ Cadena::Cadena(char c)
 	this->cad[0] = c;
 	this->cad[1] = '\0';
 }
+
 
 Cadena::Cadena(int d)
 {
@@ -55,8 +49,6 @@ Cadena::Cadena(int d)
 
 Cadena::Cadena(const Cadena& otra)
 {
-	cantCall++;
-///    cout << "Llamando al contructor" << endl;
 	this->cad = new char[strlen(otra.cad) + 1];
 	strcpy(this->cad, otra.cad);
 }
@@ -64,20 +56,19 @@ Cadena::Cadena(const Cadena& otra)
 
 Cadena::~Cadena()
 {
-    cantCall--;
-///    cout << "Llamando al destructor" << endl;
-    delete [] this->cad;
+	delete [] this->cad;
 }
+
 
 Cadena& Cadena::operator =(const Cadena& otra)
 {
-	int longThis = strlen(this->cad) + 1;
-	int longOtra = strlen(otra.cad) + 1;
+	int longVieja = strlen(this->cad) + 1;
+	int longNueva = strlen(otra.cad) + 1;
 
-	if(longOtra != longThis)
+	if(longNueva != longVieja)
 	{
 		delete [] this->cad;
-		this->cad = new char[longOtra];
+		this->cad = new char[longNueva];
 	}
 
 	strcpy(this->cad, otra.cad);
@@ -85,79 +76,7 @@ Cadena& Cadena::operator =(const Cadena& otra)
 	return *this;
 }
 
-istream& Cadena::leer(istream& ent, char hastaCar)
-{
-	size_t cantCar = 0;
-	char c;
-	int posIni = ent.tellg()-1;
-	while((c = ent.get()) != EOF && c != hastaCar)
-		cantCar++;
 
-	if(cantCar == 0)
-		return ent;
-
-	int tellg = ent.tellg();
-	ent.seekg(posIni);
-	tellg = ent.tellg();
-
-	if(strlen(this->cad) != cantCar)
-	{
-		delete [] this->cad;
-		this->cad = new char[cantCar + 1];
-	}
-
-	ent.getline(this->cad, cantCar + 1, hastaCar);
-	tellg = ent.tellg();
-
-	return ent;
-}
-
-ostream& operator <<(ostream& sal, const Cadena& cadena)
-{
-	sal << cadena.cad;
-	return sal;
-}
-
-istream& operator >>(istream& ent, Cadena& cadena)
-{
-	size_t cantCar = 0;
-	char c;
-	int posIni = ent.tellg(); // obtiene la posición actual donde está el puntero al archivo
-
-	while((c = ent.get()) != EOF && c != '\n')
-		cantCar++;
-
-	if(cantCar == 0)
-		return ent;
-
-	ent.seekg(posIni);
-
-	if(strlen(cadena.cad) != cantCar)
-	{
-		delete [] cadena.cad;
-		cadena.cad = new char[cantCar + 1];
-	}
-
-	ent.getline(cadena.cad, cantCar + 1);
-
-	return ent;
-}
-
-int Cadena::getCantCall()
-{
-    return this->cantCall;
-}
-/*
-Cadena Cadena::operator +(const Cadena& otra) const
-{
-	char* concat = new char[strlen(this->cad) + strlen(otra.cad) + 1];
-
-	strcpy(concat, this->cad);
-	strcat(concat, otra.cad);
-
-	return Cadena(concat);
-}
-*/
 Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 {
 	char* concat = new char[strlen(cad1.cad) + strlen(cad2.cad) + 1];
@@ -168,9 +87,15 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 	return Cadena(concat);
 }
 
+
+bool operator ==(const Cadena& cad1, const Cadena& cad2)
+{
+	return strcmp(cad1.cad, cad2.cad) == 0;
+}
+
+
 int Cadena::contarDigitos(int d)
 {
-    // 150
 	int contDig = 1;
 
 	if(d < 0)
@@ -179,25 +104,19 @@ int Cadena::contarDigitos(int d)
 		contDig++;
 	}
 
-	while((d / 10) > 0) {
-		contDig++; // 3
-        d /= 10;
-	}
+	while((d /= 10) > 0)
+		contDig++;
 
 	return contDig;
 }
 
+///template
 vector<Cadena> Cadena::split(char separador) const
 {
 	vector<Cadena> vCad;
 	int posAct = 0;
 	int posSep;
 	Cadena subCad;
-
-	// this->cad = "Hola que tal"
-	// vCad[0] = "Hola"
-	// vCad[1] = "que"
-	// vCad[2] = "tal"
 
 	while((posSep = this->posCaracter(separador, posAct)) >= 0)
 	{
@@ -212,6 +131,7 @@ vector<Cadena> Cadena::split(char separador) const
 	return vCad;
 }
 
+
 int Cadena::posCaracter(char c, int ini) const
 {
 	char* dirIni = strchr(this->cad + ini, c);
@@ -221,6 +141,7 @@ int Cadena::posCaracter(char c, int ini) const
 
 	return (int)(dirIni - this->cad);
 }
+
 
 Cadena Cadena::subcadena(int ini, int fin) const
 {
@@ -240,10 +161,93 @@ Cadena Cadena::subcadena(int ini, int fin) const
 
 Cadena Cadena::subcadena(int ini) const
 {
-	return subcadena(ini, strlen(this->cad));
+	int fin = strlen(this->cad);
+
+	return subcadena(ini, fin);
 }
+
+
+istream& Cadena::leer(istream& ent, char hastaCar)
+{
+	size_t cantCar = 0;
+	char c;
+	int posIni = ent.tellg();
+	while((c = ent.get()) != EOF && c != hastaCar)
+		cantCar++;
+
+	if(cantCar == 0)
+		return ent;
+
+	ent.seekg(posIni);
+
+	if(strlen(this->cad) != cantCar)
+	{
+		delete [] this->cad;
+		this->cad = new char[cantCar + 1];
+	}
+
+	ent.getline(this->cad, cantCar + 1, hastaCar);
+
+	return ent;
+}
+
 
 bool Cadena::letrasYEspacios() const
 {
 	return true;
 }
+
+
+const char* Cadena::getPChar() const
+{
+	return this->cad;
+}
+
+
+ostream& operator <<(ostream& sal, const Cadena& cadena)
+{
+	sal << cadena.cad;
+	return sal;
+}
+
+
+istream& operator >>(istream& ent, Cadena& cadena)
+{
+	size_t cantCar = 0;
+	char c;
+	int posIni = ent.tellg();
+	while((c = ent.get()) != EOF && c != '\n')
+		cantCar++;
+
+	if(cantCar == 0)
+		return ent;
+
+	ent.seekg(posIni);
+
+	if(strlen(cadena.cad) != cantCar)
+	{
+		delete [] cadena.cad;
+		cadena.cad = new char[cantCar + 1];
+	}
+
+	ent.getline(cadena.cad, cantCar + 1);
+
+	return ent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

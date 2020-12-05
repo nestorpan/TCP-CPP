@@ -12,12 +12,16 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="2" />
 				<Option compiler="gcc" />
-				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="HerenciaPersonas" />
+					<Add directory="./" />
 				</Compiler>
+				<Linker>
+					<Add library="../cadena/bin/Debug/libcadena.a" />
+					<Add library="../fecha/bin/Debug/libfecha.a" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/HerenciaPersonas" prefix_auto="1" extension_auto="1" />
@@ -25,11 +29,11 @@
 				<Option object_output="obj/Release/" />
 				<Option type="2" />
 				<Option compiler="gcc" />
-				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="HerenciaPersonas" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,27 +41,28 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add directory="../cadena/include" />
-			<Add directory="C:/Users/Gabriel/Downloads/TCP-CPP-2020-2-tarde/include" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../include" />
 		</Compiler>
-		<Linker>
-			<Add library="../cadena/bin/Debug/libcadena.a" />
-			<Add library="C:/Users/Gabriel/Downloads/TCP-CPP-2020-2-tarde/fecha/bin/Debug/libfecha.a" />
-		</Linker>
-		<Unit filename="include/Empleado.h" />
-		<Unit filename="include/EmpleadoBuilder.h" />
-		<Unit filename="include/Persona.h" />
-		<Unit filename="include/PersonaBuilder.h" />
-		<Unit filename="include/Validaciones.h" />
-		<Unit filename="include/ValidacionesException.h" />
+		<Unit filename="../include/Defs.h" />
+		<Unit filename="../include/Empleado.h" />
+		<Unit filename="../include/EmpleadoBuilder.h" />
+		<Unit filename="../include/EmpleadoExterno.h" />
+		<Unit filename="../include/EmpleadoInterno.h" />
+		<Unit filename="../include/Persona.h" />
+		<Unit filename="../include/PersonaBuilder.h" />
+		<Unit filename="../include/Validaciones.h" />
+		<Unit filename="../include/ValidacionesException.h" />
+		<Unit filename="main.cpp" />
 		<Unit filename="src/Empleado.cpp" />
 		<Unit filename="src/EmpleadoBuilder.cpp" />
+		<Unit filename="src/EmpleadoExterno.cpp" />
+		<Unit filename="src/EmpleadoInterno.cpp" />
 		<Unit filename="src/Persona.cpp" />
 		<Unit filename="src/PersonaBuilder.cpp" />
 		<Unit filename="src/Validaciones.cpp" />
 		<Unit filename="src/ValidacionesException.cpp" />
-		<Extensions>
-			<lib_finder disable_auto="1" />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

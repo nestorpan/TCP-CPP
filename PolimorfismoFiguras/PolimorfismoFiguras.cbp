@@ -13,8 +13,11 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
+					<Add directory="./" />
 				</Compiler>
+				<Linker>
+					<Add library="../cadena/bin/Debug/libcadena.a" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/PolimorfismoFiguras" prefix_auto="1" extension_auto="1" />
@@ -23,7 +26,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -33,20 +36,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../cadena/include" />
+			<Add directory="../include" />
 		</Compiler>
-		<Linker>
-			<Add library="C:/Users/Gabriel/Documents/GitHub/TCP-CPP/cadena/bin/Debug/libcadena.a" />
-		</Linker>
-		<Unit filename="include/Circulo.h" />
-		<Unit filename="include/Cuadrado.h" />
-		<Unit filename="include/Figura.h" />
-		<Unit filename="include/Pentagono.h" />
+		<Unit filename="Circulo.cpp" />
+		<Unit filename="Circulo.h" />
+		<Unit filename="Cuadrado.cpp" />
+		<Unit filename="Cuadrado.h" />
+		<Unit filename="Figura.cpp" />
+		<Unit filename="Figura.h" />
+		<Unit filename="Pentagono.cpp" />
+		<Unit filename="Pentagono.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Circulo.cpp" />
-		<Unit filename="src/Cuadrado.cpp" />
-		<Unit filename="src/Figura.cpp" />
-		<Unit filename="src/Pentagono.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

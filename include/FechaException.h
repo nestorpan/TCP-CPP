@@ -5,15 +5,17 @@
 
 using namespace std;
 
+
 class FechaException
 {
-    public:
-//        FechaException();
-        FechaException(const string& mensaje);
-        const string& getMensaje() const;
-
-    private:
-        string mensaje;
+private:
+	string mensaje;
+	
+public:
+	FechaException(const string& msj);
+	
+	const string& getMensaje() const;
 };
+
 
 #endif // FECHAEXCEPTION_H

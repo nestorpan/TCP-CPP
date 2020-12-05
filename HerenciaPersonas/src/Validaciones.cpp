@@ -1,5 +1,5 @@
-#include "Validaciones.h"
 #include "ValidacionesException.h"
+#include "Validaciones.h"
 
 
 void Validaciones::mayorACero(unsigned u, const Cadena& mensaje)

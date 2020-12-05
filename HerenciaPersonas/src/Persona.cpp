@@ -1,5 +1,11 @@
+#include <Defs.h>
 #include "Validaciones.h"
 #include "Persona.h"
+
+
+Persona::Persona()
+{}
+
 
 Persona::Persona(unsigned dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac)
 :
@@ -10,16 +16,17 @@ Persona::Persona(unsigned dni, const Cadena& apellido, const Cadena& nombre, cha
 	fNac(fNac)
 {
 	Validaciones::mayorACero(dni, "DNI invalido");
-
+	
 	Validaciones::letrasYEspacios(apellido, "Apellido invalido");
-
+	
 	Validaciones::letrasYEspacios(nombre, "Nombre invalido");
-
+	
 	Validaciones::sexo(sexo, "Sexo invalido");
-
+	
 	Validaciones::fechaMayorIgual(fNac, Fecha(1, 1, 1800), "Fecha Nac. muy antigua");
 	Validaciones::fechaMenorIgual(fNac, Fecha::hoy(), "Fecha Nac. futura");
 }
+
 
 unsigned Persona::getDni() const
 {
@@ -60,7 +67,6 @@ void Persona::setDni(unsigned dni)
 
 void Persona::setApellido(const Cadena& apellido)
 {
-    Validaciones::letrasYEspacios(apellido, "Apellido invalido");
 	this->apellido = apellido;
 }
 
@@ -93,15 +99,26 @@ istream& operator >>(istream& ent, Persona& pers)
 {
 	ent >> pers.dni;
 	ent.ignore(1);
-
 	pers.apellido.leer(ent, '|');
-
 	pers.nombre.leer(ent, '|');
-
 	ent >> pers.sexo;
 	ent.ignore(1);
-
 	ent >> pers.fNac;
-
+	
 	return ent;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 #include "ValidacionesException.h"
 
+
 ValidacionesException::ValidacionesException(const Cadena& msj)
 {
 	this->mensaje = msj;

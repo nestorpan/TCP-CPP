@@ -34,7 +34,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../cadena/include" />
+			<Add directory="../include" />
 		</Compiler>
 		<Unit filename="main.cpp" />
 		<Extensions />

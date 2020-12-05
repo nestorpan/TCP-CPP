@@ -1,14 +1,13 @@
 #include "FechaException.h"
-#include <string>
 
-using namespace std;
 
-FechaException::FechaException(const string& mensaje)
+FechaException::FechaException(const string& msj)
 {
-    this->mensaje = mensaje;
+	this->mensaje = msj;
 }
+
 
 const string& FechaException::getMensaje() const
 {
-    return this->mensaje;
+	return this->mensaje;
 }

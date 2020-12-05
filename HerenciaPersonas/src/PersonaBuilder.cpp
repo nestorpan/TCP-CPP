@@ -1,5 +1,6 @@
 #include "PersonaBuilder.h"
 
+
 PersonaBuilder::PersonaBuilder()
 :
 	dni(1),
@@ -44,3 +45,4 @@ Persona PersonaBuilder::build()
 {
 	return Persona(dni, apellido, nombre, sexo, fNac);
 }
+

@@ -1,9 +1,9 @@
+#include <string>
 #include <PilaImplEstatica.cpp>
 #include <PilaImplDinamica.cpp>
-#include "Cadena.h"
 
+using namespace std;
 
-template class PilaImplEstatica<float>;
-template class PilaImplEstatica<Cadena>;
 
 template class PilaImplDinamica<float>;
+template class PilaImplEstatica<string>;
