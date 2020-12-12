@@ -62,5 +62,14 @@ int main(int argc, char* argv[])
 	cout << "La fecha ingresada es: " << fIngr << endl;
 	
 	
+	cout << endl;
+	cout << "Pre y pos Incrementos:" << endl;
+	
+	Fecha hoy = Fecha::hoy();
+	
+	cout << hoy << endl;
+	cout << hoy++ << endl;
+	cout << ++hoy << endl;
+	
     return 0;
 }

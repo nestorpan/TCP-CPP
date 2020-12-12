@@ -28,6 +28,8 @@ public:
 	
 	Fecha& operator +=(int dias);
 	Fecha operator +(int dias) const;	///	Fecha sumarDias(int dias) const; // +
+	Fecha& operator ++();	/// Pre
+	Fecha operator ++(int);	/// Pos
 	void restarDias(int dias);
 	Fecha restarDias(int dias) const;
 	int operator -(const Fecha& f2) const;

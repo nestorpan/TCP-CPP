@@ -52,6 +52,21 @@ Fecha Fecha::operator +(int dias) const
 }
 
 
+Fecha& Fecha::operator ++()	/// Pre
+{
+	++this->diaRel;
+	return *this;
+}
+
+
+Fecha Fecha::operator ++(int) /// Pos
+{
+	Fecha temp(*this);
+	this->diaRel++;
+	return temp;
+}
+
+
 int Fecha::diaDelAnio(int dia, int mes, int anio)
 {
 	return acumDias[esBisiesto(anio)? 1 : 0][mes] + dia;
