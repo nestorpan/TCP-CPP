@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1618067609 source:/home/nestor/UNLaM/Programacion/TCP/Proyectos/tcp-cpp/TestFechas/TestFechas/Fecha.cpp
+	"Fecha.h"
+
+1618067823 /home/nestor/UNLaM/Programacion/TCP/Proyectos/tcp-cpp/TestFechas/TestFechas/Fecha.h
+
+1618067454 source:/home/nestor/UNLaM/Programacion/TCP/Proyectos/tcp-cpp/TestFechas/TestFechas/main.cpp
+	<iostream>
+	"Fecha.h"
+
