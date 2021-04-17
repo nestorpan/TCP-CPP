@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1618683954 source:c:\users\gabriel\documents\github\2021\tcp-cpp\testfechas\main.cpp
+	<iostream>
+	<iomanip>
+	"Fecha.h"
+
+1618684895 c:\users\gabriel\documents\github\2021\tcp-cpp\testfechas\include\fecha.h
+
+1618683841 source:c:\users\gabriel\documents\github\2021\tcp-cpp\testfechas\src\fecha.cpp
+	"Fecha.h"
+
