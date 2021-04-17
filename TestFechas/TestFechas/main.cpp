@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 #include "Fecha.h"
 
@@ -8,12 +9,16 @@ using namespace std;
 
 int main()
 {
-    Fecha hoy(10, 4, 2021);
-    Fecha defaulteada;
+	Fecha hoy(17, 4, 2021);
+    Fecha pepito;
     
-    hoy = hoy.sumarDias(30);
+    pepito = hoy.sumarDias(30);
     
-    hoy.diaRel = 45;
+    int dia, mes, anio;
+    
+    pepito.getDMA(&dia, &mes, &anio);
+    
+    cout << "La fecha suma es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
     
     return 0;
 }
