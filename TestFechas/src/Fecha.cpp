@@ -1,38 +1,34 @@
 #include "Fecha.h"
+#include "FechaException.h"
+#include "time.h"
+#include <iomanip>
 
 #define ANIO_BASE 1601
 
 const int Fecha::acumuladoMesesNoBisiesto[] = {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
 const int Fecha::acumuladoMesesBisiesto[] = {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
 
+
 Fecha::Fecha()
 {
 	this->diaRel = 1;
 }
 
-
 Fecha::Fecha(int dia, int mes, int anio)
 {
-// 256 dia del prog
-    // lunes 13 de septiembre 2021 no bisiesto
-    // sábado 12 de septiembre 2020 bisiesto
+    if(!esFechaValida(dia, mes, anio))
+		throw FechaException("La fecha es inválida");
 
 	int cantAnios = anio - ANIO_BASE;
 	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
 	this->diaRel = diasAniosCompl + diaDelAnio(dia, mes, anio);
 }
 
-unsigned long Fecha::getDiaRel() {
-
-    return diaRel;
-}
 
 Fecha Fecha::sumarDias(int dias) const
 {
 	Fecha fSuma(*this);
-
 	fSuma.diaRel += dias;
-
 	return fSuma;
 }
 
@@ -57,23 +53,56 @@ void Fecha::getDMA(int* d, int* m, int* a) const
 	diaDelAnioADiaMes(diaDelAnio, anio, d, m);
 }
 
-unsigned long Fecha::diferenciaEnDias(const Fecha otraFecha) const
+Fecha Fecha::operator +(int dias) const
 {
-
-    return this->diaRel - otraFecha.diaRel;
+	return sumarDias(dias);
 }
 
+Fecha operator +(int dias, const Fecha& f)
+{
+	Fecha fSuma(f);
+
+	fSuma.diaRel += dias;
+
+	return fSuma;
+}
+
+Fecha& Fecha::operator +=(int dias)
+{
+	this->diaRel += dias;
+
+	return *this;
+}
+
+Fecha& Fecha::operator ++()	/// Pre
+{
+	++this->diaRel;
+	return *this;
+}
+
+Fecha Fecha::operator ++(int) /// Pos
+{
+	Fecha temp(*this);
+	this->diaRel++;
+	return temp;
+}
+
+Fecha Fecha::hoy()
+{
+	time_t segs = time(NULL);
+
+	struct tm* timeMachine = localtime(&segs);
+
+	int dia = timeMachine->tm_mday;
+	int mes = timeMachine->tm_mon + 1;
+	int anio = timeMachine->tm_year + 1900;
+
+	return Fecha(dia, mes, anio);
+}
 /********** Funciones miembro (métodos) privadas **********/
 
 int Fecha::diaDelAnio(int dia, int mes, int anio)
 {
-// const int Fecha::acumuladoMesesNoBisiesto[] = {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
-// const int Fecha::acumuladoMesesBisiesto[] =   {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
-
-// 256 dia del prog
-    // lunes 13 de septiembre 2021 no bisiesto
-    // sábado 12 de septiembre 2020 bisiesto
-
 	return (esBisiesto(anio)? acumuladoMesesBisiesto[mes] : acumuladoMesesNoBisiesto[mes]) + dia;
 }
 
@@ -97,4 +126,61 @@ void Fecha::diaDelAnioADiaMes(int diaDelAnio, int anio, int* d, int* m)
 	*m = mes;
 
 	*d = diaDelAnio - acumuladoMeses[mes];
+}
+
+bool Fecha::esFechaValida(int dia, int mes, int anio)
+{
+    /*
+    if(anio >= ANIO_BASE)
+    {
+        if(mes >= 1 && mes <= 12)
+            if(dia >= 1 && dia <= cantDiasMes(mes, anio))
+                return true;
+	}
+	return false;
+    */
+
+	return (anio >= ANIO_BASE) &&
+                (mes >= 1 && mes <= 12) &&
+                    (dia >= 1 && dia <= cantDiasMes(mes, anio));
+}
+
+int Fecha::cantDiasMes(int mes, int anio)
+{
+	static const int vCantDias[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	if(mes == 2 && esBisiesto(anio))
+		return 29;
+
+	return vCantDias[mes];
+}
+
+ostream& operator <<(ostream& sal, const Fecha& f)
+{
+	int dia, mes, anio;
+	f.getDMA(&dia, &mes, &anio);
+
+	return sal << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio;
+//	return sal << d << '/' << m << '/' << a;
+}
+
+Fecha Fecha::sumarMeses(int cantmeses)const
+{
+    Fecha fsuma(*this);
+    int dia,mes,anio;
+    getDMA(&dia,&mes,&anio);
+
+
+
+    if(esBisiesto(anio))
+    {
+        fsuma.diaRel-=acumuladoMesesBisiesto[mes+1];
+        fsuma.diaRel+=acumuladoMesesBisiesto[mes+1+cantmeses];
+    }
+    else
+    {
+        fsuma.diaRel-=acumuladoMesesNoBisiesto[mes+1];
+        fsuma.diaRel+=acumuladoMesesNoBisiesto[mes+1+cantmeses];
+    }
+    return(fsuma);
 }

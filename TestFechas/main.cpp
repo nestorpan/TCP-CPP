@@ -1,44 +1,80 @@
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 
 #include "Fecha.h"
+#include "FechaException.h"
 
+#define ERR_INGR_FECHA 1
+#define ARG_TXT_SAL 1
 
 using namespace std;
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    /*
-	Fecha diaDelProg(13, 9, 2021);
-    cout << "El dia relativo es: " <<  diaDelProg.getDiaRel() << endl;
-*/
+	filebuf fbSal;
+    fbSal.open(argv[ARG_TXT_SAL], ios::out);
+    ostream salida(&fbSal);
 
+    Fecha hoy;
 
-	Fecha hoy(17, 2, 2021);
-	Fecha ayer(16, 2, 2021);
-
-	cout << "la diferencia en dias es " << hoy.diferenciaEnDias(ayer) << endl;
+    try {
+        hoy = Fecha(24, 4, 2021);
+    }
+    catch(FechaException& fechaException) {
+        //cout << "Hubo un error en el ingreso de la fecha: " << fechaException.getMensaje() << endl;
+        salida << "Hubo un error en el ingreso de la fecha: " << fechaException.getMensaje() << endl;
+		return ERR_INGR_FECHA;
+    }
 
     Fecha pepito;
+//    Fecha ayer = Fecha();
 
-    pepito = hoy.sumarDias(30);
+//    int diaAyer, mesAyer, anioAyer;
+//    ayer.getDMA(&diaAyer, &mesAyer, &anioAyer);
+//    cout << "La fecha ayer es: " << setw(2) << fixed << diaAyer << '/' << setw(2) << fixed << mesAyer << '/' << setw(4) << fixed << anioAyer << endl;
+
+
+    //pepito = hoy.sumarDias(30);
+    //hoy += 60;
+//    pepito = 60 + hoy;
+/*
+    cout << ++hoy << endl; // 25/04
+    cout << hoy++ << endl; // 25/04
+    cout << hoy << endl;    // 26/04
+*/
+    //salida << hoy << endl;
+
+    // hoy += 30;
 
     int dia, mes, anio;
-    pepito.getDMA(&dia, &mes, &anio);
+
+    hoy.getDMA(&dia, &mes, &anio);
+
+//    cout << "anio: " << anio << (Fecha::esBisiesto(2020)?"":" NO ")<< "es bisiesto" << endl;
+
+ //   cout << "La fecha suma es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
 
 
-   	Fecha unaFecha(1, 1, 2021);
+    hoy = Fecha::hoy();
+    /*
+	cout << hoy << endl;
+	cout << hoy++ << endl;
+	cout << ++hoy << endl;
+*/
+	// cout << 10 + hoy << endl;
+	cout << "Mas 4 meses ==> " << hoy.sumarMeses(4) << endl;
 
-    int dia2, mes2, anio2;
-    unaFecha.getDMA(&dia2, &mes2, &anio2);
+/*
+    Fecha maniana = hoy++;
+    hoy.getDMA(&dia, &mes, &anio);
+    cout << "hoy es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
 
-    cout << "La fecha suma es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
-    cout << "La fecha suma es: " << setw(2) << fixed << dia2 << '/' << setw(2) << fixed << mes2 << '/' << setw(4) << fixed << anio2 << endl;
+    //hoy++;
+    maniana.getDMA(&dia, &mes, &anio);
+    cout << "Mañana es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
 
-
-    cout << "La fecha suma es: " << dia << '/' << mes << '/' << anio << endl;
-    cout << "La fecha suma es: " << dia2 << '/' << mes2 << '/' << anio2 << endl;
-
+*/
     return 0;
 }
