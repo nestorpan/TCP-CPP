@@ -9,22 +9,27 @@ class Fecha
 {
     private:
         unsigned long diaRel;
+        char separador;
 
         static const int acumuladoMesesNoBisiesto[13];
         static const int acumuladoMesesBisiesto[13];
 
         static int diaDelAnio(int dia, int mes, int anio);
-        static void diaDelAnioADiaMes(int diaDelAnio, int anio, int* d, int* m);
+        static void diaDelAnioADiaMes(int diaDelAnio, int anio, int& d, int& m);
         static int cantDiasMes(int mes, int anio);
         static bool esFechaValida(int dia, int mes, int anio);
 
     public:
         Fecha();
+        Fecha(char separdor);
         Fecha(int dia, int mes, int anio);
+        Fecha(int dia, int mes, int anio, char separdor);
 
         Fecha sumarDias(int dias) const;
 
-        void getDMA(int* d, int* m, int* a) const;
+        char getSeparador() const;
+        void getDMA(int& d, int& m, int& a) const;
+        void setDMA(int d, int m, int a);
 
         static bool esBisiesto(int anio);
         static Fecha hoy();
@@ -34,6 +39,9 @@ class Fecha
 
         Fecha& operator ++();	/// Pre
         Fecha operator ++(int);	/// Pos
+
+        Fecha& operator --();	/// Pre
+        // TODO Fecha operator --(int);	/// Pos
 
         /* TODO
         bool operator <(const Fecha& f2) const;
@@ -45,6 +53,8 @@ class Fecha
         int operator -(const Fecha& f2) const;
         int difEnAnios(const Fecha& f2) const;
         int diaSemana() const;
+        int difDias(Fecha)  // Diferencia en días entre dos fechas
+
         */
 
         Fecha sumarMeses(int cantmeses)const;
@@ -55,5 +65,6 @@ class Fecha
 };
 
 ostream& operator <<(ostream& sal, const Fecha& f);
+istream& operator >>(istream& ent, Fecha& f);
 
 #endif // FECHA_H

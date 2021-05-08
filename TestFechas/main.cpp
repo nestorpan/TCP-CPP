@@ -7,15 +7,21 @@
 
 #define ERR_INGR_FECHA 1
 #define ARG_TXT_SAL 1
+#define ARG_TXT_ENT 2
 
 using namespace std;
 
 
 int main(int argc, char* argv[])
 {
+    //cout << "Cant Args = " << argc << endl;
 	filebuf fbSal;
     fbSal.open(argv[ARG_TXT_SAL], ios::out);
     ostream salida(&fbSal);
+
+    filebuf fbEnt;
+    fbEnt.open(argv[ARG_TXT_ENT], ios::in);
+    istream entrada(&fbEnt);
 
     Fecha hoy;
 
@@ -47,10 +53,13 @@ int main(int argc, char* argv[])
     //salida << hoy << endl;
 
     // hoy += 30;
+    // hoy = hoy + 30;
+    // Fecha maniana = hoy + 1;
+
 
     int dia, mes, anio;
 
-    hoy.getDMA(&dia, &mes, &anio);
+    hoy.getDMA(dia, mes, anio);
 
 //    cout << "anio: " << anio << (Fecha::esBisiesto(2020)?"":" NO ")<< "es bisiesto" << endl;
 
@@ -58,13 +67,16 @@ int main(int argc, char* argv[])
 
 
     hoy = Fecha::hoy();
+    //cout << "Ayer fue ==> " << --hoy << endl;
+
     /*
 	cout << hoy << endl;
 	cout << hoy++ << endl;
 	cout << ++hoy << endl;
 */
 	// cout << 10 + hoy << endl;
-	cout << "Mas 4 meses ==> " << hoy.sumarMeses(4) << endl;
+	// cout << hoy + 40 << endl;
+	//cout << "Mas 4 meses ==> " << hoy.sumarMeses(4) << endl;
 
 /*
     Fecha maniana = hoy++;
@@ -76,5 +88,17 @@ int main(int argc, char* argv[])
     cout << "Mañana es: " << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio << endl;
 
 */
+
+    //Fecha fIngresada;
+    Fecha fIngresada('.');
+
+    while(entrada.peek() != EOF)
+    {
+        entrada >> fIngresada;
+        entrada.ignore(1);  // Consume en <ENTER (LF o CRLF)>
+        cout << "La fecha ingresada del archivo es: " << fIngresada << endl;
+        salida << "La fecha ingresada del archivo es: " << fIngresada << endl;
+    }
+
     return 0;
 }

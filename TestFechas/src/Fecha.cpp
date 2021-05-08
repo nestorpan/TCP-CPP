@@ -12,18 +12,30 @@ const int Fecha::acumuladoMesesBisiesto[] = {0, 0, 31, 60, 91, 121, 152, 182, 21
 Fecha::Fecha()
 {
 	this->diaRel = 1;
+	this->separador = '/';
+}
+
+Fecha::Fecha(char separador)
+{
+	this->diaRel = 1;
+	this->separador = separador;
 }
 
 Fecha::Fecha(int dia, int mes, int anio)
 {
-    if(!esFechaValida(dia, mes, anio))
-		throw FechaException("La fecha es inválida");
-
-	int cantAnios = anio - ANIO_BASE;
-	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
-	this->diaRel = diasAniosCompl + diaDelAnio(dia, mes, anio);
+    this->setDMA(dia, mes, anio);
 }
 
+Fecha::Fecha(int dia, int mes, int anio, char separador)
+{
+    this->setDMA(dia, mes, anio);
+    this->separador = separador;
+}
+
+char Fecha::getSeparador() const
+{
+    return this->separador;
+}
 
 Fecha Fecha::sumarDias(int dias) const
 {
@@ -33,7 +45,7 @@ Fecha Fecha::sumarDias(int dias) const
 }
 
 
-void Fecha::getDMA(int* d, int* m, int* a) const
+void Fecha::getDMA(int& d, int& m, int& a) const
 {
 	int cantAniosComplCalc = this->diaRel / 365;
 	unsigned long diasAniosComplCalc = cantAniosComplCalc * 365 + cantAniosComplCalc / 4 - cantAniosComplCalc / 100 + cantAniosComplCalc / 400;
@@ -46,11 +58,21 @@ void Fecha::getDMA(int* d, int* m, int* a) const
 
 	int anio = ANIO_BASE + cantAniosComplCalc;
 
-	*a = anio;
+	a = anio;
 
 	int diaDelAnio = this->diaRel - diasAniosComplCalc;
 
 	diaDelAnioADiaMes(diaDelAnio, anio, d, m);
+}
+
+void Fecha::setDMA(int d, int m, int a)
+{
+   if(!esFechaValida(d, m, a))
+		throw FechaException("La fecha es inválida");
+
+	int cantAnios = a - ANIO_BASE;
+	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
+	this->diaRel = diasAniosCompl + diaDelAnio(d, m, a);
 }
 
 Fecha Fecha::operator +(int dias) const
@@ -87,6 +109,12 @@ Fecha Fecha::operator ++(int) /// Pos
 	return temp;
 }
 
+Fecha& Fecha::operator --()	/// Pre
+{
+	--this->diaRel;
+	return *this; // Desreferencia
+}
+
 Fecha Fecha::hoy()
 {
 	time_t segs = time(NULL);
@@ -113,7 +141,7 @@ bool Fecha::esBisiesto(int anio)
 }
 
 
-void Fecha::diaDelAnioADiaMes(int diaDelAnio, int anio, int* d, int* m)
+void Fecha::diaDelAnioADiaMes(int diaDelAnio, int anio, int& d, int& m)
 {
 	const int* acumuladoMeses = esBisiesto(anio)? acumuladoMesesBisiesto : acumuladoMesesNoBisiesto;
 
@@ -123,9 +151,9 @@ void Fecha::diaDelAnioADiaMes(int diaDelAnio, int anio, int* d, int* m)
 		mes++;
 
 	mes--;
-	*m = mes;
+	m = mes;
 
-	*d = diaDelAnio - acumuladoMeses[mes];
+	d = diaDelAnio - acumuladoMeses[mes];
 }
 
 bool Fecha::esFechaValida(int dia, int mes, int anio)
@@ -158,17 +186,35 @@ int Fecha::cantDiasMes(int mes, int anio)
 ostream& operator <<(ostream& sal, const Fecha& f)
 {
 	int dia, mes, anio;
-	f.getDMA(&dia, &mes, &anio);
+	f.getDMA(dia, mes, anio);
 
-	return sal << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio;
+	return sal << setfill('0') << setw(2) << dia <<
+            f.getSeparador() <<
+            setfill('0') << setw(2) << mes <<
+            f.getSeparador() <<
+            setfill('0') << setw(4) << anio;
+//	return sal << setfill('0') << setw(2) << dia << '/' << setfill('0') << setw(2) << mes << '/' << setfill('0') << setw(4) << anio;
+//	return sal << setw(2) << fixed << dia << '/' << setw(2) << fixed << mes << '/' << setw(4) << fixed << anio;
 //	return sal << d << '/' << m << '/' << a;
+}
+
+                    //desde main entrada >> fIngresada;
+istream& operator >>(istream& ent, Fecha& f)
+{
+	int d, m, a;
+	char separador;
+
+	ent >> d >> separador >> m >> separador >> a;
+	f.setDMA(d, m, a);
+
+	return ent;
 }
 
 Fecha Fecha::sumarMeses(int cantmeses)const
 {
     Fecha fsuma(*this);
     int dia,mes,anio;
-    getDMA(&dia,&mes,&anio);
+    getDMA(dia, mes, anio);
 
 
 
