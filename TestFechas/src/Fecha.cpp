@@ -12,7 +12,7 @@ const int Fecha::acumuladoMesesBisiesto[] = {0, 0, 31, 60, 91, 121, 152, 182, 21
 Fecha::Fecha()
 {
 	this->diaRel = 1;
-	this->separador = '/';
+	//this->separador = '/';
 }
 
 Fecha::Fecha(char separador)
@@ -114,6 +114,11 @@ Fecha& Fecha::operator --()	/// Pre
 	--this->diaRel;
 	return *this; // Desreferencia
 }
+Fecha Fecha:: operator--(int)
+{
+     this->diaRel--;
+     return (*this+1);
+}
 
 Fecha Fecha::hoy()
 {
@@ -125,7 +130,7 @@ Fecha Fecha::hoy()
 	int mes = timeMachine->tm_mon + 1;
 	int anio = timeMachine->tm_year + 1900;
 
-	return Fecha(dia, mes, anio);
+	return Fecha(dia, mes, anio, '-');
 }
 /********** Funciones miembro (métodos) privadas **********/
 

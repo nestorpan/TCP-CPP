@@ -9,7 +9,7 @@ class Fecha
 {
     private:
         unsigned long diaRel;
-        char separador;
+        char separador = '/';
 
         static const int acumuladoMesesNoBisiesto[13];
         static const int acumuladoMesesBisiesto[13];
@@ -41,7 +41,7 @@ class Fecha
         Fecha operator ++(int);	/// Pos
 
         Fecha& operator --();	/// Pre
-        // TODO Fecha operator --(int);	/// Pos
+        Fecha operator --(int);	/// Pos
 
         /* TODO
         bool operator <(const Fecha& f2) const;
