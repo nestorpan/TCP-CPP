@@ -1,5 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
+#include <queue>
+
 #include "Cadena.h"
 
 
@@ -55,9 +57,50 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 }
 
 
-ostream& operator <<(ostream& sal, const Cadena& cad)
+bool Cadena::vacia() const
 {
-	return sal << cad.cad;
+	return *this->cad == '\0';
+}
+
+
+ostream& operator <<(ostream& sal, const Cadena& cadena)
+{
+	return sal << cadena.cad;
+}
+
+
+istream& operator >>(istream& ent, Cadena& cadena)
+{
+	size_t cantCar = 0;
+	char c;
+	queue<char> colaChars;
+	
+	while((c = ent.get()) != EOF && c != '\n')
+	{
+		cantCar++;
+		colaChars.push(c); /// Encolar
+	}
+	
+	if(strlen(cadena.cad) != cantCar)
+	{
+		delete [] cadena.cad;
+		cadena.cad = new char[cantCar + 1];
+	}
+	
+	char* pc = cadena.cad;
+	
+	while(!colaChars.empty()) /// Cola Vacía
+	{
+		*pc = colaChars.front(); /// Ver Frente de Cola
+		colaChars.pop(); /// Desencolar
+		++pc;
+	}
+	
+	*pc = '\0';
+	
+	ent.peek(); /// Para prender el flag EOF, si estoy al final del archivo, pero no intenté leer.
+	
+	return ent;
 }
 
 
@@ -65,7 +108,7 @@ int Cadena::cantDigitos(int n)
 {
 	int cantDig = 1;
 	
-	while(n /= 10 > 0)
+	while((n /= 10) > 0)
 		cantDig++;
 	
 	return cantDig;

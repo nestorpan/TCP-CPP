@@ -26,6 +26,9 @@ public:
 	
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cad);
+	friend istream& operator >>(istream& ent, Cadena& cad);
+	
+	bool vacia() const;
 };
 
 

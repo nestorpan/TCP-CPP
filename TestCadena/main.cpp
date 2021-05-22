@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include "../Cadena/Cadena.h"
 
@@ -8,11 +9,23 @@ using namespace std;
 void func1();
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    func1();
+///    func1();
     
-    ///...
+    filebuf fb;
+	fb.open(argv[1], ios::in);
+	istream emplIS(&fb);
+    
+    Cadena linea;
+    
+    while(!emplIS.eof())
+    {
+        emplIS >> linea;
+        cout << linea << endl;
+    }
+    
+    fb.close();
     
     return 0;
 }
