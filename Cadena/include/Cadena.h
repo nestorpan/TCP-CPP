@@ -2,6 +2,7 @@
 #define CADENA_H
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ class Cadena
         Cadena(char* cad);
 
         static int cantDigitos(int n);
+        static char* proximoSeparador(const char* origen, char separador);
 
     public:
         Cadena();
@@ -21,13 +23,16 @@ class Cadena
         Cadena(const char* cad);
         Cadena(char c);
         Cadena(int n);
-        Cadena(double n);
+        Cadena(float n);
+
         ~Cadena();
 
         char* getCad() const;
-        // TODO
-        // +=
-        // >, >= <, <=
+
+        vector<Cadena> split(char separador);
+
+        Cadena& operator =(const Cadena& otra);
+        Cadena& operator +=(const Cadena& otra);
 
         friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
         friend ostream& operator <<(ostream& sal, const Cadena& cad);

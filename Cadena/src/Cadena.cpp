@@ -32,11 +32,17 @@ Cadena::Cadena(int n)
 	sprintf(this->cad, "%d", n);
 }
 
-Cadena::Cadena(double n)
+Cadena::Cadena(float n)
 {
     // TODO cantDigitos(n)
-//	this->cad = new char[n + 1];
+	//this->cad = new char[n + 1];
 	sprintf(this->cad, "%.2f", n);
+}
+
+Cadena::Cadena(const Cadena& otra)
+{
+	this->cad = new char[strlen(otra.cad) + 1];
+	strcpy(this->cad, otra.cad);
 }
 
 Cadena::Cadena(char* cad)
@@ -50,6 +56,35 @@ Cadena::~Cadena()
 	delete [] this->cad;
 }
 
+Cadena& Cadena::operator =(const Cadena& otra)
+{
+	size_t nuevoTam = strlen(otra.cad);
+
+
+	if(strlen(this->cad) != nuevoTam)
+	{
+		delete [] this->cad;
+		this->cad = new char[nuevoTam + 1];
+	}
+
+	strcpy(this->cad, otra.cad);
+
+	return *this;
+}
+
+
+Cadena& Cadena::operator +=(const Cadena& otra)
+{
+	char* vConcat = new char[strlen(this->cad) + strlen(otra.cad) + 1];
+
+	strcpy(vConcat, this->cad);
+	strcat(vConcat, otra.cad);
+
+	delete [] this->cad;
+	this->cad = vConcat;
+
+	return *this;
+}
 
 Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 {
@@ -117,7 +152,53 @@ bool Cadena::vacia() const
 	return *this->cad == '\0';
 }
 
+
+vector<Cadena> Cadena::split(char separador)
+{
+	vector<Cadena> campos;
+
+	char* origen = this->cad;
+	char* posSeparador;
+	char* subcad;
+	char* destino;
+
+	while(*origen)
+	{
+		posSeparador = proximoSeparador(origen, separador);
+
+		subcad = new char[posSeparador - origen + 1];
+		destino = subcad;
+
+		while(origen < posSeparador) {
+            *destino = *origen;
+            ++origen;
+            destino++;
+		}
+		//for(; origen < posSeparador; origen++, destino++)
+			//*destino = *origen;
+
+		*destino = '\0';
+
+		if(*origen)
+			++origen;
+
+		campos.push_back(subcad);
+	}
+
+	return campos;
+}
+
 char* Cadena::getCad() const
 {
     return this->cad;
+}
+
+char* Cadena::proximoSeparador(const char* origen, char separador)
+{
+	char* posSeparador;
+
+	if((posSeparador = strchr((char*)origen, separador)))
+		return posSeparador;
+
+	return strchr((char*)origen, '\0');
 }

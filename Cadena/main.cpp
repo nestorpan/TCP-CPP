@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string.h>
 
+#include <iomanip>
+
 //#include "../Cadena/Cadena.h"
 #include "Cadena.h"
 #include "locale.h"
@@ -27,11 +29,18 @@ int main(int argc, char* argv[])
     while(!emplIS.eof())
     {
         emplIS >> linea;
-        //char c = linea.getCad()[strlen(linea.getCad())];
-        if (!linea.vacia()) {
-            cout << linea << endl;
-        }
+        vector<Cadena> campos = linea.split('|');
+
+        for(vector<Cadena>::iterator i = campos.begin(); i < campos.end(); i++)
+            cout << setw(20) << *i << "\t";
+
+        cout << endl;
     }
+
+    Cadena linea2("32234567");
+    //cout << strlen(linea2.getCad()) << endl;
+    linea2 += linea;
+    cout << linea2 << endl;
 
     fb.close();
 
