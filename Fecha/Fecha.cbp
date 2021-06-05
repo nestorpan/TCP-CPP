@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Cadena" />
+		<Option title="Fecha" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Cadena" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Fecha" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
 				<Option type="2" />
@@ -16,11 +16,10 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add directory="./" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Cadena" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Fecha" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
 				<Option type="2" />
@@ -29,15 +28,16 @@
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-Wall" />
-					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="Cadena.cpp" />
-		<Unit filename="Cadena.h" />
+		<Unit filename="Fecha.cpp" />
+		<Unit filename="Fecha.h" />
+		<Unit filename="FechaException.cpp" />
+		<Unit filename="FechaException.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

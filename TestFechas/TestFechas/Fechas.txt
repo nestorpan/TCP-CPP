@@ -1,5 +1,0 @@
-La fecha ayer es: 07/05/2021
-La fecha hoy es: 25/06/2021
-Hoy posta es: 08/05/2021
-Mas 4 meses ==> 07/09/2021
-Mañana es: 09/05/2021

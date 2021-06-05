@@ -16,6 +16,9 @@
 					<Add option="-g" />
 					<Add directory="./" />
 				</Compiler>
+				<Linker>
+					<Add library="../Fecha/bin/Debug/libFecha.a" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/TestFechas" prefix_auto="1" extension_auto="1" />
@@ -35,10 +38,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Fecha.cpp" />
-		<Unit filename="Fecha.h" />
-		<Unit filename="FechaException.cpp" />
-		<Unit filename="FechaException.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

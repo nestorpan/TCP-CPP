@@ -2,8 +2,8 @@
 #include <fstream>
 #include <iomanip>
 
-#include "Fecha.h"
-#include "FechaException.h"
+#include "../Fecha/Fecha.h"
+#include "../Fecha/FechaException.h"
 
 #define ERR_INGR_FECHA 1
 #define ARG_TXT_SAL 1
