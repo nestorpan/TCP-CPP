@@ -4,11 +4,7 @@
 
 Persona::Persona()
 : dni(0), apyn(), sexo('M'), fNac(), estadoCivil('S')
-{
-	this->dni = 0;
-	
-	cout << "Constructor Persona Default" << endl;
-}
+{}
 
 
 Persona::Persona(unsigned dni, const Cadena& apyn, char sexo, const Fecha& fNac, char estadoCivil)
@@ -92,21 +88,30 @@ char Persona::getEstadoCivil() const
 }
 
 
+int Persona::getEdad()
+{
+	return this->fNac.difEnAnios(Fecha::hoy());
+}
+
+
 ostream& operator <<(ostream& sal, const Persona& p)
 {
 	return sal << p.dni << '|' << p.apyn << '|' << p.sexo << '|' << p.fNac << '|' << p.estadoCivil;
 }
 
 
-Persona& Persona::operator =(const Persona& otra)
+istream& operator >>(istream& ent, Persona& p)
 {
-	cout << "Persona Operator =" << endl;
+	Cadena linea;
+	ent >> linea;
 	
-	this->setDni(otra.dni);
-	this->setApyn(otra.apyn);
-	this->setSexo(otra.sexo);
-	this->setFNac(otra.fNac);
-	this->setEstadoCivil(otra.estadoCivil);
+	vector<Cadena> campos = linea.split('|');
 	
-	return *this;
+	p.dni = campos[0].toUnsigned();
+	p.apyn = campos[1];
+	p.sexo = campos[2][0];
+	p.fNac = campos[3].toFecha();
+	p.estadoCivil = campos[4][0];
+	
+	return ent;
 }

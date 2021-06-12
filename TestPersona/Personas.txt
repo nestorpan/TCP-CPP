@@ -1,0 +1,4 @@
+22333444|Pérez, Juan|M|28/9/2019|C
+33444555|Rodríguez, Pedro|M|2/10/2017|S
+44555666|Aguirre, Alan|M|11/4/2016|V
+32234567|Belice, Brenda|F|20/12/2018|D

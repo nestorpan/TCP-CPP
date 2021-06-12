@@ -187,6 +187,22 @@ Fecha Fecha::sumarMeses(int cantmeses)const
 }
 
 
+int Fecha::difEnAnios(const Fecha& f2) const
+{
+	int d1, m1, a1, d2, m2, a2;
+	
+	this->getDMA(d1, m1, a1);
+	f2.getDMA(d2, m2, a2);
+	
+	int dif = a2 - a1;
+	
+	if(m2 * 100 + d2 < m1 * 100 + d1)
+		dif--;
+	
+	return dif;
+}
+
+
 ostream& operator <<(ostream& sal, const Fecha& f)
 {
 	int dia, mes, anio;

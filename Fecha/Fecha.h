@@ -37,6 +37,7 @@ public:
 	Fecha& operator --();	/// Pre
 	
 	static Fecha hoy();
+	int difEnAnios(const Fecha& f2) const;
 	
 	friend Fecha operator +(int dias, const Fecha& f);
 };

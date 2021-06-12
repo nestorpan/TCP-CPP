@@ -83,6 +83,12 @@ Cadena& Cadena::operator +=(const Cadena& otra)
 }
 
 
+char Cadena::operator [](int pos) const
+{
+	return this->cad[pos];
+}
+
+
 Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 {
 	char* vConcat = new char[strlen(cad1.cad) + strlen(cad2.cad) + 1];
@@ -194,9 +200,26 @@ int Cadena::cantDigitos(int n)
 }
 
 
+unsigned Cadena::toUnsigned()
+{
+	unsigned u;
+	sscanf(this->cad, "%u", &u);
+	return u;
+}
 
 
+int Cadena::toInt()
+{
+	int i;
+	sscanf(this->cad, "%d", &i);
+	return i;
+}
 
 
+Fecha Cadena::toFecha()
+{
+	vector<Cadena> campos = this->split('/');
+	return Fecha(campos[0].toInt(), campos[1].toInt(), campos[2].toInt());
+}
 
 

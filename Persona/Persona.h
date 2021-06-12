@@ -14,6 +14,7 @@ private:
 	Fecha fNac;
 	char estadoCivil;
 	
+protected:
 	Persona(unsigned dni, const Cadena& apyn, char sexo, const Fecha& fNac, char estadoCivil);
 	
 public:
@@ -34,11 +35,12 @@ public:
 	void setEstadoCivil(char estadoCivil);
 	char getEstadoCivil() const;
 	
+	int getEdad();
+	
 	friend ostream& operator <<(ostream& sal, const Persona& p);
+	friend istream& operator >>(istream& ent, Persona& p);
 	
 	friend class PersonaBuilder;
-	
-	Persona& operator =(const Persona& otra);
 };
 
 

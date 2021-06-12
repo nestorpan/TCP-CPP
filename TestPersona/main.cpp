@@ -8,7 +8,7 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char* argv[])
 {
 	filebuf fbLog;
 	fbLog.open("Logs.txt", ios::app);
@@ -29,6 +29,7 @@ int main()
 		return 1;
 	}
 */	
+/*
 	try
 	{
 		Persona p = pb.build();
@@ -40,7 +41,24 @@ int main()
 		logOS << ex.getMensaje() << endl;
 		return 1;
 	}
-
+*/	
+	
+	filebuf fbPersonas;
+	
+	if(!fbPersonas.open(argv[1], ios::in))
+		return 1;
+	
+	istream isPersonas(&fbPersonas);
+	
+	Persona pers;
+	
+	while(!isPersonas.eof())
+	{
+		isPersonas >> pers;
+		cout << pers << endl;
+	}
+	
+	fbPersonas.close();
 	
     return 0;
 }

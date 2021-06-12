@@ -19,6 +19,7 @@ int main(int argc, char* argv[])
 	istream emplIS(&fb);
     
     Cadena linea;
+    emplIS.peek(); /// Por si está vacío. Prende EOF.
     
     while(!emplIS.eof())
     {
