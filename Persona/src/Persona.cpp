@@ -5,17 +5,18 @@
 Persona::Persona()
 : dni(0), apyn(), sexo('M'), fNac(), estadoCivil('S')
 {
-
 }
 
 
-Persona::Persona(unsigned dni, const Cadena& apyn, char sexo, const Fecha& fNac, char estadoCivil)
+Persona::Persona(unsigned dni, const Cadena& apyn, char sexo, const Fecha& fNac, char estadoCivil, Cadena email)
 {
     this->setDni(dni);
 	this->setApyn(apyn);
 	this->setSexo(sexo);
 	this->setFNac(fNac);
 	this->setEstadoCivil(estadoCivil);
+
+	this->email = email;
 }
 
 void Persona::setDni(unsigned dni)
@@ -86,10 +87,30 @@ char Persona::getEstadoCivil() const
 	return this->estadoCivil;
 }
 
+int Persona::getEdad()
+{
+	return this->fNac.difEnAnios(Fecha::hoy());
+}
 
 ostream& operator <<(ostream& sal, const Persona& p)
 {
-	return sal << p.dni << '|' << p.apyn << '|' << p.sexo << '|' << p.fNac << '|' << p.estadoCivil;
+	return sal << p.dni << '|' << p.apyn << '|' << p.sexo << '|' << p.fNac << '|' << p.estadoCivil << '|' << p.email;
+}
+
+istream& operator >>(istream& ent, Persona& p)
+{
+	Cadena linea;
+	ent >> linea;
+
+	vector<Cadena> campos = linea.split('|');
+
+	p.dni = campos[0].toUnsigned();
+	p.apyn = campos[1];
+	p.sexo = campos[2][0];
+	p.fNac = campos[3].toFecha();
+	p.estadoCivil = campos[4][0];
+
+	return ent;
 }
 
 /*

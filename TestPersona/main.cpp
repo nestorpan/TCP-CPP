@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "locale.h"
+
 #include "../Persona/include/PersonaBuilder.h"
 #include "../Persona/include/PersonaException.h"
 #include "../Fecha/FechaException.h"
@@ -8,36 +10,34 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char* argv[])
 {
+    setlocale(LC_CTYPE, "spanish");
+
 	filebuf fbLog;
 	fbLog.open("Logs.txt", ios::app);
 	ostream logOS(&fbLog);
 
 	PersonaBuilder pb;
-	pb.setDni(2404600);
+	pb.setDni(1);
 	pb.setApyn("Pepe Argento");
 	pb.setEstadoCivil('C');
 
+/*
 	try
 	{
 		pb.setFNac(Fecha(1, 3, 1993));
-
-		Fecha fecNac = Fecha(1, 3, 1993);
-		pb.setFNac(fecNac);
 	}
 	catch(FechaException& ex)
 	{
 		logOS << ex.getMensaje() << endl;
 		return 1;
 	}
-
-    Persona p;
+*/
+/*
 	try
 	{
-		p = pb.build();
-		Persona p2 = pb.build();
-
+		Persona p = pb.build();
 
 		cout << p << endl;
 	}
@@ -46,7 +46,24 @@ int main()
 		logOS << ex.getMensaje() << endl;
 		return 1;
 	}
+*/
 
+	filebuf fbPersonas;
+
+	if(!fbPersonas.open(argv[1], ios::in))
+		return 1;
+
+	istream isPersonas(&fbPersonas);
+
+	Persona pers;
+
+	while(!isPersonas.eof())
+	{
+		isPersonas >> pers;
+		cout << pers << endl;
+	}
+
+	fbPersonas.close();
 
     return 0;
 }

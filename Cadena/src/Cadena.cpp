@@ -136,6 +136,10 @@ istream& operator >>(istream& ent, Cadena& cadena)
 	return ent;
 }
 
+char Cadena::operator [](int pos) const
+{
+	return this->cad[pos];
+}
 
 int Cadena::cantDigitos(int n)
 {
@@ -201,4 +205,26 @@ char* Cadena::proximoSeparador(const char* origen, char separador)
 		return posSeparador;
 
 	return strchr((char*)origen, '\0');
+}
+
+unsigned Cadena::toUnsigned()
+{
+	unsigned u;
+	sscanf(this->cad, "%u", &u);
+	return u;
+}
+
+
+int Cadena::toInt()
+{
+	int i;
+	sscanf(this->cad, "%d", &i);
+	return i;
+}
+
+
+Fecha Cadena::toFecha()
+{
+	vector<Cadena> campos = this->split('/');
+	return Fecha(campos[0].toInt(), campos[1].toInt(), campos[2].toInt());
 }

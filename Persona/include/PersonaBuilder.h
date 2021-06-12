@@ -14,6 +14,8 @@ class PersonaBuilder
         char sexo;
         Fecha fNac;
         char estadoCivil;
+        Cadena email;
+
 
     public:
         PersonaBuilder();
@@ -23,6 +25,7 @@ class PersonaBuilder
         void setSexo(char sexo);
         void setFNac(const Fecha& fNac);
         void setEstadoCivil(char estadoCivil);
+        void setEmail(const Cadena& email);
 
         Persona build();
 };

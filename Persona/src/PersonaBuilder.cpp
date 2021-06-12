@@ -2,9 +2,8 @@
 
 
 PersonaBuilder::PersonaBuilder()
-: dni(0), apyn(), sexo('T'), fNac(), estadoCivil('S')
+: dni(0), apyn(), sexo('F'), fNac(), estadoCivil('S'), email()
 {}
-
 
 void PersonaBuilder::setDni(unsigned dni)
 {
@@ -17,6 +16,10 @@ void PersonaBuilder::setApyn(const Cadena& apyn)
 	this->apyn = apyn;
 }
 
+void PersonaBuilder::setEmail(const Cadena& email)
+{
+	this->email = email;
+}
 
 void PersonaBuilder::setSexo(char sexo)
 {
@@ -38,5 +41,5 @@ void PersonaBuilder::setEstadoCivil(char estadoCivil)
 
 Persona PersonaBuilder::build()
 {
-	return Persona(dni, apyn, sexo, fNac, estadoCivil);
+	return Persona(dni, apyn, sexo, fNac, estadoCivil, email);
 }

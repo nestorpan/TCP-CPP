@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+#include "../Fecha/Fecha.h"
+
 using namespace std;
 
 
@@ -33,12 +35,16 @@ class Cadena
 
         Cadena& operator =(const Cadena& otra);
         Cadena& operator +=(const Cadena& otra);
+        char operator [](int pos) const;
 
         friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
         friend ostream& operator <<(ostream& sal, const Cadena& cad);
         friend istream& operator >>(istream& ent, Cadena& cad);
 
         bool vacia() const;
+        unsigned toUnsigned();
+        int toInt();
+        Fecha toFecha();
 };
 
 
