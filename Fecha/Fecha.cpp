@@ -2,6 +2,8 @@
 #include "FechaException.h"
 #include "time.h"
 #include <iomanip>
+#include <fstream>
+
 
 #define ANIO_BASE 1601
 
@@ -200,6 +202,18 @@ int Fecha::difEnAnios(const Fecha& f2) const
 		dif--;
 	
 	return dif;
+}
+
+
+void Fecha::write(ofstream& stream) const
+{
+	stream.write((char*)&this->diaRel, sizeof(unsigned long));
+}
+
+
+void Fecha::read(ifstream& stream)
+{
+	stream.read((char*)&this->diaRel, sizeof(unsigned long));
 }
 
 

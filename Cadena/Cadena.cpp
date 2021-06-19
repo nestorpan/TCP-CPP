@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <queue>
+#include <fstream>
 
 #include "Cadena.h"
 
@@ -37,6 +38,13 @@ Cadena::Cadena(int n)
 Cadena::Cadena(char* cad)
 {
 	this->cad = cad;
+}
+
+
+Cadena::Cadena(const string& str)
+{
+	this->cad = new char[str.length() + 1];
+	strcpy(this->cad, str.c_str());
 }
 
 
@@ -145,6 +153,29 @@ char* Cadena::proximoSeparador(const char* origen, char separador)
 		return posSeparador;
 	else
 		return strchr((char*)origen, '\0');
+}
+
+
+void Cadena::write(ofstream& stream) const
+{
+	size_t cantBytes = strlen(this->cad);
+	stream.write((char*)&cantBytes, sizeof(size_t));
+	stream.write((char*)this->cad, cantBytes);
+}
+
+
+void Cadena::read(ifstream& stream)
+{
+	size_t cantBytes;
+	stream.read((char*)&cantBytes, sizeof(size_t));
+	
+	if(cantBytes != strlen(this->cad))
+	{
+		delete [] this->cad;
+		this->cad = new char[cantBytes + 1];
+	}
+	
+	stream.read((char*)this->cad, cantBytes);
 }
 
 

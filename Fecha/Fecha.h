@@ -39,6 +39,9 @@ public:
 	static Fecha hoy();
 	int difEnAnios(const Fecha& f2) const;
 	
+	void write(ofstream& stream) const;
+	void read(ifstream& stream);
+	
 	friend Fecha operator +(int dias, const Fecha& f);
 };
 

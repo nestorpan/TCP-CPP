@@ -94,6 +94,26 @@ int Persona::getEdad()
 }
 
 
+void Persona::write(ofstream& stream) const
+{
+	stream.write((char*)&dni, sizeof(unsigned));
+	apyn.write(stream);
+	stream.write((char*)&sexo, sizeof(char));
+	fNac.write(stream);
+	stream.write((char*)&estadoCivil, sizeof(char));
+}
+
+
+void Persona::read(ifstream& stream)
+{
+	stream.read((char*)&dni, sizeof(unsigned));
+	apyn.read(stream);
+	stream.read((char*)&sexo, sizeof(char));
+	fNac.read(stream);
+	stream.read((char*)&estadoCivil, sizeof(char));
+}
+
+
 ostream& operator <<(ostream& sal, const Persona& p)
 {
 	return sal << p.dni << '|' << p.apyn << '|' << p.sexo << '|' << p.fNac << '|' << p.estadoCivil;
@@ -102,16 +122,24 @@ ostream& operator <<(ostream& sal, const Persona& p)
 
 istream& operator >>(istream& ent, Persona& p)
 {
-	Cadena linea;
-	ent >> linea;
+	string campoStr;
 	
-	vector<Cadena> campos = linea.split('|');
+	/// DNI
+	getline(ent, campoStr, '|');
+	p.dni = stoi(campoStr);
 	
-	p.dni = campos[0].toUnsigned();
-	p.apyn = campos[1];
-	p.sexo = campos[2][0];
-	p.fNac = campos[3].toFecha();
-	p.estadoCivil = campos[4][0];
+	/// ApYN
+	getline(ent, campoStr, '|');
+	p.apyn = campoStr;
+	
+	p.sexo = ent.get();
+	ent.ignore(1); /// Saco el |
+	
+	getline(ent, campoStr, '|');
+	p.fNac = ((Cadena&)campoStr).toFecha();
+	
+	p.estadoCivil = ent.get();
+	ent.ignore(1); /// Saco el |
 	
 	return ent;
 }

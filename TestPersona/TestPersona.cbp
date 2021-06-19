@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="Personas.txt" />
+				<Option parameters="Empleados.txt" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -43,6 +43,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Empleados.txt" />
 		<Unit filename="Personas.txt" />
 		<Unit filename="main.cpp" />
 		<Extensions />

@@ -25,6 +25,7 @@ public:
 	Cadena(char c);
 	Cadena(int n);
 	Cadena(float n);
+	Cadena(const string& str);
 	
 	Cadena(const Cadena& otra);
 	~Cadena();
@@ -38,6 +39,8 @@ public:
 	unsigned toUnsigned();
 	int toInt();
 	Fecha toFecha();
+	void write(ofstream& stream) const;
+	void read(ifstream& stream);
 	
 	friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
 	friend ostream& operator <<(ostream& sal, const Cadena& cad);

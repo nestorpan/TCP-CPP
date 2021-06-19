@@ -1,6 +1,8 @@
 #ifndef PERSONA_H
 #define PERSONA_H
 
+#include <fstream>
+
 #include "../Cadena/Cadena.h"
 #include "../Fecha/Fecha.h"
 
@@ -36,6 +38,9 @@ public:
 	char getEstadoCivil() const;
 	
 	int getEdad();
+	
+	void write(ofstream& stream) const;
+	void read(ifstream& stream);
 	
 	friend ostream& operator <<(ostream& sal, const Persona& p);
 	friend istream& operator >>(istream& ent, Persona& p);

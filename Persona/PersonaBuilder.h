@@ -8,7 +8,7 @@
 
 class PersonaBuilder
 {
-private:
+protected:
 	unsigned dni;
 	Cadena apyn;
 	char sexo;

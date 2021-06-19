@@ -14,6 +14,9 @@ private:
 public:
 	EmpleadoBuilder();
 	
+	void setfIngr(const Fecha& fIngr);
+	void setSueldo(double sueldo);
+	
 	Empleado build();
 };
 
