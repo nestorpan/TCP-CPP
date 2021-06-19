@@ -22,8 +22,13 @@ class Empleado : public Persona
 
         int getAntiguedad();
 
+        void write(ofstream& stream) const;
+        void read(ifstream& stream);
+
         friend ostream& operator <<(ostream& sal, const Empleado& empl);
         friend istream& operator >>(istream& ent, Empleado& empl);
+
+        friend class EmpleadoBuilder;
 };
 
 

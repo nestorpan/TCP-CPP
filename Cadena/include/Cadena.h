@@ -26,6 +26,7 @@ class Cadena
         Cadena(char c);
         Cadena(int n);
         Cadena(float n);
+        Cadena(const string& str);
 
         ~Cadena();
 
@@ -40,6 +41,9 @@ class Cadena
         friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);
         friend ostream& operator <<(ostream& sal, const Cadena& cad);
         friend istream& operator >>(istream& ent, Cadena& cad);
+
+        void write(ofstream& stream) const;
+        void read(ifstream& stream);
 
         bool vacia() const;
         unsigned toUnsigned();

@@ -60,6 +60,9 @@ class Fecha
         Fecha sumarMeses(int cantmeses)const;
         int difEnAnios(const Fecha& f2) const;
 
+        void write(ofstream& stream) const;
+        void read(ifstream& stream);
+
         friend Fecha operator +(int dias, const Fecha& f);
         //friend istream& operator >>(istream& ent, Fecha& f);
 };

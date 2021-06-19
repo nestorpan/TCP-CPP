@@ -40,5 +40,41 @@ int Empleado::getAntiguedad()
 	return this->fIngr.difEnAnios(Fecha::hoy());
 }
 
-ostream& operator <<(ostream& sal, const Empleado& empl);
-istream& operator >>(istream& ent, Empleado& empl);
+ostream& operator <<(ostream& sal, const Empleado& empl)
+{
+	return sal << (const Persona&)empl << '|' << empl.fIngr << '|' << empl.sueldo;
+}
+
+istream& operator >>(istream& ent, Empleado& empl)
+{
+	ent >> (Persona&)empl;
+
+	string campoStr;
+
+	/// FIngr
+	getline(ent, campoStr, '|');
+	empl.fIngr = ((Cadena)campoStr).toFecha();
+
+	/// Sueldo
+	getline(ent, campoStr);
+	empl.sueldo = stod(campoStr);
+
+	ent.ignore(1); // Ignora line separator
+
+	return ent;
+}
+
+void Empleado::write(ofstream& stream) const
+{
+	this->Persona::write(stream);
+	this->fIngr.write(stream);
+	stream.write((char*)&this->sueldo, sizeof(double));
+}
+
+
+void Empleado::read(ifstream& stream)
+{
+	this->Persona::read(stream);
+	this->fIngr.read(stream);
+	stream.read((char*)&this->sueldo, sizeof(double));
+}

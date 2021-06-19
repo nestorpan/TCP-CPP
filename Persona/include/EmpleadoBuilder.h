@@ -14,6 +14,9 @@ class EmpleadoBuilder : public PersonaBuilder
     public:
         EmpleadoBuilder();
 
+        void setFIngr(const Fecha& fIngr);
+        void setSueldo(double sueldo);
+
         Empleado build();
 };
 

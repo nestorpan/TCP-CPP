@@ -1,6 +1,23 @@
 #include "EmpleadoBuilder.h"
 
 EmpleadoBuilder::EmpleadoBuilder()
+: fIngr(), sueldo(0)
+{}
+
+
+void EmpleadoBuilder::setFIngr(const Fecha& fIngr)
 {
-    //ctor
+	this->fIngr = fIngr;
+}
+
+
+void EmpleadoBuilder::setSueldo(double sueldo)
+{
+	this->sueldo = sueldo;
+}
+
+
+Empleado EmpleadoBuilder::build()
+{
+	return Empleado(dni, apyn, sexo, fNac, estadoCivil, fIngr, sueldo);
 }
