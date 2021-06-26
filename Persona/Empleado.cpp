@@ -2,7 +2,7 @@
 
 
 Empleado::Empleado()
-: Persona(), fIngr(), sueldo(0)
+: fIngr(), sueldo(0)
 {}
 
 
