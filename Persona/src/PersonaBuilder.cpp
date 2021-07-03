@@ -2,7 +2,7 @@
 
 
 PersonaBuilder::PersonaBuilder()
-: dni(0), apyn(), sexo('F'), fNac(), estadoCivil('S'), email()
+: dni(1), apyn(), sexo('F'), fNac(), estadoCivil('S'), email()
 {}
 
 void PersonaBuilder::setDni(unsigned dni)
