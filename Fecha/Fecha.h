@@ -43,11 +43,11 @@ class Fecha
         Fecha& operator --();	/// Pre
         Fecha operator --(int);	/// Pos
 
-        /* TODO
         bool operator <(const Fecha& f2) const;
         bool operator >(const Fecha& f2) const;
+        bool operator <=(const Fecha& f2) const;
         bool operator >=(const Fecha& f2) const;
-
+/*
         void restarDias(int dias);
         Fecha restarDias(int dias) const;
         int operator -(const Fecha& f2) const;

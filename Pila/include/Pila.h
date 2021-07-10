@@ -1,6 +1,11 @@
 #ifndef PILA_H
 #define PILA_H
 
+#include <string>
+#include <cstring>
+#include "PilaException.h"
+
+using namespace std;
 
 template<class T>
 class Pila

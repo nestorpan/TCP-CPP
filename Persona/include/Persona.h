@@ -45,6 +45,11 @@ public:
 	friend ostream& operator <<(ostream& sal, const Persona& p);
 	friend istream& operator >>(istream& ent, Persona& p);
 
+    bool operator <(const Persona& f2) const;
+    bool operator >(const Persona& f2) const;
+    bool operator <=(const Persona& f2) const;
+    bool operator >=(const Persona& f2) const;
+
 	friend class PersonaBuilder;
 
 	///Persona& operator =(const Persona& otra);

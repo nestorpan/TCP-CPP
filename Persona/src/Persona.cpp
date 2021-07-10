@@ -120,6 +120,25 @@ istream& operator >>(istream& ent, Persona& p)
 
 	return ent;
 }
+bool Persona:: operator<(const Persona& f2) const
+{
+     return this->fNac < f2.fNac;
+}
+
+bool Persona:: operator>(const Persona& f2) const
+{
+     return this->fNac > f2.fNac;
+}
+
+bool Persona:: operator<=(const Persona& f2) const
+{
+     return this->fNac <= f2.fNac;
+}
+
+bool Persona:: operator>=(const Persona& f2) const
+{
+     return this->fNac >= f2.fNac;
+}
 
 /*
 Persona& Persona::operator =(const Persona& otra)

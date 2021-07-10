@@ -121,6 +121,26 @@ Fecha Fecha:: operator--(int)
      return (*this+1);
 }
 
+bool Fecha:: operator<(const Fecha& f2) const
+{
+     return this->diaRel < f2.diaRel;
+}
+
+bool Fecha:: operator>(const Fecha& f2) const
+{
+     return this->diaRel > f2.diaRel;
+}
+
+bool Fecha:: operator<=(const Fecha& f2) const
+{
+     return this->diaRel <= f2.diaRel;
+}
+bool Fecha:: operator>=(const Fecha& f2) const
+{
+     return this->diaRel >= f2.diaRel;
+}
+
+
 Fecha Fecha::hoy()
 {
 	time_t segs = time(NULL);
