@@ -2,31 +2,31 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="OrdenarConPilas" />
+		<Option title="StringUtils" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/OrdenarConPilas" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/StringUtils" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
-				<Linker>
-					<Add library="../Cadena/bin/Debug/libCadena.a" />
-					<Add library="../Fecha/bin/Debug/libFecha.a" />
-					<Add library="../Pila/bin/Debug/libPila.a" />
-					<Add library="../StringUtils/bin/Debug/libStringUtils.a" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/OrdenarConPilas" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/StringUtils" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-O2" />
 				</Compiler>
 				<Linker>
@@ -34,11 +34,8 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="StringUtils.cpp" />
+		<Unit filename="StringUtils.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -38,8 +38,10 @@
 		</Build>
 		<Unit filename="Nodo.h" />
 		<Unit filename="Pila.h" />
+		<Unit filename="PilaException.cpp" />
+		<Unit filename="PilaException.h" />
+		<Unit filename="PilaFactory.h" />
 		<Unit filename="PilaImplDinamica.h" />
-		<Unit filename="PilaImplEstatica.cpp" />
 		<Unit filename="PilaImplEstatica.h" />
 		<Extensions />
 	</Project>
