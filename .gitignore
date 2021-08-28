@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+*.depend
+*.layout
+/TestFecha/bin/Debug/TestFecha
