@@ -5,18 +5,24 @@ using namespace std;
 
 int main()
 {
-    int e;
-    cout << "Hello world! holaaaaa " << 100 << endl;
+    Fecha hoy(4, 9, 2021);
 
-    cout << "Ingrese un valor entero --> ";
-    cin >> e;
+//    Fecha mas30 = hoy.sumarDias(30);
 
-    cout << "El valor del entero ingresado es: " << e << endl;
+    int d, m, a;
+    hoy.getDMA(&d, &m, &a);
 
-
-    const Fecha hoy(28, 8 , 2021);
-    Fecha manana = hoy.sumarDias(1);
+	cout << d << '/' << m << '/' << a << endl;
 
 
+    Fecha hoyCopia(hoy);
+
+    hoyCopia.getDMA(&d, &m, &a);
+
+	cout << d << '/' << m << '/' << a << endl;
+
+    cout << "Fecha "<< (Fecha::esFechaValida(29, 2, 2021)?"":"NO " ) <<"OK!!" << endl;
+
+    cout << "Fecha "<< (hoyCopia.esFechaValida(29, 2, 2021)?"":"NO " ) <<"OK!!" << endl;
     return 0;
 }
