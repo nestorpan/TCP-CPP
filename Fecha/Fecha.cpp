@@ -1,3 +1,4 @@
+#include "FechaInvalidaException.h"
 #include "Fecha.h"
 
 
@@ -19,39 +20,43 @@ Fecha::Fecha()
 
 Fecha::Fecha(int d, int m, int a)
 {
-	if(!esFechaValida(d, m, a))
-		return;
-
-	int cantAnios = a - ANIO_BASE;
-	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
-	this->diaRel = diasAniosCompl + diaDelAnio(d, m, a);
+	this->setDMA(d, m, a);
 }
 
 
-Fecha Fecha::sumarDias(int dias) const
+Fecha Fecha::operator +(int dias) const
 {
+	if(this->diaRel + dias <= 0)
+		throw FechaInvalidaException("La fecha es inválida");
 
+	Fecha fechaSuma(*this);
+	fechaSuma.diaRel += dias;
+	return fechaSuma;
 }
 
 
-void Fecha::sumarDias(int dias)
+Fecha& Fecha::operator +=(int dias)
 {
+	if(this->diaRel + dias <= 0)
+		throw FechaInvalidaException("La operación += no se pudo realizar: La suma de los días dejarían a la fecha inválida.");
 
+	this->diaRel += dias;
+
+	return *this;
 }
 
 
-int Fecha::difDias(const Fecha* f2) const
+int Fecha::operator -(const Fecha& f2) const
 {
-
+	return this->diaRel - f2.diaRel;
 }
 
 
 bool Fecha::esFechaValida(int d, int m, int a)
 {
-	return a >= ANIO_BASE &&
-            m >= 1 && m <= 12 &&
-                d >= 1 && d <= cantDiasMes(m, a);
+	return a >= ANIO_BASE && m >= 1 && m <= 12 && d >= 1 && d <= cantDiasMes(m, a);
 }
+
 
 int Fecha::cantDiasMes(int m, int a)
 {
@@ -69,7 +74,7 @@ bool Fecha::esBisiesto(int a)
 	return (a % 4 == 0 && a % 100 != 0) || a % 400 == 0;
 }
 
-/// dia del prog = 256
+
 int Fecha::diaDelAnio(int d, int m, int a)
 {
 	int fila = esBisiesto(a)? 1 : 0;
@@ -78,7 +83,7 @@ int Fecha::diaDelAnio(int d, int m, int a)
 }
 
 
-void Fecha::getDMA(int* d, int* m, int* a) const
+void Fecha::getDMA(int& d, int& m, int& a) const
 {
 	int cantAnios = this->diaRel / 365;
 
@@ -90,11 +95,10 @@ void Fecha::getDMA(int* d, int* m, int* a) const
 		diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
 	}
 
-	*a = ANIO_BASE + cantAnios;
-
+	a = ANIO_BASE + cantAnios;
 	int diaDelAnio = this->diaRel - diasAniosCompl;
 
-	int fila = esBisiesto(*a)? 1 : 0;
+	int fila = esBisiesto(a)? 1 : 0;
 
 	int mes = 2;
 	while(diaDelAnio > acumDiasIniMes[fila][mes])
@@ -102,13 +106,19 @@ void Fecha::getDMA(int* d, int* m, int* a) const
 
 	mes--;
 
-	*m = mes;
+	m = mes;
 
-	*d = diaDelAnio - acumDiasIniMes[fila][mes];
+	d = diaDelAnio - acumDiasIniMes[fila][mes];
 }
 
 
 void Fecha::setDMA(int d, int m, int a)
 {
+	if(!esFechaValida(d, m, a))
+		throw FechaInvalidaException("La fecha es inválida");
 
+	int cantAnios = a - ANIO_BASE;
+	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
+	this->diaRel = diasAniosCompl + diaDelAnio(d, m, a);
 }
+
