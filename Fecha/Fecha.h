@@ -20,13 +20,14 @@ public:
 	Fecha();
 	Fecha(int d, int m, int a);
 	
-	Fecha sumarDias(int dias) const;
-	Fecha restarDias(int dias) const;
-	void sumarDias(int dias);
-	void restarDias(int dias);
-	int difDias(const Fecha* f2) const;
+	Fecha operator +(int dias) const;
+	Fecha operator -(int dias) const;
+	Fecha& operator +=(int dias);
+	Fecha& operator -=(int dias);
+	int operator -(const Fecha& f2) const;
+	Fecha operator ++();
 	int diaSemana() const;
-	void getDMA(int* d, int* m, int* a) const;
+	void getDMA(int& d, int& m, int& a) const;
 	void setDMA(int d, int m, int a);
 };
 

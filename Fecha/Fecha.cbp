@@ -17,6 +17,7 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="./" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +31,7 @@
 					<Add option="-Wall" />
 					<Add option="-O2" />
 					<Add directory="./" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +40,8 @@
 		</Build>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="FechaInvalidaException.cpp" />
+		<Unit filename="FechaInvalidaException.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
