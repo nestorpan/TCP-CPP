@@ -18,8 +18,23 @@ int main()
     int d, m, a;
     char c;
 
+    Fecha z,b, x(18, 9, 2021);
+    z = x++;
+    b = ++x;
+
+    z.getDMA(d, m, a);
+    /*
+    cout << "Fecha z: " << z << endl;
+    cout << "Fecha b: " << b << endl;
+    cout << "Fecha x: " << x << endl;
+*/
+
+    Fecha hoy;
     cout << "Ingrese una fecha (D/M/A): --> ";
-    cin >> d >> c >> m >> c >> a;
+
+    cin >> hoy;
+
+    cout << "Fecha ingresada: " << hoy << endl;
 
     try
     {
@@ -35,7 +50,7 @@ int main()
 
         cout << d << '/' << m << '/' << a << endl;
 
-        int dias = -200000;
+        int dias = 60;
 
         Fecha ayer;
         ayer = hoy;
@@ -51,10 +66,11 @@ int main()
         cout << d << '/' << m << '/' << a << endl;
 
         Fecha suma = hoy + dias;
+        //Fecha suma = dias + hoy;
 
         suma.getDMA(d, m, a);
 
-        cout << "suma:" << endl;
+        cout << "La Suma es ==> " << endl;
         cout << d << '/' << m << '/' << a << endl;
 
         int dif = suma - hoy;
@@ -66,6 +82,7 @@ int main()
         cout << ex.getMensaje() << endl;
         return ERR_FECHA_INV;
     }
+
 
     return TODO_OK;
 }

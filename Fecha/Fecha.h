@@ -1,8 +1,11 @@
 #ifndef FECHA_H
 #define FECHA_H
 
+#include <iostream>
+
 #define ANIO_BASE 1601
 
+using namespace std;
 
 class Fecha
 {
@@ -25,11 +28,20 @@ public:
 	Fecha& operator +=(int dias);
 	Fecha& operator -=(int dias);
 	int operator -(const Fecha& f2) const;
-	Fecha operator ++();
+
+	Fecha& operator ++();	/// Preincremento ++unaFecha
+	Fecha operator ++(int);	/// Posincremento unaFecha++
+	Fecha& operator --();	/// Preincremento
+	Fecha operator --(int); /// Posdecremento
+
 	int diaSemana() const;
 	void getDMA(int& d, int& m, int& a) const;
 	void setDMA(int d, int m, int a);
+
+	friend Fecha operator +(int dias, const Fecha& f);
 };
 
+ostream& operator <<(ostream& sal, const Fecha& f);
+istream& operator >>(istream& ent, Fecha& f);
 
 #endif // FECHA_H

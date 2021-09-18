@@ -122,3 +122,42 @@ void Fecha::setDMA(int d, int m, int a)
 	this->diaRel = diasAniosCompl + diaDelAnio(d, m, a);
 }
 
+Fecha& Fecha::operator ++() /// Preincremento
+{
+	this->diaRel++;
+	return *this;
+}
+
+Fecha Fecha::operator ++(int) /// Posincremento
+{
+	Fecha f(*this);
+	this->diaRel++;
+	return f;
+}
+
+Fecha operator +(int dias, const Fecha& f)
+{
+//	return f + dias;
+
+	Fecha suma(f);
+	suma.diaRel += dias;
+	return suma;
+}
+
+ostream& operator <<(ostream& sal, const Fecha& f)
+{
+	int d, m, a;
+	f.getDMA(d, m, a);
+	sal << d << '/' << m << '/' << a;
+	return sal;
+}
+
+istream& operator >>(istream& ent, Fecha& f)
+{
+	int d, m, a;
+	char c;
+
+	ent >> d >> c >> m >> c >> a;
+	f.setDMA(d, m, a);
+	return ent;
+}
