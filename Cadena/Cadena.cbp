@@ -38,6 +38,8 @@
 		</Build>
 		<Unit filename="Cadena.cpp" />
 		<Unit filename="Cadena.h" />
+		<Unit filename="CadenaException.cpp" />
+		<Unit filename="CadenaException.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
