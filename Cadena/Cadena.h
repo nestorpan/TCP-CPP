@@ -2,6 +2,7 @@
 #define CADENA_H
 
 #include <iostream>
+#include "../Fecha/Fecha.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
 	Cadena(const Cadena& cad);
 	Cadena(char c);
 	Cadena(int n);
+	Cadena(const Fecha& f);
 
 	~Cadena();
 

@@ -53,6 +53,15 @@ Cadena::Cadena(const Cadena& cadena)
 	this->tam = cadena.tam;
 }
 
+Cadena::Cadena(const Fecha& f)
+: Cadena()
+{
+	int d, m, a;
+	f.getDMA(d, m, a);
+
+	*this = Cadena(d) + '/' + m + '/' + a;
+}
+
 /// Privado
 Cadena::Cadena(char* cad)
 {
