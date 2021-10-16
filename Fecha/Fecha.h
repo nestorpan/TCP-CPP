@@ -34,9 +34,13 @@ public:
 	Fecha operator ++(int);	/// Posincremento
 	Fecha& operator --();	/// Preincremento
 	Fecha operator --(int); /// Posdecremento
+	bool operator >(const Fecha& f2) const;
 	int diaSemana() const;
 	void getDMA(int& d, int& m, int& a) const;
 	void setDMA(int d, int m, int a);
+	int difEnAnios(const Fecha& f2) const;
+	
+	static Fecha hoy();
 	
 	friend Fecha operator +(int dias, const Fecha& f);
 };

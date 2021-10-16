@@ -21,7 +21,6 @@ Cadena::Cadena(const char* cad)
 	this->tam = strlen(cad);
 	this->cad = new char[this->tam + 1];
 	strcpy(this->cad, cad);
-	
 }
 
 
@@ -47,6 +46,16 @@ Cadena::Cadena(char* cad)
 {
 	this->cad = cad;
 	this->tam = strlen(cad);
+}
+
+
+Cadena::Cadena(const Fecha& f)
+: Cadena()
+{
+	int d, m, a;
+	f.getDMA(d, m, a);
+	
+	*this = Cadena(d) + '/' + m + '/' + a;
 }
 
 

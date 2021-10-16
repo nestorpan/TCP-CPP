@@ -1,3 +1,6 @@
+#include <time.h>
+#include <math.h>
+
 #include "FechaInvalidaException.h"
 #include "Fecha.h"
 
@@ -159,6 +162,36 @@ Fecha operator +(int dias, const Fecha& f)
 	Fecha suma(f);
 	suma.diaRel += dias;
 	return suma;
+}
+
+
+bool Fecha::operator >(const Fecha& f2) const
+{
+	return this->diaRel > f2.diaRel;
+}
+
+
+int Fecha::difEnAnios(const Fecha& f2) const
+{
+	int d1, m1, a1, d2, m2, a2;
+	
+	this->getDMA(d1, m1, a1);
+	f2.getDMA(d2, m2, a2);
+	
+	int dif = abs(a1 - a2);
+	
+	if(m1 * 100 + d1 > m2 * 100 + d2)
+		dif--;
+	
+	return dif;
+}
+
+
+Fecha Fecha::hoy()
+{
+	time_t t = time(NULL);
+	struct tm* tm = localtime(&t);
+	return Fecha(tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900);
 }
 
 

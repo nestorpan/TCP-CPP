@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "../Fecha/Fecha.h"
+
 using namespace std;
 
 
@@ -19,6 +21,7 @@ public:
 	Cadena(const char* cad);
 	Cadena(char c);
 	Cadena(int n);
+	Cadena(const Fecha& f);
 	
 	Cadena(const Cadena& cad);
 	~Cadena();
@@ -33,8 +36,6 @@ public:
 	friend ostream& operator <<(ostream& sal, const Cadena& cadena);
 	friend istream& operator >>(istream& ent, Cadena& cadena);
 };
-
-
 
 
 #endif // CADENA_H
