@@ -150,6 +150,11 @@ bool Fecha::operator >(const Fecha& f2) const
 	return this->diaRel > f2.diaRel;
 }
 
+bool Fecha::operator >=(const Fecha& f2) const
+{
+	return this->diaRel >= f2.diaRel;
+}
+
 int Fecha::difEnAnios(const Fecha& f2) const
 {
 	int d1, m1, a1, d2, m2, a2;

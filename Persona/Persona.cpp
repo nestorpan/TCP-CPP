@@ -1,13 +1,14 @@
 #include "Persona.h"
 #include "PersonaException.h"
 
+/*
 Persona::Persona()
 : dni(1L), sexo('X')
 {
     //this->dni = 1L;
     //this->sexo = 'X';
 }
-
+*/
 
 Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac)
 //: dni(dni), apellido(apellido), nombre(nombre), sexo(sexo), fNac(fNac)

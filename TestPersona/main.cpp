@@ -1,21 +1,44 @@
 #include <iostream>
 #include "../Persona/Persona.h"
 #include "../Persona/PersonaException.h"
+#include "../Persona/PersonaBuilder.h"
+#include "../Persona/Empleado.h"
 #include <locale.h>
 
 using namespace std;
 
-
 int main()
 {
-    setlocale(LC_CTYPE, "spanish");
-    try
-    {
-		Persona juan(22333444, "Pérez", "Juan", 'M', Fecha(16, 10, 2000));
-		Persona juana(22333444, "Pérez", 'F');
+	try
+   	{
+		// Persona juan(22333444, "Pérez", "Juan", 'M', Fecha(17, 10, 2000));
 
-		cout << "La edad de " << juan.getNombre() << " es: " << juan.getEdad() << '.' << endl;
-		cout << "La edad de " << juana.getNombre() << " - sexo: " << juana.getSexo() << " es: " << juana.getEdad() << '.' << endl;
+		PersonaBuilder builder;
+		builder.setFNac(Fecha(23, 10, 2000));
+		builder.setNombre("Juan");
+		builder.setApellido("Perez");
+		builder.setDni(22333444);
+
+		Persona juan = builder.build();
+
+		//Persona juan2(222, "", "", 'M', Fecha::hoy()); NO SE PUEDE MAS!!!
+
+		cout << "La edad de " << juan.getNombre() + " "+ juan.getApellido() << " es: " << juan.getEdad() << '.' << endl;
+
+
+		PersonaBuilder builderMarta;
+		builderMarta.setFNac(Fecha::hoy());
+		builderMarta.setApellido("Perez");
+		builderMarta.setDni(2222222);
+
+		Persona marta = builderMarta.buildMarta();
+
+		cout << "La edad de " << marta.getNombre() << " Sexo ==> " << marta.getSexo() << + " "+ marta.getApellido()
+                << " es: " << marta.getEdad() << '.' << endl;
+
+
+		Empleado pepe(22333444, "Pérez", "Juan", 'M', Fecha(17, 10, 2000),
+                11111, "Sistemas", 40000, Fecha::hoy());
 
 		return 0;
     }
@@ -24,5 +47,4 @@ int main()
     	cout << ex.getMensaje() << endl;
     	return 1;
     }
-
 }
