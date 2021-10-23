@@ -30,7 +30,7 @@ Fecha::Fecha(int d, int m, int a)
 Fecha Fecha::operator +(int dias) const
 {
 	if(this->diaRel + dias <= 0)
-		throw FechaInvalidaException("La fecha es inválida");
+		throw FechaInvalidaException("La fecha es invï¿½lida");
 	
 	Fecha fechaSuma(*this);
 	fechaSuma.diaRel += dias;
@@ -41,7 +41,7 @@ Fecha Fecha::operator +(int dias) const
 Fecha& Fecha::operator +=(int dias)
 {
 	if(this->diaRel + dias <= 0)
-		throw FechaInvalidaException("La operación += no se pudo realizar: La suma de los días dejarían a la fecha inválida.");
+		throw FechaInvalidaException("La operaciï¿½n += no se pudo realizar: La suma de los dï¿½as dejarï¿½an a la fecha invï¿½lida.");
 	
 	this->diaRel += dias;
 	
@@ -118,7 +118,7 @@ void Fecha::getDMA(int& d, int& m, int& a) const
 void Fecha::setDMA(int d, int m, int a)
 {
 	if(!esFechaValida(d, m, a))
-		throw FechaInvalidaException("La fecha es inválida");
+		throw FechaInvalidaException("La fecha es invï¿½lida");
 	
 	int cantAnios = a - ANIO_BASE;
 	int diasAniosCompl = cantAnios * 365 + cantAnios / 4 - cantAnios / 100 + cantAnios / 400;
@@ -168,6 +168,12 @@ Fecha operator +(int dias, const Fecha& f)
 bool Fecha::operator >(const Fecha& f2) const
 {
 	return this->diaRel > f2.diaRel;
+}
+
+
+bool Fecha::operator >=(const Fecha& f2) const
+{
+	return this->diaRel >= f2.diaRel;
 }
 
 

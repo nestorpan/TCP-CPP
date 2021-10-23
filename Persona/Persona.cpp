@@ -2,15 +2,10 @@
 #include "Persona.h"
 
 
-Persona::Persona()
-: dni(1L), sexo('X')
-{}
-
-
 Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac)
 //: dni(dni), apellido(apellido), nombre(nombre), sexo(sexo), fNac(fNac)
 {
-//	this->apellido = apellido;
+	cout << "Se invocÃ³ al constructor parametrizado" << endl;
 	
 	setDni(dni);
 	setApellido(apellido);
@@ -18,6 +13,7 @@ Persona::Persona(int dni, const Cadena& apellido, const Cadena& nombre, char sex
 	setSexo(sexo);
 	setFNac(fNac);
 }
+
 
 /*
 int Persona::getDni() const
@@ -53,7 +49,7 @@ const Fecha& Persona::getFNac() const
 void Persona::setDni(int dni)
 {
 	if(dni < 0)
-		throw PersonaException(Cadena("El DNI ") + dni + " es inválido.");
+		throw PersonaException(Cadena("El DNI ") + dni + " es invï¿½lido.");
 	
 	this->dni = dni;
 }
@@ -76,7 +72,7 @@ void Persona::setNombre(const Cadena& nombre)
 void Persona::setSexo(char sexo)
 {
 	if(sexo != 'M' && sexo != 'F' && sexo != 'X')
-		throw PersonaException(Cadena("El sexo ") + sexo + " es inválido.");
+		throw PersonaException(Cadena("El sexo ") + sexo + " es invï¿½lido.");
 	
 	this->sexo = sexo;
 }

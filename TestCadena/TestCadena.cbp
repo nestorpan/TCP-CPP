@@ -17,6 +17,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="../Cadena/bin/Debug/libCadena.a" />
+					<Add library="../Fecha/bin/Debug/libFecha.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">

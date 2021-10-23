@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 */	
 	
 	filebuf fb;
-	fb.open(argvv[1], ios::in);
+	fb.open(argv[1], ios::in);
 	
 	if(!fb.is_open())
 		throw "No se pudo abrir el archivo\n";
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 	istream lorem(&fb);
 	
 	filebuf fb2;
-	fb2.open(argvv[2], ios::out);
+	fb2.open(argv[2], ios::out);
 	
 	if(!fb2.is_open())
 		throw "No se pudo abrir el archivo\n";
@@ -67,7 +67,7 @@ void saludar()
     Cadena cad2("que");
     Cadena cad3("tal");
     
-   	Cadena saludo = "Constante " + cad1 + ", " + cad2 + ' ' + cad3 + '?' + 12;
+   	Cadena saludo = "Constante " + cad1 + ", " + cad2 + ' ' + cad3 + '?';
 	
    	cout << saludo << endl;
    

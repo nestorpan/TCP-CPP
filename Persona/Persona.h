@@ -13,10 +13,10 @@ private:
 	char sexo;
 	Fecha fNac;
 	
+protected:
+	Persona(int dni = 0, const Cadena& apellido = Cadena(), const Cadena& nombre = Cadena(), char sexo = 'X', const Fecha& fNac = Fecha());	
+
 public:
-	Persona();
-	Persona(int dni = 0, const Cadena& apellido = Cadena(), const Cadena& nombre = Cadena(), char sexo = 'X', const Fecha& fNac = Fecha());
-	
 	int getDni() const { return this->dni; };
 	const Cadena& getApellido() const { return this->apellido; };
 	const Cadena& getNombre() const { return this->nombre; };
@@ -30,6 +30,8 @@ public:
 	void setFNac(const Fecha& fNac);
 	
 	int getEdad(const Fecha& fRef = Fecha::hoy()) const;
+
+	friend class PersonaBuilder;
 };
 
 
