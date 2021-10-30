@@ -6,7 +6,7 @@
 
 class PersonaBuilder
 {
-    private:
+    protected:
         int dni;
         Cadena apellido;
         Cadena nombre;

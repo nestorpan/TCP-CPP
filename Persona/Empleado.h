@@ -3,7 +3,6 @@
 
 #include "Persona.h"
 
-
 class Empleado : public Persona
 {
     private:
@@ -12,22 +11,28 @@ class Empleado : public Persona
         float sueldo;
         Fecha fIngr;
 
-    public:
+    protected:
         Empleado(int dni, const Cadena& apellido, const Cadena& nombre, char sexo, const Fecha& fNac,
                  long legajo, const Cadena& puesto, float sueldo, const Fecha& fIngr);
 
-        long getLegajo();
+    public:
+        long getLegajo() const;
         void setLegajo(long legajo);
 
-        const Cadena& getPuesto();
+        const Cadena& getPuesto() const;
         void setPuesto(const Cadena& puesto);
 
-        float getSueldo();
+        float getSueldo() const;
         void setSueldo(float sueldo);
 
-        const Fecha& getFIngr();
+        const Fecha& getFIngr() const;
         void setFIngr(const Fecha& fIngr);
+
+        friend istream& operator >>(istream& ent, Empleado& e);
+        friend class EmpleadoBuilder;
 };
+
+ostream& operator <<(ostream& sal, const Empleado& e);
 
 
 #endif // EMPLEADO_H

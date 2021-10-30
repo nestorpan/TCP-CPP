@@ -98,6 +98,19 @@ Cadena& Cadena::operator =(const Cadena& cadena)
 	return *this;
 }
 
+Cadena& Cadena::operator =(const string& str)
+{
+	if(this->tam != str.length())
+	{
+		delete [] this->cad;
+		this->cad = new char[str.length() + 1];
+		this->tam = str.length();
+	}
+
+	strcpy(this->cad, str.c_str());
+
+	return *this;
+}
 
 ostream& operator <<(ostream& sal, const Cadena& cadena)
 {

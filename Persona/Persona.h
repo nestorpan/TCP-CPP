@@ -31,12 +31,12 @@ class Persona
 
 	int getEdad(const Fecha& fRef = Fecha::hoy()) const;
 
+	friend istream& operator >>(istream& ent, Persona& p);
 	friend class PersonaBuilder;
 };
 
 
 ostream& operator <<(ostream& sal, const Persona& p);
-istream& operator >>(istream& ent, Persona& p);
 
 
 #endif // PERSONA_H

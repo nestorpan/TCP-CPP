@@ -30,6 +30,7 @@ public:
 	Cadena& trim(); // Podar: quita los espeacios y tabs a izq y der.
 
 	Cadena& operator =(const Cadena& cadena);
+	Cadena& operator =(const string& str);
 	Cadena& operator +=(const Cadena& cad2);
 
 	//Cadena operator +(const char* cad2);

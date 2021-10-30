@@ -66,3 +66,29 @@ int Persona::getEdad(const Fecha& fRef) const
 {
 	return this->fNac.difEnAnios(fRef);
 }
+
+ostream& operator <<(ostream& sal, const Persona& p)
+{
+	return sal << p.getDni() << '|' << p.getApellido() << '|' << p.getNombre() << '|' << p.getSexo() << '|' << p.getFNac();
+}
+
+istream& operator >>(istream& ent, Persona& p)
+{
+	char c;
+	string campoStr;
+
+	ent >> p.dni >> c;
+
+	getline(ent, campoStr, '|');
+	p.apellido = campoStr;
+
+	getline(ent, campoStr, '|');
+	p.nombre = campoStr;
+
+	p.sexo = ent.get();
+	ent.ignore(1); // Se ignora el '|'
+
+	ent >> p.fNac;
+
+	return ent;
+}
