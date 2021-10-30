@@ -26,7 +26,8 @@ public:
 	Cadena(const Cadena& cad);
 	~Cadena();
 	Cadena& operator =(const Cadena& cadena);
-	
+	Cadena& operator =(const string& str);
+
 	Cadena& operator +=(const Cadena& cad2);
 	
 	Cadena& aMayuscula();

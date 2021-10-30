@@ -2,7 +2,7 @@
 
 
 PersonaBuilder::PersonaBuilder()
-: dni(0), apellido(), nombre(), sexo('X'), fNac()
+: dni(0), sexo('X')
 {}
 
 

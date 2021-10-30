@@ -13,7 +13,7 @@ Empleado::Empleado(int dni, const Cadena& apellido, const Cadena& nombre, char s
 }
 
 
-long Empleado::getLegajo()
+long Empleado::getLegajo() const
 {
 	return this->legajo;
 }
@@ -25,7 +25,7 @@ void Empleado::setLegajo(long legajo)
 }
 
 
-const Cadena& Empleado::getPuesto()
+const Cadena& Empleado::getPuesto() const
 {
 	return this->puesto;
 }
@@ -37,7 +37,7 @@ void Empleado::setPuesto(const Cadena& puesto)
 }
 
 
-float Empleado::getSueldo()
+float Empleado::getSueldo() const
 {
 	return this->sueldo;
 }
@@ -49,7 +49,7 @@ void Empleado::setSueldo(float sueldo)
 }
 
 
-const Fecha& Empleado::getFIngr()
+const Fecha& Empleado::getFIngr() const
 {
 	return this->fIngr;
 }
@@ -64,4 +64,31 @@ void Empleado::setFIngr(const Fecha& fIngr)
 		throw PersonaException("No tiene la edad suficiente.");
 
 	this->fIngr = fIngr;
+}
+
+
+ostream& operator <<(ostream& sal, const Empleado& e)
+{
+	return sal << (Persona&)e << '|' << e.getLegajo() << '|' << e.getPuesto() << '|' << e.getSueldo() << '|' << e.getFIngr();
+}
+
+
+istream& operator >>(istream& ent, Empleado& e)
+{
+	char c;
+	string campoStr;
+
+	ent >> (Persona&)e >> c;
+	ent >> e.legajo >> c;
+	
+	getline(ent, campoStr, '|');
+	e.puesto = campoStr;
+	
+	ent >> e.sueldo >> c;
+	
+	ent >> e.fIngr;
+
+	ent.ignore(1); // Ignora line separator
+
+	return ent;
 }

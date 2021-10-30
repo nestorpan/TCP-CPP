@@ -12,6 +12,7 @@ private:
 	Cadena nombre;
 	char sexo;
 	Fecha fNac;
+	char separador;
 	
 protected:
 	Persona(int dni = 0, const Cadena& apellido = Cadena(), const Cadena& nombre = Cadena(), char sexo = 'X', const Fecha& fNac = Fecha());	
@@ -31,12 +32,12 @@ public:
 	
 	int getEdad(const Fecha& fRef = Fecha::hoy()) const;
 
+	friend istream& operator >>(istream& ent, Persona& p);
 	friend class PersonaBuilder;
 };
 
 
 ostream& operator <<(ostream& sal, const Persona& p);
-istream& operator >>(istream& ent, Persona& p);
 
 
 #endif // PERSONA_H

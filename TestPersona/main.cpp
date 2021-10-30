@@ -1,8 +1,11 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 #include "../Persona/Persona.h"
 #include "../Persona/PersonaException.h"
 #include "../Persona/PersonaBuilder.h"
 #include "../Persona/Empleado.h"
+#include "../Persona/EmpleadoBuilder.h"
 
 using namespace std;
 
@@ -22,8 +25,45 @@ int main()
 		
 		cout << "La edad de " << juan.getNombre() << " es: " << juan.getEdad() << '.' << endl; 
 		
-		Empleado pepe(22333444, "Pérez", "Juan", 'M', Fecha(17, 10, 2000), 11111, "Sistemas", 40000, Fecha(24, 10, 2021));
+		cout << juan << endl;
+
+		EmpleadoBuilder eBuilder;
+		eBuilder.setDni(22333444);
+		eBuilder.setNombre("Pedro");
+		eBuilder.setPuesto("Sistemas");
+		eBuilder.setFNac(Fecha(1, 1, 2000));
+
+		Empleado pepe = eBuilder.build();
 		
+		cout << pepe << endl;
+
+
+		filebuf fb;
+		fb.open("Empleados.txt", ios::in);
+	
+		if(!fb.is_open())
+			throw "No se pudo abrir el archivo\n";
+	
+		istream empleadosI(&fb);
+
+		Empleado* empl;
+		vector<Empleado*> empleadosV;
+
+		while(!empleadosI.eof())
+		{
+			empl = eBuilder.buildDin();
+			empleadosI >> *empl;
+			empleadosV.push_back(empl);
+		}
+
+		fb.close();
+		Empleado emp = eBuilder.build();
+		for(vector<Empleado*>::iterator i = empleadosV.begin(); i < empleadosV.end(); i++)
+		{
+			emp = **i;
+			cout << emp << endl;
+		}
+			
 		return 0;
     }
     catch(PersonaException& ex)

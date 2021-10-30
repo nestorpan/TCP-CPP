@@ -38,6 +38,8 @@
 		</Build>
 		<Unit filename="Empleado.cpp" />
 		<Unit filename="Empleado.h" />
+		<Unit filename="EmpleadoBuilder.cpp" />
+		<Unit filename="EmpleadoBuilder.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
 		<Unit filename="PersonaBuilder.cpp" />

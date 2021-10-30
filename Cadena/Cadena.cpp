@@ -15,7 +15,7 @@ Cadena::Cadena()
 	this->tam = 0;
 }
 
-/// Público
+/// Pï¿½blico
 Cadena::Cadena(const char* cad)
 {
 	this->tam = strlen(cad);
@@ -83,6 +83,21 @@ Cadena& Cadena::operator =(const Cadena& cadena)
 	}
 	
 	strcpy(this->cad, cadena.cad);
+	
+	return *this;
+}
+
+
+Cadena& Cadena::operator =(const string& str)
+{
+	if(this->tam != str.length())
+	{
+		delete [] this->cad;
+		this->cad = new char[str.length() + 1];
+		this->tam = str.length();
+	}
+	
+	strcpy(this->cad, str.c_str());
 	
 	return *this;
 }
