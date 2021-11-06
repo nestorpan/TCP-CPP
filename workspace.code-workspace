@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "Persona"
+		},
+		{
+			"path": "TestPersona"
+		},
+		{
+			"path": "Fecha"
+		},
+		{
+			"path": "Cadena"
+		},
+		{
+			"path": "TestCadena"
+		},
+		{
+			"path": "Figuras"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.tcc": "cpp",
+			"fstream": "cpp",
+			"sstream": "cpp",
+			"streambuf": "cpp"
+		}
+	}
+}

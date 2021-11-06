@@ -57,13 +57,13 @@ int main()
 		}
 
 		fb.close();
-		Empleado emp = eBuilder.build();
+		Empleado* emp;
 		for(vector<Empleado*>::iterator i = empleadosV.begin(); i < empleadosV.end(); i++)
 		{
-			emp = **i;
-			cout << emp << endl;
+			emp = *i;
+			cout << *emp << endl;
 		}
-			
+		
 		return 0;
     }
     catch(PersonaException& ex)
