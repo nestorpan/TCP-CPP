@@ -66,6 +66,11 @@ void Empleado::setFIngr(const Fecha& fIngr)
 	this->fIngr = fIngr;
 }
 
+int Empleado::getAntiguedad(const Fecha& fechaRef) const
+{
+	return fIngr.difEnAnios(fechaRef);
+}
+
 ostream& operator <<(ostream& sal, const Empleado& e)
 {
 	return sal << (Persona&)e << '|' << e.getLegajo() << '|' << e.getPuesto() << '|' << e.getSueldo() << '|' << e.getFIngr();

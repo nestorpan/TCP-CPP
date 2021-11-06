@@ -28,6 +28,8 @@ class Empleado : public Persona
         const Fecha& getFIngr() const;
         void setFIngr(const Fecha& fIngr);
 
+        int getAntiguedad(const Fecha& fechaRef = Fecha::hoy()) const;
+
         friend istream& operator >>(istream& ent, Empleado& e);
         friend class EmpleadoBuilder;
 };

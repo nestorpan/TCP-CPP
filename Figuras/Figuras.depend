@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1636217725 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\cuadrado.cpp
+	"Cuadrado.h"
+
+1636217725 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\cuadrado.h
+	"Figura.h"
+
+1636217725 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\figura.h
+	"../Cadena/Cadena.h"
+
+1635615080 c:\users\gguzm\onedrive\documentos\tcp\2021-2\cadena\cadena.h
+	<iostream>
+	"../Fecha/Fecha.h"
+
+1635009374 c:\users\gguzm\onedrive\documentos\tcp\2021-2\fecha\fecha.h
+	<iostream>
+
+1636217725 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\figura.cpp
+	"Figura.h"
+
+1584205422 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\main.c
+
+1636217965 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\circulo.cpp
+	"Circulo.h"
+
+1636217886 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\circulo.h
+	"Figura.h"
+
+1636218249 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\punto.cpp
+	"Punto.h"
+	<math.h>
+
+1636218147 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\punto.h
+
+1636218495 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\recta.cpp
+	<math.h>
+	"Recta.h"
+
+1636218348 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\recta.h
+	"Punto.h"
+
+1636218749 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\triangulo.cpp
+	<math.h>
+	"Recta.h"
+	"Triangulo.h"
+
+1636218749 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\triangulo.h
+	"Figura.h"
+	"Punto.h"
+

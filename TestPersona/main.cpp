@@ -63,6 +63,7 @@ int main()
 
         istream empleadosI(&fb);
         Empleado* empl;
+
 		vector<Empleado*> empleadosV;
 
 		while(!empleadosI.eof())
@@ -76,11 +77,11 @@ int main()
 		}
 
 		fb.close();
-		Empleado emp = eBuilder.build();
+		Empleado* emp;
 		for(vector<Empleado*>::iterator i = empleadosV.begin(); i < empleadosV.end(); i++)
 		{
-			emp = **i;
-			cout << emp << endl;
+			emp = *i;
+			cout << *emp << endl;
 		}
 
 		return 0;
