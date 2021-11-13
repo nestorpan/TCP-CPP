@@ -20,5 +20,5 @@ double Cuadrado::perimetro() const
 
 double Cuadrado::apotema() const
 {
-    return lado / 2;
+    return (double)lado / 2;
 }
