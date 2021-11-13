@@ -3,7 +3,6 @@
 
 #include "../Cadena/Cadena.h"
 
-
 class Figura
 {
 private:

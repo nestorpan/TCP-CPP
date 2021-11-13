@@ -7,7 +7,7 @@
 class Cuadrado : public Figura
 {
 private:
-    int lado;
+    double lado;
 
 public:
     Cuadrado(const Cadena& nombre, double lado);

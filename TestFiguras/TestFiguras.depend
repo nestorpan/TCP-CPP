@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1636821410 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\testfiguras\main.cpp
+	<iostream>
+	<vector>
+	"../Figuras/Figura.h"
+	"../Figuras/Circulo.h"
+	"../Figuras/Cuadrado.h"
+	"../Figuras/Triangulo.h"
+
+1636821609 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\figura.h
+	"../Cadena/Cadena.h"
+
+1636821658 c:\users\gguzm\onedrive\documentos\tcp\2021-2\cadena\cadena.h
+	<iostream>
+	"../Fecha/Fecha.h"
+
+1635009374 c:\users\gguzm\onedrive\documentos\tcp\2021-2\fecha\fecha.h
+	<iostream>
+
+1636217886 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\circulo.h
+	"Figura.h"
+
+1636820561 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\cuadrado.h
+	"Figura.h"
+
+1636218749 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\triangulo.h
+	"Figura.h"
+	"Punto.h"
+
+1636218147 c:\users\gguzm\onedrive\documentos\tcp\2021-2\figuras\punto.h
+

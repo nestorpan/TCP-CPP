@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1636823708 source:c:\users\gguzm\onedrive\documentos\tcp\2021-2\testpila\main.cpp
+	<iostream>
+	"../TDAPila/PilaImplEstatica.h"
+
+1636823591 c:\users\gguzm\onedrive\documentos\tcp\2021-2\tdapila\pilaimplestatica.h
+	<stdexcept>
+	"Pila.h"
+
+1636823753 c:\users\gguzm\onedrive\documentos\tcp\2021-2\tdapila\pila.h
+
