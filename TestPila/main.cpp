@@ -1,28 +1,44 @@
 #include <iostream>
 
-#include "../TDAPila/PilaImplEstatica.h"
+#include "../Fecha/Fecha.h"
+#include "../Comun/OrdenarConPilas.h"
 
 using namespace std;
-
-void ordenarConPilas(int* vector, int ce);
 
 
 int main()
 {
-    int ce = 10;
-    int vector[ce] = {10, 2, 9, 7, 3, 8, 1, 4, 5, 6};
-    
-    ordenarConPilas(vector, ce);
+	int ce = 10;
+	int vector[ce] = {10, 2, 9, 7, 3, 8, 1, 4, 5, 6};
+	
+	Fecha vectorFechas[ce] =
+	{
+		Fecha(10, 10, 2010),
+		Fecha(2, 2, 2002),
+		Fecha(9, 9, 2009),
+		Fecha(7, 7, 2007),
+		Fecha(3, 3, 2003),
+		Fecha(8, 8, 2008),
+		Fecha(1, 1, 2001),
+		Fecha(4, 4, 2004),
+		Fecha(5, 5, 2005),
+		Fecha(6, 6, 2006)
+	};
 
-    return 0;
-}
+	ordenarConPilas<int>(vector, ce);
 
+	for (int i = 0; i < ce; i++)
+		cout << vector[i] << " ";
 
-void ordenarConPilas(int* vector, int ce)
-{
-    PilaImplEstatica<int> pilaOrd;
+	cout << endl;
 
-    pilaOrd.apilar(vector[0]);
+	
+	ordenarConPilas<Fecha>(vectorFechas, ce);
 
-    cout << "elemento desapilado: " << pilaOrd.desapilar() << endl;
+	for (int i = 0; i < ce; i++)
+		cout << vectorFechas[i] << " ";
+
+	cout << endl;
+
+	return 0;
 }

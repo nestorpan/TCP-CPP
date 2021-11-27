@@ -10,7 +10,7 @@ public:
     virtual T desapilar() = 0;
     virtual bool vacia() const = 0;
     virtual void vaciar() = 0;
-    virtual T verTope() const = 0;
+    virtual const T& verTope() const = 0;
 };
 
 

@@ -165,6 +165,12 @@ Fecha operator +(int dias, const Fecha& f)
 }
 
 
+bool Fecha::operator <=(const Fecha& f2) const
+{
+	return this->diaRel <= f2.diaRel;
+}
+
+
 bool Fecha::operator >(const Fecha& f2) const
 {
 	return this->diaRel > f2.diaRel;

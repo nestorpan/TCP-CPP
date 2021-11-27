@@ -55,7 +55,7 @@ public:
     }
 
 
-    T verTope() const override
+    const T& verTope() const override
     {
         if (tope == -1)
             throw underflow_error("La pila esta vacia");
@@ -63,6 +63,6 @@ public:
         return elementos[tope];
     }
 };   
-    
+
 
 #endif // PILAIMPLESTATICA_H
