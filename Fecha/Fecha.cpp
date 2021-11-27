@@ -149,10 +149,18 @@ bool Fecha::operator >(const Fecha& f2) const
 {
 	return this->diaRel > f2.diaRel;
 }
+bool Fecha::operator <(const Fecha& f2) const
+{
+	return this->diaRel < f2.diaRel;
+}
 
 bool Fecha::operator >=(const Fecha& f2) const
 {
 	return this->diaRel >= f2.diaRel;
+}
+bool Fecha::operator <=(const Fecha& f2) const
+{
+	return this->diaRel <= f2.diaRel;
 }
 
 int Fecha::difEnAnios(const Fecha& f2) const

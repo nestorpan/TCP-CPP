@@ -34,7 +34,9 @@ public:
 	Fecha& operator --();	/// Preincremento
 	Fecha operator --(int); /// Posdecremento
     bool operator >(const Fecha& f2) const;
+    bool operator <(const Fecha& f2) const;
     bool operator >=(const Fecha& f2) const;
+    bool operator <=(const Fecha& f2) const;
 
 	int diaSemana() const;
 	void getDMA(int& d, int& m, int& a) const;

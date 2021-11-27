@@ -54,7 +54,7 @@ class PilaImplEstatica : public Pila<T>
         }
 
 
-        T verTope() const override
+        const T& verTope() const override
         {
             if (tope == -1)
                 throw underflow_error("La pila esta vacia");
