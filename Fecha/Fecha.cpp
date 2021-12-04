@@ -27,6 +27,12 @@ Fecha::Fecha(int d, int m, int a)
 }
 
 
+Fecha::~Fecha()
+{
+	cout << "Destruyendo Fecha" << endl;
+}
+
+
 Fecha Fecha::operator +(int dias) const
 {
 	if(this->diaRel + dias <= 0)

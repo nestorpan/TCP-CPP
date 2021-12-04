@@ -24,6 +24,7 @@ private:
 public:
 	Fecha();
 	Fecha(int d, int m, int a);
+	~Fecha();
 	
 	Fecha operator +(int dias) const;
 	Fecha operator -(int dias) const;
