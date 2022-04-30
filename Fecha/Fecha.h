@@ -1,23 +1,45 @@
 #ifndef FECHA_H
 #define FECHA_H
 
+#include <iostream>
+
+#define ANIO_BASE 1601
+
+using namespace std;
+
 
 class Fecha
 {
-    private:
-        int diaRel;// Cant. de d�as que pasaron desde 01/01/1601
+private:
+	int diaRel;
 
-    public:
-        Fecha();
-        Fecha(int dia, int mes, int anio);
+	static const int acumDiasMes[14];
+	static const int acumDiasMesBis[14];
 
-        Fecha sumarDias(int dias) const;
-        int difEnDias(const Fecha* otraFecha) const;
+	static int diaDelAnio(int dia, int mes, int anio);
+	static bool esBisiesto(int anio);
 
-        Fecha operator +(int dias) const;
-        int operator -(const Fecha* otraFecha) const; //const al final indica que no se modifica el objeto llamador
+public:
+	Fecha();
+	Fecha(int dia, int mes, int anio);
 
-        //int getDiaRel() const;
+	Fecha operator +(int dias) const;
+	int operator -(const Fecha& otraFecha) const; //const al final indica que no se modifica el objeto llamador
+	Fecha& operator ++(); //preincremento ++fecha
+	Fecha operator ++(int);	//postincremento fecha++
+	void setDMA(int dia, int mes, int anio);
+	void getDMA(int& dia, int& mes, int& anio) const;
+	//TODO: Agregar métodos de comparación (< > <= >= == !=)
+	//TODO: Agregar -- Pre y Post
+	//TODO: Agregar += y -=
+	//TODO: Agregar - dias
+	//TODO: Investigar uso de cin
+	//TODO: operator istream >>
+	//TODO: Investigar funciones friends
 };
+
+
+ostream& operator <<(ostream& os, const Fecha& f);
+
 
 #endif // FECHA_H
