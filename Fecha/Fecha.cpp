@@ -3,6 +3,8 @@
 //                                      1   2   3   4    5    6    7    8    9   10   11   12   13
 const int Fecha::acumDiasMes[14] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 const int Fecha::acumDiasMesBis[14] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
+const int Fecha::diasMes[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+const int Fecha::diasMesBis[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 // 1/9 -> 244
 // 30/9 -> 273
@@ -63,6 +65,9 @@ bool Fecha::esBisiesto(int anio)
 
 void Fecha::setDMA(int dia, int mes, int anio)
 {
+	if(!esFechaValida(dia, mes, anio))
+		throw FechaExc("La fecha no es valida");
+
 	int cantAniosCompl = anio - ANIO_BASE;
 	int diasAniosCompl = cantAniosCompl * 365 + cantAniosCompl / 4 - cantAniosCompl / 100 + cantAniosCompl / 400;
 	this->diaRel = diasAniosCompl + diaDelAnio(dia, mes, anio);
@@ -73,7 +78,7 @@ void Fecha::getDMA(int& dia, int& mes, int& anio) const
 {
 	int cantAniosCompl = this->diaRel / 365;
 	int diasAniosCompl = cantAniosCompl * 365 + cantAniosCompl / 4 - cantAniosCompl / 100 + cantAniosCompl / 400;
-	
+
 	while(diasAniosCompl >= this->diaRel)
 	{
 		cantAniosCompl--;
@@ -81,7 +86,7 @@ void Fecha::getDMA(int& dia, int& mes, int& anio) const
 	}
 
 	anio = ANIO_BASE + cantAniosCompl;
-	
+
 	int diaDelAnio = this->diaRel - diasAniosCompl;
 
 	const int* acumDias = esBisiesto(anio) ? acumDiasMesBis : acumDiasMes;
@@ -89,7 +94,7 @@ void Fecha::getDMA(int& dia, int& mes, int& anio) const
 	int i = 2;
 	while(diaDelAnio > acumDias[i])
 		i++;
-	
+
 	mes = i - 1;
 
 	dia = diaDelAnio - acumDias[mes];
@@ -103,3 +108,30 @@ ostream& operator <<(ostream& sal, const Fecha& f)
 	sal << dia << '/' << mes << '/' << anio;
 	return sal;
 }
+
+
+istream& operator >>(istream& is, Fecha& f)
+{
+	int dia, mes, anio;
+	char c;
+	is >> dia >> c >> mes >> c >> anio;
+	f.setDMA(dia, mes, anio);
+	return is;
+}
+
+
+bool Fecha::esFechaValida(int dia, int mes, int anio)
+{
+	if(anio < ANIO_BASE)
+		return false;
+
+	if(mes < 1 || mes > 12)
+		return false;
+
+	if(dia < 1 || dia > (esBisiesto(anio)? diasMesBis[mes] : diasMes[mes]))
+		return false;
+
+	return true;
+}
+
+

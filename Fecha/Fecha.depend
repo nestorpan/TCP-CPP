@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1652535795 source:d:\unlam\programacion\tcp-cpp\fecha\fechaexc.cpp
+	"FechaExc.h"
+
+1652535881 d:\unlam\programacion\tcp-cpp\fecha\fechaexc.h
+	<string>
+

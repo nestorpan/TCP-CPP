@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1652536884 source:d:\unlam\programacion\tcp-cpp\testfecha\main.cpp
+	<iostream>
+	<locale.h>
+	<windows.h>
+	"../Fecha/Fecha.h"
+
+1652537080 d:\unlam\programacion\tcp-cpp\fecha\fecha.h
+	<iostream>
+	"FechaExc.h"
+
+1652535881 d:\unlam\programacion\tcp-cpp\fecha\fechaexc.h
+	<string>
+
