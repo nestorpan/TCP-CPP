@@ -10,7 +10,28 @@ int main()
 {
     setlocale(LC_CTYPE, "spanish");
     Fecha fDefault;
-    Fecha fecha1(1, 1, 2022);
+
+    Fecha fecha1;
+    bool esFechaValida = false;
+    do
+    {
+        try
+        {
+            cout << "Ingrese una fecha (dd/mm/aaaa): ";
+            cin >> fecha1;
+//          fecha1 = Fecha(1, 1, 2022);
+            esFechaValida = true;
+        }
+        catch(const FechaExc& ex)
+        {
+            cout << ex.getMensaje() << endl;
+        }
+    }
+    while(!esFechaValida);
+
+    if (!Fecha::esFechaValida(1, 1, 2020)) cout << "OK!!!" << endl;
+
+
     Fecha diaDelProgramador(13, 9, 2022);
 
     /*
