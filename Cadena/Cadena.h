@@ -23,9 +23,17 @@ public:
 
     ~Cadena();
     
-    Cadena& operator=(const Cadena& other);
+    bool esEnteroPositivo() const;
+    unsigned longitud() const;
     
+    Cadena& operator=(const Cadena& other);
+    Cadena& operator+=(const Cadena& other);
+    char operator[](int i) const;
+
     friend Cadena operator+(const Cadena& cad1, const Cadena& cad2);
+    
+    friend ostream& operator<<(ostream& sal, const Cadena& cad);
+    friend istream& operator>>(istream& is, Cadena& cad);
 };
 
 

@@ -38,6 +38,8 @@
 		</Build>
 		<Unit filename="Cadena.cpp" />
 		<Unit filename="Cadena.h" />
+		<Unit filename="FueraDeRangoExc.cpp" />
+		<Unit filename="FueraDeRangoExc.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

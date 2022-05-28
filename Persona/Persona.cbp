@@ -2,41 +2,44 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="TestCadena" />
+		<Option title="Persona" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/TestCadena" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Persona" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add directory="./" />
 				</Compiler>
-				<Linker>
-					<Add library="../Fecha/bin/Debug/libFecha.a" />
-					<Add library="../Cadena/bin/Debug/libCadena.a" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/TestCadena" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Persona" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-O2" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 				</Linker>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="Persona.cpp" />
+		<Unit filename="Persona.h" />
+		<Unit filename="PersonaExc.cpp" />
+		<Unit filename="PersonaExc.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
