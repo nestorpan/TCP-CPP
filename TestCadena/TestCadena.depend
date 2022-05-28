@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1653758787 source:c:\users\g.guzman\documents\unlam\tcp\testcadena\main.cpp
+	<iostream>
+	<fstream>
+	"../Cadena/Cadena.h"
+
+1653756730 c:\users\g.guzman\documents\unlam\tcp\cadena\cadena.h
+	"../Fecha/Fecha.h"
+
+1652547843 c:\users\g.guzman\documents\unlam\tcp\fecha\fecha.h
+	<iostream>
+	"FechaExc.h"
+
+1652545195 c:\users\g.guzman\documents\unlam\tcp\fecha\fechaexc.h
+	<string>
+
