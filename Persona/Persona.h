@@ -16,9 +16,10 @@ private:
 
     static void validarDNI(const Cadena& dni);
 
-public:
-    Persona();
+protected:
     Persona(const Cadena& dni, const Cadena& nombre, const Cadena& apellido, const Fecha& fechaNacimiento, char sexo);
+
+public:
 
     const Cadena& getDni() const;
     void setDni(const Cadena& dni);
@@ -34,6 +35,8 @@ public:
 
     char getSexo() const;
     void setSexo(char sexo);
+
+    friend class PersonaBuilder;
 };
 
 

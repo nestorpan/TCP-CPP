@@ -2,7 +2,7 @@
 #define CADENA_H
 
 #include "../Fecha/Fecha.h"
-
+#include <vector>
 
 class Cadena
 {
@@ -31,6 +31,9 @@ public:
     char operator[](int i) const;
 
     friend Cadena operator+(const Cadena& cad1, const Cadena& cad2);
+
+    vector<Cadena> split(char delim) const;
+    int toInt() const;
 
     friend ostream& operator<<(ostream& sal, const Cadena& cad);
     friend istream& operator>>(istream& is, Cadena& cad);

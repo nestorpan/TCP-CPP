@@ -4,6 +4,8 @@
 #include <iostream>
 #include "FechaExc.h"
 
+class Cadena;
+
 #define ANIO_BASE 1601
 
 using namespace std;
@@ -25,6 +27,7 @@ private:
 public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
+	Fecha(const Cadena& cadFecha);
 
 	static bool esFechaValida(int dia, int mes, int anio);
 
