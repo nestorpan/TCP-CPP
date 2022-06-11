@@ -1,6 +1,7 @@
 #ifndef CADENA_H
 #define CADENA_H
 
+#include <vector>
 #include "../Fecha/Fecha.h"
 
 
@@ -32,6 +33,9 @@ public:
 
     friend Cadena operator+(const Cadena& cad1, const Cadena& cad2);
     
+    vector<Cadena> split(char delim) const;
+    int toInt() const;
+
     friend ostream& operator<<(ostream& sal, const Cadena& cad);
     friend istream& operator>>(istream& is, Cadena& cad);
 };

@@ -4,6 +4,9 @@
 #include <iostream>
 #include "FechaExc.h"
 
+class Cadena;
+
+
 #define ANIO_BASE 1601
 
 using namespace std;
@@ -26,6 +29,7 @@ private:
 public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
+	Fecha(const Cadena& cadFecha);
 
 	Fecha operator +(int dias) const;
 	int operator -(const Fecha& otraFecha) const; //const al final indica que no se modifica el objeto llamador

@@ -1,4 +1,7 @@
+#include <vector>
 #include "Fecha.h"
+#include "../Cadena/Cadena.h"
+
 
 //                                      1   2   3   4    5    6    7    8    9   10   11   12   13
 const int Fecha::acumDiasMes[14] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
@@ -19,6 +22,14 @@ Fecha::Fecha()
 Fecha::Fecha(int dia, int mes, int anio)
 {
 	setDMA(dia, mes, anio);
+}
+
+
+Fecha::Fecha(const Cadena& cadFecha)
+{
+	vector<Cadena> camposF = cadFecha.split('/');
+	
+	this->setDMA(camposF[0].toInt(), camposF[1].toInt(), camposF[2].toInt());
 }
 
 

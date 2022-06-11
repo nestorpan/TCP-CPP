@@ -142,6 +142,45 @@ int Cadena::cantDigitos(int num)
 }
 
 
+vector<Cadena> Cadena::split(char delim) const
+{
+    vector<Cadena> campos;
+
+    const char* iniCampo = this->cadena;
+    char* pDelim;
+
+    pDelim = strchr(iniCampo, delim);
+    while(pDelim)
+    {
+        *pDelim = '\0';
+        campos.push_back(Cadena(iniCampo));
+        iniCampo = pDelim + 1;
+        *pDelim = delim;
+        pDelim = strchr(iniCampo, delim);
+    }
+
+    campos.push_back(Cadena(iniCampo));
+
+    return campos;
+}
+
+
+int Cadena::toInt() const
+{
+    int num = 0;
+    char* act = cadena;
+
+    while(*act)
+    {
+        num *= 10;
+        num += *act - '0';
+        act++;
+    }
+
+    return num;
+}
+
+
 ostream& operator<<(ostream& sal, const Cadena& cad)
 {
     sal << cad.cadena;
@@ -189,5 +228,7 @@ istream& operator>>(istream& is, Cadena& cad)
 
     cad.cadena[i] = '\0';
 
+    is.ignore(1);
+    
     return is;
 }
