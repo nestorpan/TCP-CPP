@@ -36,12 +36,15 @@ public:
     char getSexo() const;
     void setSexo(char sexo);
 
+    void imprimir() const;
+
     friend class PersonaBuilder;
+    friend istream& operator>>(istream& is, Persona& persona);
 };
 
 
 ostream& operator<<(ostream& sal, const Persona& persona);
-istream& operator>>(istream& is, Persona& persona);
+
 
 
 #endif // PERSONA_H

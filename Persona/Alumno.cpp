@@ -28,3 +28,34 @@ void Alumno::setPromedio(float promedio)
 {
     this->promedio = promedio;
 }
+
+void Alumno::imprimir() const
+{
+    Persona::imprimir();
+    cout << "Cantidad de materias aprobadas: " << cantMatAprob << endl;
+    cout << "Promedio: " << promedio << endl;
+}
+
+ostream& operator <<(ostream& sal, const Alumno& alumno)
+{
+    sal << (Persona&)alumno << '\t';
+    sal << alumno.cantMatAprob << '\t';
+    sal << alumno.promedio;
+    return sal;
+}
+
+istream& operator >>(istream& is, Alumno& alumno)
+{
+    int cantMatAprob;
+    float promedio;
+
+    is >> (Persona&)alumno;
+
+    is >> cantMatAprob;
+    alumno.setCantMatAprob(cantMatAprob);
+
+    is >> promedio;
+    alumno.setPromedio(promedio);
+
+    return is;
+}

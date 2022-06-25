@@ -97,6 +97,14 @@ void Persona::validarDNI(const Cadena& dni)
         throw PersonaExc("DNI inválido: " + dni + " supera la longitud máxima");
 }
 
+void Persona::imprimir() const
+{
+    cout << "DNI: " << dni << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Apellido: " << apellido << endl;
+    cout << "Fecha de nacimiento: " << fechaNacimiento << endl;
+    cout << "Sexo: " << sexo << endl;
+}
 
 ostream& operator<<(ostream& sal, const Persona& persona)
 {
@@ -113,19 +121,35 @@ ostream& operator<<(ostream& sal, const Persona& persona)
 
 istream& operator>>(istream& ent, Persona& persona)
 {
+    /*
     Cadena linea;
     ent >> linea;
-
     vector<Cadena> campos = linea.split('\t');
-
     if(campos.size() != 5)
         throw PersonaExc("Cantidad de campos incorrecta");
-
-    persona.setDni(campos[0]);
+    persona.setDNI(campos[0]);
     persona.setNombre(campos[1]);
     persona.setApellido(campos[2]);
     persona.setFechaNacimiento(campos[3]);
     persona.setSexo(campos[4][0]);
+*/
 
-    return ent;
+	string campoStr;
+
+	getline(ent, campoStr, '\t');
+    persona.setDni(campoStr);
+
+	getline(ent, campoStr, '\t');
+	persona.setNombre(campoStr);
+
+	getline(ent, campoStr, '\t');
+	persona.setApellido(campoStr);
+
+    ent >> persona.fechaNacimiento;
+    ent.ignore();
+
+	persona.setSexo(ent.get());
+	ent.ignore();
+
+	return ent;
 }

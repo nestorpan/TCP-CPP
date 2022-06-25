@@ -56,6 +56,11 @@ Cadena::Cadena(const Cadena& otra)
     strcpy(this->cadena, otra.cadena);
 }
 
+Cadena::Cadena(const string& str)
+{
+    this->cadena = new char[str.length() + 1];
+    strcpy(this->cadena, str.c_str());
+}
 
 Cadena::~Cadena()
 {

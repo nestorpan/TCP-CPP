@@ -20,6 +20,11 @@ public:
     float getPromedio() const;
     void setPromedio(float promedio);
 
+    void imprimir() const;
+
+    friend ostream& operator <<(ostream& sal, const Alumno& alumno);
+    friend istream& operator >>(istream& is, Alumno& alumno);
+
     friend class AlumnoBuilder;
 };
 

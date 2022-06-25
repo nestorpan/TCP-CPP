@@ -37,7 +37,7 @@ int main()
 
     Persona persona = builder.build();
 
-    cout << "DNI: " << persona.getDni() << endl;
+    //cout << "DNI: " << persona.getDni() << endl;
 
     // Alumno
 
@@ -50,7 +50,8 @@ int main()
             .setDni("M23456789")
             .setNombre("Pedro")
             .setApellido("Ramirez")
-            .setSexo('M');
+            .setSexo('M')
+            .setFechaNacimiento(Fecha(1, 1, 2000));
     }
     catch(PersonaExc& e)
     {
@@ -64,32 +65,38 @@ int main()
     }
 
     Alumno alumno = alumnoBuilder.build();
-
+/*
     cout << "DNI: " << alumno.getDni() << endl;
     cout << "Nombre: " << alumno.getNombre() << endl;
     cout << "Promedio: " << alumno.getPromedio() << endl;
     cout << "Cant Mat Aprob: " << alumno.getCantMatAprob() << endl;
+*/
+    fstream archivoPersonas("Alumnos.txt", ios::out);
+    archivoPersonas << alumno << endl;
 
-/*
-    fstream archivoPersonas("Personas.txt", ios::out);
-
-    archivoPersonas << persona << endl;
+    alumno.setDni("M22333444");
+    alumno.setApellido("Gomez");
+    alumno.setNombre("Gustavo");
+    alumno.setCantMatAprob(10);
+    alumno.setPromedio(8.0);
     archivoPersonas << alumno << endl;
 
     archivoPersonas.close();
-*/
-    fstream archivoPersonas2("Personas.txt", ios::in);
 
-    PersonaBuilder builder2;
-    Persona persona2 = builder2.build();
 
-    cout << "Leyendo el archivo de Personas" << endl;
+    fstream archivoPersonasLect("Alumnos.txt", ios::in);
+    cout << "Leyendo el archivo de Alumnos" << endl;
 
-    while(!archivoPersonas2.eof())
+    while(archivoPersonasLect.peek() != EOF)
     {
-        archivoPersonas2 >> persona2;
-        cout << persona2 << endl;
+        archivoPersonasLect >> alumno;
+        archivoPersonasLect.ignore(1);
+        cout << alumno << endl;
     }
+
+    cout << "Salida de metodo imprimir:" << endl;
+
+    alumno.imprimir();
 
     return 0;
 }

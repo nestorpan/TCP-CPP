@@ -3,6 +3,7 @@
 
 #include "../Fecha/Fecha.h"
 #include <vector>
+#include <string>
 
 class Cadena
 {
@@ -20,6 +21,7 @@ public:
     Cadena(const Fecha& fecha);
     Cadena(char c);
     Cadena(int num);
+    Cadena(const string& str);
 
     ~Cadena();
 
