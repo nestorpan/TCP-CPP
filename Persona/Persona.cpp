@@ -99,6 +99,16 @@ void Persona::validarDNI(const Cadena& dni)
 }
 
 
+void Persona::imprimir() const
+{
+    cout << "DNI: " << dni << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Apellido: " << apellido << endl;
+    cout << "Fecha de nacimiento: " << fechaNacimiento << endl;
+    cout << "Sexo: " << sexo << endl;
+}
+
+
 ostream& operator<<(ostream& sal, const Persona& persona)
 {
     sal
@@ -114,6 +124,7 @@ ostream& operator<<(ostream& sal, const Persona& persona)
 
 istream& operator>>(istream& ent, Persona& persona)
 {
+/*
     Cadena linea;
     ent >> linea;
 
@@ -127,6 +138,24 @@ istream& operator>>(istream& ent, Persona& persona)
     persona.setApellido(campos[2]);
     persona.setFechaNacimiento(campos[3]);
     persona.setSexo(campos[4][0]);
+*/  
 
-    return ent;
+	string campoStr;
+
+	getline(ent, campoStr, '\t');
+    persona.setDNI(campoStr);
+
+	getline(ent, campoStr, '\t');
+	persona.setNombre(campoStr);
+
+	getline(ent, campoStr, '\t');
+	persona.setApellido(campoStr);
+
+    ent >> persona.fechaNacimiento;
+    ent.ignore();
+    
+	persona.setSexo(ent.get());
+	ent.ignore(1);
+
+	return ent;
 }

@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1656167214 source:d:\unlam\programacion\tcp-cpp\figuras\cuadrado.cpp
+	"Cuadrado.h"
+
+1656167142 d:\unlam\programacion\tcp-cpp\figuras\cuadrado.h
+	"Figura.h"
+
+1656168852 d:\unlam\programacion\tcp-cpp\figuras\figura.h
+
+1656168740 source:d:\unlam\programacion\tcp-cpp\figuras\figura.cpp
+	<iostream>
+	"Figura.h"
+
+1656168649 source:d:\unlam\programacion\tcp-cpp\figuras\main.cpp
+	<iostream>
+	"Figura.h"
+	"Cuadrado.h"
+	"Triangulo.h"
+
+1656167843 d:\unlam\programacion\tcp-cpp\figuras\triangulo.h
+	"Figura.h"
+
+1656167937 source:d:\unlam\programacion\tcp-cpp\figuras\triangulo.cpp
+	"Triangulo.h"
+

@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1656164239 source:d:\unlam\programacion\tcp-cpp\testpersona\main.cpp
+	<iostream>
+	<fstream>
+	"../Persona/PersonaBuilder.h"
+	"../Persona/Persona.h"
+	"../Persona/PersonaExc.h"
+	"../Cadena/FueraDeRangoExc.h"
+	"../Persona/AlumnoBuilder.h"
+
+1654955874 d:\unlam\programacion\tcp-cpp\persona\personabuilder.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+	"../Persona/Persona.h"
+
+1656163473 d:\unlam\programacion\tcp-cpp\cadena\cadena.h
+	<vector>
+	<string>
+	"../Fecha/Fecha.h"
+
+1654958582 d:\unlam\programacion\tcp-cpp\fecha\fecha.h
+	<iostream>
+	"FechaExc.h"
+
+1652537788 d:\unlam\programacion\tcp-cpp\fecha\fechaexc.h
+	<string>
+
+1656163792 d:\unlam\programacion\tcp-cpp\persona\persona.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+
+1653750951 d:\unlam\programacion\tcp-cpp\persona\personaexc.h
+	"../Cadena/Cadena.h"
+
+1653749851 d:\unlam\programacion\tcp-cpp\cadena\fueraderangoexc.h
+	"Cadena.h"
+
+1654955608 d:\unlam\programacion\tcp-cpp\persona\alumnobuilder.h
+	"Alumno.h"
+	"PersonaBuilder.h"
+
+1656161006 d:\unlam\programacion\tcp-cpp\persona\alumno.h
+	"Persona.h"
+

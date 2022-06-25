@@ -1,2 +1,2 @@
-M12345678	Juan	Perez	1/1/2020	M
-M23456789	Pedro	Ramirez	1/1/1601	M
+M23456789	Pedro	Ramirez	1/1/2000	M	20	9.5
+M22333444	Gustavo	Gomez	1/1/2000	M	10	8
