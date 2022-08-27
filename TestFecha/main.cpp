@@ -10,7 +10,7 @@ int main()
     setlocale(LC_CTYPE, "spanish");
 
     Fecha fDefault;
-    Fecha f(20, 8, 2022);
+    const Fecha f(29, 2, 2020);
 
     Fecha fSuma = f.sumarDias(180);
 
@@ -18,9 +18,15 @@ int main()
 
     cout << "Diferencia de dias: " << difDias << endl;
 
-    cout << "Día de la semana: " << f.diaDeLaSemanaStr() << endl;
+ //   Fecha fDefSuma = fDefault.sumarDias(200);
 
-    //cout << "vectorDiaSemana: " << Fecha::vectorDiaSemana[6] << endl;
+    // mostrar f
+    int dia, mes, anio;
+    fSuma.getDma(&dia, &mes, &anio);
+
+    cout << "Fecha: " << dia << "/" << mes << "/" << anio << endl;
+
+    //cout << "Fecha: " << fSuma << endl;
 
     return 0;
 }
