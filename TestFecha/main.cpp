@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../Fecha/FechaInvalidaException.h"
 #include "../Fecha/Fecha.h"
 
 using namespace std;
@@ -6,22 +7,55 @@ using namespace std;
 
 int main()
 {
+    // Change the console encoding to 1252 (ANSI)
+    system("chcp 1252 > nul");
+
     Fecha fDefault;
-    const Fecha f(20, 8, 2022);
+    Fecha f(20, 8, 2022);
+    const Fecha f2(10, 9, 2022);
 
-    Fecha fSuma = f.sumarDias(180);
+    Fecha fSuma = Fecha(20, 8, 2022) + 180; // Objeto temporal.
 
-    int difDias = f.diferenciaEnDias(fSuma);
+    Fecha f3 = f++; // Posincremento.
+    Fecha f4 = ++f; // Preincremento.
+
+    cout << "f: " << f << endl; // 22/8/2022
+
+    cout << "f3: " << f3 << endl; // 20/8/2022
+
+    cout << "f4: " << f4 << endl; // 22/8/2022
+
+    int difDias = f - f2;
 
     cout << "Diferencia de dias: " << difDias << endl;
 
- //   Fecha fDefSuma = fDefault.sumarDias(200);
+    Fecha fResta;
 
-    // mostrar f
-    int dia, mes, anio;
-    fSuma.getDma(&dia, &mes, &anio);
+    try
+    {
+        fResta = f - 180;
+    }
+    catch(const FechaInvalidaException& e)
+    {
+        cerr << e.getMensaje() << endl;
+        return FECHA_INVALIDA;
+    }
 
-    cout << "Fecha: " << dia << "/" << mes << "/" << anio << endl;
+    cout << "Fecha resta: " << fResta << endl;
 
+    cout << "Fecha: " << f << endl;
+
+    int d, m, a;
+    char barra;
+    cout << "ingrese una fecha (D/M/A):" << endl;
+    cin >> d >> barra >> m >> barra >> a;
+    cout << "Fecha ingresada: " << d << "/" << m << "/" << a << endl;
+
+/*    
+    cout << "ingrese una fecha (D/M/A):" << endl;
+    cin >> f;
+    cout << "Fecha ingresada: " << f << endl;
+*/
+    
     return 0;
 }
