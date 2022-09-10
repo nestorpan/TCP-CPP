@@ -6,6 +6,10 @@
 #define ANIO_BASE 1601
 #define FECHA_INVALIDA 1
 
+#include <iostream>
+
+using namespace std;
+
 
 class Fecha
 {
@@ -21,28 +25,42 @@ private:
     static inline int cantDiaMes(int mes, int anio) { return mes == 2 && esBisiesto(anio) ? 29 : cdm[mes]; };
 
     static inline bool esFechaValida(int dia, int mes, int anio)
-    {
-        return anio >= ANIO_BASE && mes >= 1 && mes <= 12 && dia >= 1 && dia <= cantDiaMes(mes, anio);
-    };
+    { return anio >= ANIO_BASE && mes >= 1 && mes <= 12 && dia >= 1 && dia <= cantDiaMes(mes, anio); };
 
-    static inline int diaDelAnio(int dia, int mes, int anio)
+    static int diaDelAnio(int dia, int mes, int anio)
     { return (esBisiesto(anio) ? acumDiasMesBisiesto[mes] : acumDiasMes[mes]) + dia; };
 
-    static int dmaADiaRel(int dia, int mes, int anio);
-    static void diaRelADma(int diaRel, int* dia, int* mes, int* anio);
-    static void diaDelAnioADiaMes(int diaDelAnio, int anio, int* dia, int* mes);
+    static void diaDelAnioADiaMes(int diaDelAnio, int anio, int& dia, int& mes);
 
 public:
     Fecha();
     Fecha(int dia, int mes, int anio);
 
-    Fecha sumarDias(int dias) const;
-    Fecha restarDias(int dias) const;
-    int diferenciaEnDias(Fecha fecha) const;
+    Fecha operator +(int dias) const;
+    Fecha& operator ++(); // Preincremento
+    Fecha operator ++(int); // Posincremento
+    int operator -(const Fecha& fecha) const;
+    Fecha operator -(int dias) const;
+    // TODO
+    // Fecha& operator --(); // Predecremento
+    // Fecha operator --(int); // Posdecremento
+    // Fecha& operator +=(int dias);
+    // Fecha& operator -=(int dias);
+    // bool operator ==(const Fecha& fecha) const;
+    // bool operator !=(const Fecha& fecha) const;
+    // bool operator <(const Fecha& fecha) const;
+    // bool operator <=(const Fecha& fecha) const;
+    // bool operator >(const Fecha& fecha) const;
+    // bool operator >=(const Fecha& fecha) const;
+
     int diaDeLaSemana() const;
-    void incrementarDia();
-    void getDma(int* dia, int* mes, int* anio) const;
+    void getDma(int& dia, int& mes, int& anio) const;
+    void setDma(int dia, int mes, int anio);
 };
+
+
+ostream& operator <<(ostream& os, const Fecha& fecha);
+istream& operator >>(istream& is, Fecha& fecha);
 
 
 #endif // FECHA_H
