@@ -11,16 +11,19 @@ class Cadena
 private:
     char* cadenaC;
 
+    static int cantDigitos(int numero);
+    static bool esFinDeLinea(char c);
+
 public:
     Cadena();
     Cadena(const char* cadenaC);
+    Cadena(char c);
+    Cadena(int numero);
 
-    // Estos 3 métodos se deben implementtar al trabajar con memoria dinámica
     Cadena(const Cadena& cadena);
     ~Cadena();
     Cadena& operator =(const Cadena& cadena);
 
-    Cadena operator +(const Cadena& cadena) const;
     Cadena& operator +=(const Cadena& cadena);
     bool operator ==(const Cadena& cadena) const;
     bool operator !=(const Cadena& cadena) const;
@@ -28,16 +31,17 @@ public:
     bool operator <=(const Cadena& cadena) const;
     bool operator >(const Cadena& cadena) const;
     bool operator >=(const Cadena& cadena) const;
-
     char& operator [](int subindice);
     const char& operator [](int subindice) const;
 
     const char* getCadenaC() const;
     int getLongitud() const;
 
+    friend Cadena operator +(const Cadena& cadena1, const Cadena& cadena2);
+
     friend ostream& operator <<(ostream& os, const Cadena& cadena);
+    friend istream& operator >>(istream& is, Cadena& cadena);
 };
-//ostream& operator <<(ostream& os, const Cadena& cadena);
 
 
 #endif // CADENA_H
