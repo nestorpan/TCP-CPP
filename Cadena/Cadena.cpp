@@ -20,6 +20,12 @@ Cadena::Cadena(const char* cadenaC)
 }
 
 
+Cadena::Cadena(char* cadenaC)
+{
+    this->cadenaC = cadenaC;
+}
+
+
 Cadena::Cadena(char c)
 {
     this->cadenaC = new char[2];
@@ -44,7 +50,6 @@ Cadena::Cadena(const Cadena& otra)
 
 Cadena::~Cadena()
 {
-//    cout << "Ejecutando Destructor ..." << endl;
     delete [] cadenaC;
 }
 
@@ -68,12 +73,10 @@ Cadena& Cadena::operator =(const Cadena& otra)
 
 Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 {
-    Cadena concat;
-    delete [] concat.cadenaC; //TODO: Implementar constructor privado que no copia la cadena.
-    concat.cadenaC = new char[strlen(cad1.cadenaC) + strlen(cad2.cadenaC) + 1];
-    strcpy(concat.cadenaC, cad1.cadenaC);
-    strcat(concat.cadenaC, cad2.cadenaC);
-    return concat;
+    char* cadenaConcat = new char[strlen(cad1.cadenaC) + strlen(cad2.cadenaC) + 1];
+    strcpy(cadenaConcat, cad1.cadenaC);
+    strcat(cadenaConcat, cad2.cadenaC);
+    return Cadena(cadenaConcat);
 }
 
 

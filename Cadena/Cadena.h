@@ -14,6 +14,8 @@ private:
     static int cantDigitos(int numero);
     static bool esFinDeLinea(char c);
 
+    Cadena(char* cadenaC); // Constructor privado, que no copia la cadena.
+
 public:
     Cadena();
     Cadena(const char* cadenaC);

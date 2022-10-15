@@ -56,6 +56,8 @@ public:
     int diaDeLaSemana() const;
     void getDma(int& dia, int& mes, int& anio) const;
     void setDma(int dia, int mes, int anio);
+    
+    static Fecha& getHoy();
 };
 
 
