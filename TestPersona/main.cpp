@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "../Persona/PersonaBuilder.h"
 #include "../Persona/PersonaException.h"
 
@@ -9,38 +10,80 @@ int main()
 {
     system("chcp 1252 > nul");
 
-    PersonaBuilder personaBuilder;
+//    PersonaBuilder personaBuilder;
+//
+//     try
+//     {
+//         personaBuilder
+//             .setDni(24004600)
+//             .setApellido("Garcia")
+//             .setNombre("Juana")
+//             .setFechaNacimiento(Fecha(23, 8, 1974));
+//     }
+//     catch(PersonaException& e)
+//     {
+//         cerr << e.getMensaje() << endl;
+//         return 1; // Error validación.
+//     }
+//
+//     Persona gonzalezJuan = personaBuilder.buildEstatica();
+//
+//     cout << gonzalezJuan.getApellido() << ", " << gonzalezJuan.getNombre() << endl;
+//
+//     Persona* gonzalezJuan2 = personaBuilder.buildDinamica();
+//     cout << gonzalezJuan2->getApellido() << ", " << gonzalezJuan2->getNombre() << endl;
 
-    try
+
+    // Grabo en archivo.
+
+//    fstream archivo("Personas.txt", ios::app);
+//
+//    archivo << *gonzalezJuan2 << endl;
+//
+//    delete gonzalezJuan2;
+
+
+    // try
+    // {
+    //     personaBuilder
+    //         .setDni(33444555)
+    //         .setApellido("Pérez")
+    //         .setNombre("Rodrigo")
+    //         .setFechaNacimiento(Fecha(10, 10, 1991));
+    // }
+    // catch(PersonaException& e)
+    // {
+    //     cerr << e.getMensaje() << endl;
+    //     return 1; // Error validación.
+    // }
+
+    // Persona* perezRodrigo = personaBuilder.buildDinamica();
+
+    // archivo << *perezRodrigo << endl;
+
+    // delete perezRodrigo;
+
+    // archivo.close();
+
+
+    // Leo de archivo.
+
+    fstream archivoLectura("Personas.txt", ios::in);
+
+    vector<Persona*> personas;
+
+    while(archivoLectura.peek() != EOF)
     {
-        /*
-        personaBuilder.setDni(22333444);
-        personaBuilder.setApellido("Gonzalez");
-        personaBuilder.setNombre("Juan");
-        personaBuilder.setFechaNacimiento(Fecha(1, 1, 1990));
-        */
-        personaBuilder
-            .setDni(10000)
-            .setApellido("Gonzalez")
-            .setNombre("Juan")
-            .setFechaNacimiento(Fecha(1, 1, 1990));
+        Persona* persona = new Persona();
+        archivoLectura >> *persona;
+        personas.push_back(persona);
     }
-    catch(PersonaException& e)
+
+    for(Persona* pers : personas)
     {
-        cerr << e.getMensaje() << endl;
-        return 1; // Error validación.
+        cout << pers->getApellido() << ", " << pers->getNombre() << endl;
+        delete pers;
     }
-
-    //Persona garcia;
-    Persona gonzalezJuan = personaBuilder.buildEstatica();
-    //gonzalezJuan.setApellido("Garcia");
-
-    cout << gonzalezJuan.getApellido() << ", " << gonzalezJuan.getNombre() << " DNI = " << gonzalezJuan.getDni() << endl;
-
-    Persona* gonzalezJuan2 = personaBuilder.buildDinamica();
-    cout << gonzalezJuan2->getApellido() << ", " << gonzalezJuan2->getNombre() << endl;
-    delete gonzalezJuan2;
-
 
     return 0;
 }

@@ -2,6 +2,7 @@
 #include <queue>
 #include <iostream>
 #include "Cadena.h"
+#include "../Fecha/Fecha.h"
 
 using namespace std;
 
@@ -87,6 +88,49 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
     return Cadena(cadenaConcat);
 }
 
+vector<Cadena> Cadena::split(char separador) const
+{
+    char* iniCampo = this->cadenaC;
+    char* finCampo;
+
+    vector<Cadena> campos;
+
+    finCampo = strchr(iniCampo, separador);
+    while(finCampo)
+    {
+        *finCampo = '\0';
+        campos.push_back(Cadena((const char*)iniCampo));
+        *finCampo = separador;
+        iniCampo = finCampo + 1;
+        finCampo = strchr(iniCampo, separador);
+    }
+
+    campos.push_back(Cadena((const char*)iniCampo));
+
+    return campos;
+}
+
+
+unsigned Cadena::toUnsigned() const
+{
+    unsigned numero;
+    sscanf(this->cadenaC, "%u", &numero);
+    return numero;
+}
+
+
+int Cadena::toInt() const
+{
+    int numero;
+    sscanf(this->cadenaC, "%d", &numero);
+    return numero;
+}
+
+
+Fecha Cadena::toFecha() const
+{
+    return Fecha(*this);
+}
 
 ostream& operator <<(ostream& os, const Cadena& cadena)
 {

@@ -1,6 +1,7 @@
+#include "../Cadena/Cadena.h"
 #include "FechaInvalidaException.h"
 #include "Fecha.h"
-
+#include <vector>
 
 const int Fecha::cdm[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -20,6 +21,17 @@ Fecha::Fecha(int dia, int mes, int anio)
     setDma(dia, mes, anio);
 }
 
+Fecha::Fecha(const Cadena& cad)
+{
+    int dia, mes, anio;
+    vector<Cadena> campos = cad.split('/');
+
+    dia = campos[0].toInt();
+    mes = campos[1].toInt();
+    anio = campos[2].toInt();
+
+    setDma(dia, mes, anio);
+}
 
 Fecha Fecha::operator +(int dias) const
 {
