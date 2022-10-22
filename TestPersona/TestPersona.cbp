@@ -15,8 +15,8 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="../Fecha/bin/Debug/libFecha.a" />
 					<Add library="../Cadena/bin/Debug/libCadena.a" />
+					<Add library="../Fecha/bin/Debug/libFecha.a" />
 					<Add library="../Persona/bin/Debug/libPersona.a" />
 				</Linker>
 			</Target>

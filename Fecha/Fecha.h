@@ -10,6 +10,8 @@
 
 using namespace std;
 
+class Cadena;
+
 
 class Fecha
 {
@@ -35,6 +37,7 @@ private:
 public:
     Fecha();
     Fecha(int dia, int mes, int anio);
+    Fecha(const Cadena& cad);
 
     Fecha operator +(int dias) const;
     Fecha& operator ++(); // Preincremento

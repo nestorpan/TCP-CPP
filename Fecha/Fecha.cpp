@@ -1,3 +1,4 @@
+#include "../Cadena/Cadena.h"
 #include "FechaInvalidaException.h"
 #include "Fecha.h"
 
@@ -21,6 +22,19 @@ Fecha::Fecha(int dia, int mes, int anio)
 }
 
 
+Fecha::Fecha(const Cadena& cad)
+{
+    int dia, mes, anio;
+    vector<Cadena> campos = cad.split('/');
+
+    dia = campos[0].toInt();
+    mes = campos[1].toInt();
+    anio = campos[2].toInt();
+
+    setDma(dia, mes, anio);
+}
+
+
 Fecha Fecha::operator +(int dias) const
 {
     Fecha fechaSuma(*this);
@@ -36,7 +50,7 @@ Fecha Fecha::operator -(int dias) const
     fechaResta.diaRel -= dias;
     
     if(fechaResta.diaRel < 1)
-        throw FechaInvalidaException("Fecha inválida: Quiere restar más días de los permitidos.");
+        throw FechaInvalidaException("Fecha invï¿½lida: Quiere restar mï¿½s dï¿½as de los permitidos.");
 
     return fechaResta;
 }

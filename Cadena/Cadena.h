@@ -2,8 +2,11 @@
 #define CADENA_H
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
+
+class Fecha;
 
 
 class Cadena
@@ -38,6 +41,10 @@ public:
 
     const char* getCadenaC() const;
     int getLongitud() const;
+    vector<Cadena> split(char separador) const;
+    unsigned toUnsigned() const;
+    int toInt() const;
+    Fecha toFecha() const;
 
     friend Cadena operator +(const Cadena& cadena1, const Cadena& cadena2);
     friend ostream& operator <<(ostream& os, const Cadena& cadena);

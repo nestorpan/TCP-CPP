@@ -36,6 +36,8 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="Alumno.cpp" />
+		<Unit filename="Alumno.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
 		<Unit filename="PersonaBuilder.cpp" />
