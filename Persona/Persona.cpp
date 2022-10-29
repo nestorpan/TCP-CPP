@@ -72,17 +72,19 @@ ostream& operator <<(ostream& os, const Persona& persona)
 
 istream& operator >>(istream& is, Persona& persona)
 {
-	Cadena linea;
+    char campo[501];
 
-	is >> linea;
+	is.getline(campo, 501, '\t');
+	persona.dni = Persona::validarDni(atoi(campo));
 
-	vector<Cadena> campos = linea.split('\t');
+	is.getline(campo, 501, '\t');
+	persona.apellido = Persona::validarApellido(Cadena((const char*)campo));
 
-	persona.dni = Persona::validarDni(campos[0].toUnsigned());
-	persona.apellido = Persona::validarApellido(campos[1]);
-	persona.nombre = Persona::validarNombre(campos[2]);
-	persona.fechaNacimiento = campos[3].toFecha();
-	// persona.fechaNacimiento = Fecha(campos[3]);
+	is.getline(campo, 501, '\t');
+	persona.nombre = Persona::validarNombre(Cadena((const char*)campo));
+
+	is.getline(campo, 501, '\t');
+	persona.fechaNacimiento = Cadena((const char*)campo).toFecha();
 
 	return is;
 }
