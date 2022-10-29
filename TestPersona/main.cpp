@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../Persona/PersonaBuilder.h"
 #include "../Persona/PersonaException.h"
+#include "../Persona/AlumnoBuilder.h"
 
 using namespace std;
 
@@ -66,24 +67,81 @@ int main()
     // archivo.close();
 
 
-    // Leo de archivo.
+    //  Leo de archivo.
 
-    fstream archivoLectura("Personas.txt", ios::in);
+    // fstream archivoLectura("Personas.txt", ios::in);
 
-    vector<Persona*> personas;
+    // vector<Persona*> personas;
 
-    while(archivoLectura.peek() != EOF)
+    // while(archivoLectura.peek() != EOF)
+    // {
+    //     Persona* persona = new Persona();
+    //     archivoLectura >> *persona;
+    //     personas.push_back(persona);
+    // }
+
+    // for(Persona* pers : personas)
+    // {
+    //     cout << pers->getApellido() << ", " << pers->getNombre() << endl;
+    //     delete pers;
+    // }
+
+
+    AlumnoBuilder builder;
+
+    try
     {
-        Persona* persona = new Persona();
-        archivoLectura >> *persona;
-        personas.push_back(persona);
+        builder
+            .setDni(22333444)
+            .setApellido("Gonzalez")
+            .setNombre("Juan")
+            .setFechaNacimiento(Fecha(1, 1, 1990));
+            
+        builder    
+            .setFechaIngreso(Fecha(1, 1, 2010))
+            .setCarrera("ING_INF")
+            .setCantMatAprob(23)
+            .setPromedio(7);
+    }
+    catch(PersonaException& e)
+    {
+        cerr << e.getMensaje() << endl;
+        return 1; // Error validación.
     }
 
-    for(Persona* pers : personas)
+    Alumno alu = builder.buildEstatica();
+
+    fstream archAlus("Alumnos.txt", ios::out);
+
+    archAlus << alu << endl;
+
+    alu.setApellido("Perez");
+    alu.setNombre("Rodrigo");
+    archAlus << alu << endl;
+
+    alu.setApellido("Gomez");
+    alu.setNombre("Maria");
+    archAlus << alu << endl;
+
+    archAlus.close();
+
+    fstream archAlusLectura("Alumnos.txt", ios::in);
+
+    vector<Alumno*> alumnos;
+    vector<Alumno*> alumnosBin;
+
+    while(archAlusLectura.peek() != EOF)
     {
-        cout << pers->getApellido() << ", " << pers->getNombre() << endl;
-        delete pers;
+        Alumno* alumno = new Alumno();
+        archAlusLectura >> *alumno;
+        alumnos.push_back(alumno);
     }
 
+    for(Alumno* alu : alumnos)
+    {
+        cout << *alu << endl;
+        delete alu;
+    }
+    
     return 0;
 }

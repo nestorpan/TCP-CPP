@@ -21,7 +21,7 @@ public:
 	PersonaBuilder& setApellido(const Cadena& apellido) { this->apellido = Persona::validarApellido(apellido); return *this; };
 	PersonaBuilder& setNombre(const Cadena& nombre) { this->nombre = Persona::validarNombre(nombre); return *this; };
 	PersonaBuilder& setFechaNacimiento(const Fecha& fechaNacimiento) { this->fechaNacimiento = fechaNacimiento; return *this; };
-
+	
 	Persona buildEstatica();
 	Persona* buildDinamica();
 };

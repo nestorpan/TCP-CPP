@@ -12,17 +12,17 @@ private:
 	double promedio;
 	unsigned cantMatAprob;
 
-	static const Cadena& validarCarrera(const Cadena& carrera);
-	static const Fecha& validarFechaIngreso(const Fecha& fechaIngreso);
-	static double validarPromedio(double promedio);
-	static int validarCantMatAprob(int cantMatAprob);
+	inline static const Cadena& validarCarrera(const Cadena& carrera) { return carrera; };
+	inline static const Fecha& validarFechaIngreso(const Fecha& fechaIngreso) { return fechaIngreso; };
+	inline static double validarPromedio(double promedio) { return promedio; };
+	inline static int validarCantMatAprob(int cantMatAprob) { return cantMatAprob; };
 
 protected:
 	Alumno(unsigned dni, const Cadena& apellido, const Cadena& nombre, const Fecha& fechaNacimiento, const Cadena& carrera, const Fecha& fechaIngreso, double promedio, unsigned cantMatAprob);
 
 public:
 	Alumno();
-
+	
 	inline const Cadena& getCarrera() const { return carrera; };
 	inline void setCarrera(const Cadena& carrera) { this->carrera = carrera; };
 	inline const Fecha& getFechaIngreso() const { return fechaIngreso; };
@@ -34,6 +34,9 @@ public:
 
 	friend ostream& operator <<(ostream& os, const Alumno& alumno);
 	friend istream& operator >>(istream& is, Alumno& alumno);
+
+	friend class AlumnoBuilder;
 };
+
 
 #endif // ALUMNO_H
