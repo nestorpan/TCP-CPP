@@ -1,6 +1,7 @@
 #ifndef ALUMNO_H
 #define ALUMNO_H
 
+#include "../Serializable/Serializable.h"
 #include "Persona.h"
 
 
@@ -22,6 +23,7 @@ protected:
 
 public:
 	Alumno();
+	virtual ~Alumno() {};
 	
 	inline const Cadena& getCarrera() const { return carrera; };
 	inline void setCarrera(const Cadena& carrera) { this->carrera = carrera; };
@@ -31,6 +33,10 @@ public:
 	inline void setPromedio(double promedio) { this->promedio = promedio; };
 	inline unsigned getCantMatAprob() const { return cantMatAprob; };
 	inline void setCantMatAprob(unsigned cantMatAprob) { this->cantMatAprob = cantMatAprob; };
+
+	void serializar(ostream& os, bool serializaNombre) const override;
+	Serializable* deserializarDin(istream& is) override;
+	void deserializar(istream& is) override;
 
 	friend ostream& operator <<(ostream& os, const Alumno& alumno);
 	friend istream& operator >>(istream& is, Alumno& alumno);

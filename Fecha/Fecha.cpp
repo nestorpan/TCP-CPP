@@ -84,6 +84,29 @@ int Fecha::diaDeLaSemana() const
 }
 
 
+void Fecha::serializar(ostream& out, bool serializaNombre) const
+{
+    if(serializaNombre)
+        Cadena("Fecha").serializar(out);
+    
+    out.write((char*)&diaRel, sizeof(int));
+}
+
+
+Serializable* Fecha::deserializarDin(istream& in)
+{
+    Fecha* fecha = new Fecha();
+    in.read((char*)&fecha->diaRel, sizeof(int));
+    return fecha;
+}
+
+
+void Fecha::deserializar(istream& in)
+{
+    in.read((char*)&this->diaRel, sizeof(int));
+}
+
+
 void Fecha::setDma(int dia, int mes, int anio)
 {   
     if(!esFechaValida(dia, mes, anio))

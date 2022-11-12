@@ -81,6 +81,12 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 }
 
 
+bool Cadena::operator <(const Cadena& cadena) const
+{
+    return strcmp(this->cadenaC, cadena.cadenaC) < 0;
+}
+
+
 vector<Cadena> Cadena::split(char separador) const
 {
     char* iniCampo = this->cadenaC;
@@ -126,6 +132,43 @@ Fecha Cadena::toFecha() const
 }
 
 
+void Cadena::serializar(ostream& os, bool serializaNombre) const
+{
+    if (serializaNombre)
+        os.write("Cadena", 7);
+
+    size_t longitud = strlen(this->cadenaC) + 1;
+    os.write((char*)&longitud, sizeof(size_t));
+    os.write(this->cadenaC, longitud);
+}
+
+
+Serializable* Cadena::deserializarDin(istream& is)
+{
+    size_t longitud;
+    is.read((char*)&longitud, sizeof(size_t));
+
+    char* cad = new char[longitud];
+    is.read(cad, longitud);
+    
+    Cadena* cadena = new Cadena(cad);
+    return cadena;
+}
+
+
+void Cadena::deserializar(istream& is)
+{
+    size_t longitud;
+    is.read((char*)&longitud, sizeof(size_t));
+
+    char* cad = new char[longitud];
+    is.read(cad, longitud);
+    
+    delete [] this->cadenaC;
+    this->cadenaC = cad;
+}
+
+
 ostream& operator <<(ostream& os, const Cadena& cadena)
 {
     os << cadena.cadenaC;
@@ -138,7 +181,7 @@ istream& operator >>(istream& is, Cadena& cadena)
     queue<char> colaChars;
     char c;
 
-    while((c = is.get()) != '\n' && c != EOF)
+    while((c = is.get()) != '\n' && c != '\0' && c != EOF)
         colaChars.push(c);
     
     if(strlen(cadena.cadenaC) != colaChars.size())
