@@ -7,12 +7,13 @@
 #define FECHA_INVALIDA 1
 
 #include <iostream>
+#include "../Serializable/Serializable.h"
 
 using namespace std;
 
 class Cadena;
 
-class Fecha
+class Fecha : public Serializable
 {
 private:
     int diaRel;
@@ -58,6 +59,10 @@ public:
     int diaDeLaSemana() const;
     void getDma(int& dia, int& mes, int& anio) const;
     void setDma(int dia, int mes, int anio);
+
+    void serializar(ostream& out, bool serializaNombre = false) const;
+    Serializable* deserializarDin(istream& in);
+    void deserializar(istream& in);
 };
 
 

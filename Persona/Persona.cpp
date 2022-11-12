@@ -63,6 +63,35 @@ const Cadena& Persona::validarNombre(const Cadena& nombre)
 	return nombre;
 }
 
+void Persona::serializar(ostream& os, bool serializaNombre) const
+{
+    if(serializaNombre) {
+        Cadena("Persona").serializar(os);
+    }
+
+    os.write((char*)&dni, sizeof(unsigned));
+	apellido.serializar(os);
+	nombre.serializar(os);
+	fechaNacimiento.serializar(os);
+}
+
+Serializable* Persona::deserializarDin(istream& is)
+{
+	Persona* persona = new Persona();
+
+	persona->deserializar(is);
+
+	return persona;
+}
+
+
+void Persona::deserializar(istream& is)
+{
+	is.read((char*)&this->dni, sizeof(unsigned));
+	this->apellido.deserializar(is);
+	this->nombre.deserializar(is);
+	this->fechaNacimiento.deserializar(is);
+}
 
 ostream& operator <<(ostream& os, const Persona& persona)
 {

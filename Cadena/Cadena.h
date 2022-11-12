@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <vector>
+#include "../Serializable/Serializable.h"
 
 using namespace std;
 
 class Fecha;
 
-class Cadena
+class Cadena : public Serializable
 {
 private:
     char* cadenaC;
@@ -44,6 +45,10 @@ public:
     unsigned toUnsigned() const;
     int toInt() const;
     Fecha toFecha() const;
+
+    void serializar(ostream& os, bool serializaNombre = false) const;
+    Serializable* deserializarDin(istream& is);
+    void deserializar(istream& is);
 
     friend Cadena operator +(const Cadena& cadena1, const Cadena& cadena2);
 

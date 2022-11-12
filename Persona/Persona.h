@@ -5,7 +5,7 @@
 #include "../Fecha/Fecha.h"
 
 
-class Persona
+class Persona : public Serializable
 {
 private:
 	unsigned dni;
@@ -33,6 +33,10 @@ public:
 	inline void setNombre(const Cadena& nombre) { this->nombre = validarNombre(nombre); };
 	inline const Fecha& getFechaNacimiento() const { return fechaNacimiento; };
 	inline void setFechaNacimiento(const Fecha& fechaNacimiento) { this->fechaNacimiento = fechaNacimiento; };
+
+	void serializar(ostream& os, bool serializaNombre = false) const override;
+	Serializable* deserializarDin(istream& is) override;
+	void deserializar(istream& is) override;
 
 	friend ostream& operator <<(ostream& os, const Persona& persona);
 	friend istream& operator >>(istream& is, Persona& persona);
