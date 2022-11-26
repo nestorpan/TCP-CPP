@@ -14,6 +14,7 @@ class Serializable
     static map<Cadena, Serializable*> objetos;
     
 public:    
+    virtual ~Serializable() {};
     virtual void serializar(ostream& os, bool serializaNombre = false) const = 0;
     virtual Serializable* deserializarDin(istream& is) = 0;
     virtual void deserializar(istream& is) = 0;

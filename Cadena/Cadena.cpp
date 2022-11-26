@@ -51,7 +51,11 @@ Cadena::Cadena(const Cadena& otra)
 
 Cadena::~Cadena()
 {
+    cout << "Cadena::~Cadena()" << endl;
+
     delete [] cadenaC;
+
+    cout << "Cadena destruída." << endl;
 }
 
 
