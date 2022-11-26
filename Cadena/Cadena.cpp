@@ -49,8 +49,9 @@ Cadena::Cadena(char* cadenaC)
 
 Cadena::~Cadena()
 {
-//    cout << "Ejecutando Destructor ..." << endl;
+    cout << "Cadena::~Cadena()" << endl;
     delete [] cadenaC;
+    cout << "Cadena destruída." << endl;
 }
 
 
